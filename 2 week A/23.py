@@ -1,3 +1,4 @@
+
 x = int(input())
 m = 0
 steps = 0

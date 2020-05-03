@@ -1,3 +1,4 @@
+
 x = int(input())
 xb = -1
 steps = 0

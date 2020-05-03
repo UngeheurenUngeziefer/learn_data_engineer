@@ -1,3 +1,4 @@
+# Выведите все четные элементы списка.
 numList = list(map(int, input().split()))
 newlist = ()
 

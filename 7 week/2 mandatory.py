@@ -1,3 +1,3 @@
-a = set(map(int, input().split()))
-b = set(map(int, input().split()))
-print(*(sorted(a & b)))
+# Даны два списка чисел, которые могут содержать до 10000 чисел каждый.
+# Выведите все числа, которые входят как в первый, так и во второй список, в порядке возрастания.
+print(*(sorted(set(map(int, input().split())) & set(map(int, input().split())))))
