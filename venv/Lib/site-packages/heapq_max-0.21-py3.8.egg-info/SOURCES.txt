@@ -1,0 +1,10 @@
+README.rst
+setup.cfg
+setup.py
+heapq_max/__init__.py
+heapq_max/heapq_max.py
+heapq_max/test.py
+heapq_max.egg-info/PKG-INFO
+heapq_max.egg-info/SOURCES.txt
+heapq_max.egg-info/dependency_links.txt
+heapq_max.egg-info/top_level.txt
