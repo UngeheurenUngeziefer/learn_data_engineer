@@ -1,5 +1,5 @@
 # Sortings_and_Algorithms
-Commented Sortings and Algorithms
+Commented Sortings and Algorithms<br />
 Изученные сортировки и алгоритмы:
 1. Binary Search
 2. Quick Sort
