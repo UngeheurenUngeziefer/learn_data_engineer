@@ -1,3 +1,4 @@
+'''Класс для представления автомобиля'''
 class Car():
 	'''Простая модель автомобиля'''
 	def __init__(self, make, model, year):
@@ -31,6 +32,10 @@ class Car():
 		else:
 			print("You can't roll back an odometer!")
 
+	def fill_gas_tank(self):
+		'''Заправляет машину'''
+		print('Car is filled.')
+
 # my_new_car = Car('Audi', 'a4', 2016)
 # print(my_new_car.get_descriptive_name())
 # my_new_car.odometer_reading = 23
@@ -42,3 +47,4 @@ class Car():
 # my_new_car.read_odometer()
 # my_new_car.increment_odometer(20)
 # my_new_car.read_odometer()
+# my_new_car.fill_gas_tank()
