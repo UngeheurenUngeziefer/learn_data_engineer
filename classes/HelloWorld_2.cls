@@ -1,5 +1,8 @@
 /**
- * @description Hello World
+ * @description A class with a @description tag with proper capitalization
+ * @author Jauhien Leaniuk
+ * @date 10/27/2020
+ * @group A
  */
 public class HelloWorld {
     /**
