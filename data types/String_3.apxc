@@ -1,0 +1,6 @@
+// operators
+String x = 'I am a string';
+String y = 'I AM A STRING';
+String z = 'Hello!';
+System.debug (x == y);
+System.debug (x != z);
