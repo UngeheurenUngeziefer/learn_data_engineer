@@ -1,4 +1,24 @@
 Apex Workbook
 https://resources.docs.salesforce.com/198/latest/en-us/sfdc/pdf/apex_workbook.pdf
 
-https://github.com/SiMaLoGo/Salesforce-ContactsManager
+Introduction to Lightning Component AURA
+https://www.youtube.com/watch?v=Yz_IJzC6yfU&list=LL&index=5
+
+How to Create Your First Salesforce Lightning Component
+https://youtu.be/SXBXqkt1N6M
+
+Build Your First Custom App On Salesforce
+https://youtu.be/g1doydVCUBo
+
+Creating a Salesforce Lightning App in 12 Minutes
+https://youtu.be/M462r41Ydow
+
+Shown on all lightning components
+<aura:component implements='flexipage:availableForAllPageTypes'>
+
+
+Navigate to Setup > Platform Tools > User Interface > Lightning App Builder.
+On the Lightning Pages section, click New. Select App Page, Home page, or Record page,
+where you want to add the component. In the Label field, enter the name of the lightning page and click Next.
+
+SLDS2137
