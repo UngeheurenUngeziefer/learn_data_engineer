@@ -1,35 +1,42 @@
-({
+({	
+    // Функция получения всех аккаунтов
 	myAction : function(component, event, helper) {
-		var action =component.get("c.getAllAccounts");
-        console.log('The action value is: '+action);
-         action.setCallback(this, function(a){ 
-             
+		var action = component.get("c.getAllAccounts");
+        action.setCallback(this, function(a){
             component.set("v.accounts", a.getReturnValue());
-           //  console.log('The accs are :'+JSON.stringify(a.getReturnValue()));
-            console.log('The accs are :'+JSON.stringify(a.getReturnValue()));
-          
         });
         $A.enqueueAction(action);
 	},
     
-    // Function called on initial page loading to get contact list from server
-        getContactsList : function(component, event, helper) {
-        // Helper function - fetchContacts called for interaction with server
-                helper.fetchContacts(component, event, helper);
-        },
+    // Функция получающая список контактов с сервера
+    getContactsList : function(component, event, helper) {
+        // Помощник доставляет контакты
+        helper.fetchContacts(component, event, helper);
+    },
 
-    // Function used to create a new Contact
+    // Функция создания нового контакта
     newContact: function(component, event, helper) {
-        // Global event force:createRecord is used
+        // Создание записи
         var createContact = $A.get("e.force:createRecord");
-        // Parameters like apiName and defaultValues are set
+        // Установка параметров
         createContact.setParams({
             "entityApiName": "Contact",
             "defaultFieldValues": {
                 "AccountId": component.get("v.recordId")
             }
         });
-        // Event fired and new contact dialog open
+        // Событие запущено и открыт новый контакт
         createContact.fire();
+    },
+    
+    // Таблица
+    init: function(cmp, event, helper) {
+        helper.setColumns(cmp);
+        helper.setData(cmp);
+    },
+
+    // Сортировка
+    handleSort: function(cmp, event, helper) {
+        helper.handleSort(cmp, event);
     }
 })
