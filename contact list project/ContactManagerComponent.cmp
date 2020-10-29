@@ -1,0 +1,67 @@
+<aura:component controller="accountsWithContactsClass" implements="flexipage:availableForAllPageTypes" access="global">
+    <aura:handler name="init" value="{!this}" action="{!c.myAction}"/>
+    <aura:attribute name="accounts" type="Account[]" />
+    
+	<!-- Handler to call function when page is loaded initially -->
+    <aura:handler name="init" action="{!c.getContactsList}" value="{!this}" />
+    <!-- List of contacts stored in attribute -->
+    <aura:attribute name="contactList" type="List" />
+    <!-- Lightning card to show contacts -->
+        <lightning:card title="Contacts">
+        <!-- Body of lightning card starts here -->
+        <p class="slds-p-horizontal_small">
+            <!-- Aura iteration to iterate list, similar to apex:repeat -->
+            <aura:iteration items="{!v.contactList}" var="contact">
+                <!-- recordViewForm to view the record -->
+                <lightning:recordViewForm recordId="{!contact.Id}" objectApiName="Contact">
+                    <div class="slds-box slds-theme_default">
+                        <!-- outputfield used to output the record field data inside recordViewForm -->
+                        <lightning:outputField fieldName="Name" />
+                        <lightning:outputField fieldName="Email" />
+                        <lightning:outputField fieldName="Phone" />
+                    </div>
+                </lightning:recordViewForm>
+                <!-- Line break between two records -->
+                <br />
+            </aura:iteration>
+        </p>
+        <!-- Lightning card actions -->
+        <aura:set attribute="actions">
+            <!-- New button added -->
+            <lightning:button label="New" onclick="{!c.newContact}" />
+        </aura:set>
+    </lightning:card>
+
+    
+    
+    
+    <table>
+        <tr>
+            <td>
+                <b>Name</b>
+            </td>
+            <td>
+                <b>Phone</b>
+            </td>
+            <td>
+                <b>Contacts</b>
+            </td>
+        </tr>
+        <aura:iteration items="{!v.accounts}" var="accs1" >
+            <tr>  
+                <td> {!accs1.Name}  </td>
+                  <td> {!accs1.Phone}  </td>
+                 <!--   <td>   {!accs1.Contacts.lastName}  </td> -->
+                <table>
+                    <aura:iteration items="{!accs1.Contacts}" var="con1" >
+                        <tr>
+                            <td> {!con1.Email}  </td>
+                            
+                            <td>{!con1.accountId}</td>
+                        </tr>
+                    </aura:iteration>
+                </table>
+            </tr> 
+         </aura:iteration>                                           
+    </table>    
+</aura:component>

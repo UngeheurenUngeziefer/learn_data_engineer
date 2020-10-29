@@ -13,8 +13,23 @@ https://youtu.be/g1doydVCUBo
 Creating a Salesforce Lightning App in 12 Minutes
 https://youtu.be/M462r41Ydow
 
+Understanding the ‘action.setCallback’ method in your Salesforce Lightning Component controllers
+https://www.desynit.com/dev-zone/salesforce-development/action-setcallback-method/
+
+Display Accounts with Contacts
+https://developer.salesforce.com/forums/?id=9060G000000XdAfQAK
+
+Salesforce Lightning Tutorial - Part 1 | Fetch and display data from server
+https://www.sfdcstop.com/2018/01/salesforce-lightning-tutorial-part-1.html
+
+How to create simple Pagination using Lightning components and Apex
+http://michaelsoriano.com/how-to-create-simple-pagination-using-lightning-components-and-apex/
+
+
 Shown on all lightning components
 <aura:component implements='flexipage:availableForAllPageTypes'>
+
+
 
 
 Navigate to Setup > Platform Tools > User Interface > Lightning App Builder.
