@@ -36,4 +36,4 @@ Navigate to Setup > Platform Tools > User Interface > Lightning App Builder.
 On the Lightning Pages section, click New. Select App Page, Home page, or Record page,
 where you want to add the component. In the Label field, enter the name of the lightning page and click Next.
 
-SLDS2137
+SLDS2137 
