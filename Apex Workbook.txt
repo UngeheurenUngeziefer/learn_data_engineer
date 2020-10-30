@@ -38,6 +38,11 @@ https://salesforce.stackexchange.com/questions/128528/how-to-display-data-in-tab
 Dynamic Lightning Data Table Component | Salesforce | Part -1
 https://www.youtube.com/watch?v=DTjAEb3YmCw&list=PLxTr1YJm0NPZiWor1T1eQGe_9vAAzODHU&index=1
 
+Pagination Using Lightning Components
+https://www.mstsolutions.com/technical/pagination-using-lightning-components/
+
+Salesforce Lightning Datatable With Pagination
+https://www.biswajeetsamal.com/blog/salesforce-lightning-datatable-with-pagination/
 
 
 Navigate to Setup > Platform Tools > User Interface > Lightning App Builder.

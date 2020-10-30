@@ -1,0 +1,38 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes" access="global" controller="SampleController">
+     
+    <aura:attribute name="data" type="Object"/>
+    <aura:attribute name="columns" type="List"/>
+    <aura:attribute name="pageNumber" type="Integer" default="1"/>
+    <aura:attribute name="pageSize" type="Integer" default="10"/>
+    <aura:attribute name="isLastPage" type="Boolean" default="false"/>
+    <aura:attribute name="dataSize" type="Integer" default="0"/> 
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+     
+    <div class="slds-m-around_xx-large">
+        <div class="slds-clearfix">
+            <div class="slds-page-header" role="banner">
+                <p class="slds-page-header__title">Accounts</p>
+            </div>
+        </div>
+         
+        <lightning:datatable aura:id = "accDT"
+                             columns = "{!v.columns}"
+                             maxRowSelection="{!v.maxRowSelection}"
+                             data = "{!v.data}"
+                             keyField = "Id"
+                             selectedRows = "{!v.selectedRowList}"
+                             onrowaction="{!c.handleRowAction}"/>
+         
+        <div class="slds-clearfix">
+            <div class="slds-page-header" role="banner">
+                <div class="slds-float_right">            
+                    <lightning:button label="Prev" iconName="utility:chevronleft" iconPosition="left"
+                                      onclick="{!c.handlePrev}" disabled="{! v.pageNumber == 1}"/>
+                    <lightning:button label="Next" iconName="utility:chevronright" iconPosition="right"
+                                      disabled="{! v.isLastPage}" onclick="{!c.handleNext}"/>
+                </div>
+                <p class="slds-page-header__title">Page {!v.pageNumber} | Showing records from {! ((v.pageNumber-1)*v.pageSize)+' to '+((v.pageNumber-1)*v.pageSize+v.dataSize)}</p>
+            </div>
+        </div>
+    </div>
+</aura:component>
