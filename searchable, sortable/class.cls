@@ -30,7 +30,7 @@ public class SortableAccountTableController {
 	@AuraEnabled
     public static List<sObject> fetchData() {
         //Query and return list of Contacts
-        List<SObject> objRecords = [SELECT Name from Contact LIMIT 20];
+        List<SObject> objRecords = [SELECT Name, Phone, Contact_Level__c, AccountId, OwnerId, CreatedById, CreatedDate from Contact LIMIT 20];
         return objRecords;
 	}
 }
