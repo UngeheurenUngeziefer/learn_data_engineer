@@ -43,6 +43,8 @@ https://www.mstsolutions.com/technical/pagination-using-lightning-components/
 
 Salesforce Lightning Datatable With Pagination
 https://www.biswajeetsamal.com/blog/salesforce-lightning-datatable-with-pagination/
+https://www.biswajeetsamal.com/blog/pagination-in-lightning-component/
+
 
 
 Navigate to Setup > Platform Tools > User Interface > Lightning App Builder.
