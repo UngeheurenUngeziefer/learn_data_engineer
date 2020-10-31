@@ -10,4 +10,17 @@ public class PaginationForDataTable {
         //return list of accounts
         return accList;
     }
+    
+    @AuraEnabled
+    public static List <Contact> fetchAccts() {
+        return [SELECT Id, Name, Email, Phone
+				FROM Contact LIMIT 10];
+    }
+
 }
+
+
+
+
+
+    

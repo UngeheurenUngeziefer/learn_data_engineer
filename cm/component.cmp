@@ -8,21 +8,43 @@
     <aura:attribute name="isLastPage" type="Boolean" default="false"/>
     <aura:attribute name="dataSize" type="Integer" default="0"/>
     
+    <!-- search -->
+    <aura:attribute name="filteredData" type="Map"/>
+    
+    
+    <!-- sorting -->
+    
+    
+    
+    
+
+    <aura:attribute name="sortedBy" type="String" default="Name"/>
+    <aura:attribute name="sortedDirection" type="String" default="asc"/>
+    
+    
+    
+    
     <!--Declare Event Handlers--> 
     <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
      
     <div class="slds-m-around_xx-large">
         <div class="slds-clearfix">
             <div class="slds-page-header" role="banner">
-                <p class="slds-page-header__title">Accounts</p>
+                <p class="slds-page-header__title">Contacts</p>
             </div>
         </div>
-         
+         <lightning:input onchange="{!c.searchTable}" type="search" label="Searh" variant="label-hidden" placeholder="Enter search term" aura:id="SearchBox"/>
         <lightning:datatable aura:id = "accDT"
                              columns = "{!v.columns}"                             
                              data = "{!v.data}"
                              keyField = "Id"
-                             hideCheckboxColumn="true"/>
+                             hideCheckboxColumn="true"
+                         onsort="{!c.updateColumnSorting}"
+                         sortedBy="{!v.sortedBy}"  
+                         sortedDirection="{!v.sortedDirection}"/>
+    
+        
+        
          
         <div class="slds-clearfix">
             <div class="slds-page-header" role="banner">

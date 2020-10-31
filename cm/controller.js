@@ -4,6 +4,7 @@
         // call the helper function         
         helper.getColumn(component);
         helper.getAccountsPage(component, helper);
+        
     },
     // this function call on click on the next page button 
     handleNext : function(component, event, helper) { 
@@ -32,5 +33,32 @@
             }
         }
         cmp.set("v.data",tempArray);
+    },
+    
+    fetchAccounts : function(component, event, helper) {
+        component.set('v.columns', [
+            {label: 'Name', fieldName: 'Name', type: 'text', sortable: true},
+            {label: 'Email', fieldName: 'Email', type: 'Email', sortable: true},
+            {label: 'Phone', fieldName: 'Phone', type: 'phone', sortable: true},
+        ]);
+        var action = component.get("c.fetchAccts");
+        action.setParams({
+        });
+        action.setCallback(this, function(response){
+            var state = response.getState();
+            if (state === "SUCCESS") {
+                component.set("v.data", response.getReturnValue());
+                helper.sortData(component, component.get("v.sortedBy"), component.get("v.sortedDirection"));
+            }
+        });
+        $A.enqueueAction(action);
+    },
+    
+    updateColumnSorting: function (cmp, event, helper) {
+        var fieldName = event.getParam('fieldName');
+        var sortDirection = event.getParam('sortDirection');
+        cmp.set("v.sortedBy", fieldName);
+        cmp.set("v.sortedDirection", sortDirection);
+        helper.sortData(cmp, fieldName, sortDirection);
     }
 })
