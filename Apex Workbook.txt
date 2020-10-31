@@ -44,7 +44,11 @@ https://www.mstsolutions.com/technical/pagination-using-lightning-components/
 Salesforce Lightning Datatable With Pagination
 https://www.biswajeetsamal.com/blog/salesforce-lightning-datatable-with-pagination/
 https://www.biswajeetsamal.com/blog/pagination-in-lightning-component/
+https://auralightning.wordpress.com/2019/09/10/pagination-on-lightning-datatable/
+http://salesforcecodes.com/display-lightning-datatable-with-pagination-using-lightning-component/
 
+Lightning aura:iteration over two objects with dynamic key
+https://salesforce.stackexchange.com/questions/111152/lightning-auraiteration-over-two-objects-with-dynamic-key
 
 
 Navigate to Setup > Platform Tools > User Interface > Lightning App Builder.
