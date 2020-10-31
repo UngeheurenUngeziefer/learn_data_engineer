@@ -17,4 +17,20 @@
         component.set("v.pageNumber", pageNumber-1);
         helper.getAccountsPage(component, helper);
     },
+    
+    searchTable : function(cmp,event,helper) {
+        var allRecords = cmp.get("v.data");
+        var searchFilter = event.getSource().get("v.value").toUpperCase();
+        
+        var tempArray = [];
+        var i;
+
+        for(i=0; i < allRecords.length; i++){
+            if((allRecords[i].Name && allRecords[i].Name.toUpperCase().indexOf(searchFilter) != -1))
+            {
+                tempArray.push(allRecords[i]);
+            }
+        }
+        cmp.set("v.data",tempArray);
+    }
 })

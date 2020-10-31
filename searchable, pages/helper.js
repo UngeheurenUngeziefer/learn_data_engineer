@@ -2,8 +2,8 @@
     getColumn : function(component) {        
         component.set('v.columns', [
             {label: 'Name', fieldName: 'Name', type: 'text'},
-            {label: 'AccountNumber', fieldName: 'AccountNumber', type: 'text'},
-            {label: 'Industry', fieldName: 'Industry', type: 'text'},
+            {label: 'Email', fieldName: 'Email', type: 'Email'},
+            {label: 'Field', fieldName: 'Field', type: 'text'},
             {label: 'Phone', fieldName: 'Phone', type: 'phone'}           
         ]);
     },
