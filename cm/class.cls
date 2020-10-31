@@ -1,5 +1,5 @@
 public class PaginationForDataTable {
-    //Get Account Records
+    //Get Account Records dfs
     @AuraEnabled
     public static List<Contact> getAccountsPage(String pageSize, String pageNumber){
         Integer psize = Integer.valueOf(pageSize);
@@ -16,7 +16,7 @@ public class PaginationForDataTable {
         return [SELECT Id, Name, Email, Phone
 				FROM Contact LIMIT 10];
     }
-
+ 
 }
 
 
