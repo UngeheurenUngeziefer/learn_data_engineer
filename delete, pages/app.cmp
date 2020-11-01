@@ -1,0 +1,60 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes"
+                access="global"
+                controller="AccountCtrl">
+  		<aura:handler name="init" value="{!this}" action="{!c.doinit}"/>
+    
+        <aura:attribute name="conList"  type="list"/>
+        <aura:attribute name="pageNumber" type="Integer" default="1"/>
+        <aura:attribute name="pageSize" type="Integer" default="10"/>
+        <aura:attribute name="isLastPage" type="Boolean" default="false"/>
+        <aura:attribute name="dataSize" type="Integer" default="10"/>
+    
+          <div>
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+              <thead>
+                <tr class="slds-line-height_reset">
+                   <th class="slds-text-title_caps" scope="col">
+                      <div class="slds-truncate" title="conId">Contact Id</div>
+                    </th>
+               <th class="slds-text-title_caps" scope="col">
+                   <div class="slds-truncate" title="conName">Contact Name</div>
+                    </th>
+           
+                  <th class="slds-text-title_caps" scope="col">
+                          <div class="slds-truncate" title="Edit">Delete</div>
+                       </th>
+            </tr>
+          </thead>
+         <tbody>
+               <aura:iteration items="{!v.conList}" var="item" >
+                 <tr class="slds-hint-parent">
+                     <th data-label="Opportunity Name" scope="row">
+                        <div class="slds-truncate" title="Id"><a href="javascript:void(0);" tabindex="-1">{!item.Id}</a></div>
+                    </th>
+           <td data-label="Contact Name">
+                       <div class="slds-truncate" title="{!item.Name}">{!item.Name}</div>
+                    </td>
+             
+          <td data-label="icon" class="slds-col slds-size_1-of-12" onclick="{!c.delete}" id="{!item.Id}">
+                        <lightning:icon iconName="utility:delete" size="small" />
+                    </td>
+         
+       
+                </tr>
+            </aura:iteration>
+        </tbody>
+        </table>
+    </div>
+    
+    <div class="slds-clearfix">
+            <div class="slds-page-header" role="banner">
+                <div class="slds-float_right">            
+                    <lightning:button label="Prev" iconName="utility:chevronleft" iconPosition="left"
+                                      onclick="{!c.handlePrev}" disabled="{! v.pageNumber == 1}"/>
+                    <lightning:button label="Next" iconName="utility:chevronright" iconPosition="right"
+                                      disabled="{! v.isLastPage}" onclick="{!c.handleNext}"/>
+                </div>
+                <p class="slds-page-header__title">Page {!v.pageNumber} | Showing records from {! ((v.pageNumber-1)*(v.pageSize)+1)+' to '+((v.pageNumber-1)*v.pageSize+v.dataSize)}</p>
+            </div>
+        </div>
+</aura:component>

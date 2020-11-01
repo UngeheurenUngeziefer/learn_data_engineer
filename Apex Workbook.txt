@@ -53,6 +53,11 @@ https://salesforce.stackexchange.com/questions/111152/lightning-auraiteration-ov
 How to edit the "New Contact" button fields within the Account Page?
 https://trailblazers.salesforce.com/answers?id=9063A000000lPaMQAU
 
+
+lightning:datatable with buttons in Salesforce
+https://www.infallibletechie.com/2018/04/lightningdatatable-with-buttons-in.html
+
+
 oncommit attribute
 
 Navigate to Setup > Platform Tools > User Interface > Lightning App Builder.
