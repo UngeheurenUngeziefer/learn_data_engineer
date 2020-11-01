@@ -50,6 +50,10 @@ http://salesforcecodes.com/display-lightning-datatable-with-pagination-using-lig
 Lightning aura:iteration over two objects with dynamic key
 https://salesforce.stackexchange.com/questions/111152/lightning-auraiteration-over-two-objects-with-dynamic-key
 
+How to edit the "New Contact" button fields within the Account Page?
+https://trailblazers.salesforce.com/answers?id=9063A000000lPaMQAU
+
+oncommit attribute
 
 Navigate to Setup > Platform Tools > User Interface > Lightning App Builder.
 On the Lightning Pages section, click New. Select App Page, Home page, or Record page,

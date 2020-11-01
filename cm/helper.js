@@ -3,7 +3,9 @@
         component.set('v.columns', [
             {label: 'Name', fieldName: 'Name', type: 'text', sortable: true},
             {label: 'Email', fieldName: 'Email', type: 'Email', sortable: true},
-            {label: 'Phone', fieldName: 'Phone', type: 'phone', sortable: true}           
+            {label: 'Phone', fieldName: 'Phone', type: 'phone', sortable: true},
+            {label: 'Delete Contact', type:  'button', typeAttributes: { iconName: 'utility:delete',  label: 'Del', name: 'deleteRecord', 
+                                               title: 'deleteTitle', disabled: false, value: 'test'}}
         ]);
     },
      
@@ -50,6 +52,9 @@
         return function (a, b) {
             return a = key(a), b = key(b), reverse * ((a > b) - (b > a));
         }
-    }
+    },
+    
+    
+    
     
 })

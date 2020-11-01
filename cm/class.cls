@@ -14,13 +14,14 @@ public class PaginationForDataTable {
     @AuraEnabled
     public static List <Contact> fetchAccts() {
         return [SELECT Id, Name, Email, Phone
-				FROM Contact LIMIT 10];
+				FROM Contact LIMIT 50];
+    }
+    
+    @AuraEnabled
+    public static Boolean delRecord(Id recId) {
+        Contact n = [SELECT Id FROM Contact WHERE Id = :recId];
+        delete n;
+        return true;
     }
  
 }
-
-
-
-
-
-    
