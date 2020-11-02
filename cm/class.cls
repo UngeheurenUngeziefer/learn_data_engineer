@@ -1,5 +1,17 @@
-public class PaginationForDataTable {
-    //Get Account Records dfs
+public with sharing class AccountCtrl { 
+    @AuraEnabled
+    public static List<Contact> getContactData(){
+        return [select Id,Name from Contact LIMIT 10];
+	}
+    
+    @AuraEnabled
+    public static List<Contact> deleteContact(String ContactId)
+    {
+        Contact delContact=[Select Id from Contact where id=:ContactId LIMIT 10];
+        delete delContact;
+        return getContactData();
+    }
+    
     @AuraEnabled
     public static List<Contact> getAccountsPage(String pageSize, String pageNumber){
         Integer psize = Integer.valueOf(pageSize);
@@ -10,18 +22,4 @@ public class PaginationForDataTable {
         //return list of accounts
         return accList;
     }
-    
-    @AuraEnabled
-    public static List <Contact> fetchAccts() {
-        return [SELECT Id, Name, Email, Phone
-				FROM Contact LIMIT 50];
-    }
-    
-    @AuraEnabled
-    public static Boolean delRecord(Id recId) {
-        Contact n = [SELECT Id FROM Contact WHERE Id = :recId];
-        delete n;
-        return true;
-    }
- 
 }
