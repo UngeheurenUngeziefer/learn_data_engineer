@@ -1,8 +1,12 @@
 public with sharing class AccountCtrl { 
-    @AuraEnabled
+    
+   @AuraEnabled
     public static List<Contact> getContactData(){
-        return [select Id,Name from Contact LIMIT 10];
+        return [select Id, Name, Email, Contact_Level__c, AccountId, OwnerId, CreatedById, Birthdate 
+                FROM Contact LIMIT 10];
+        
 	}
+    
     
     @AuraEnabled
     public static List<Contact> deleteContact(String ContactId)
@@ -17,7 +21,7 @@ public with sharing class AccountCtrl {
         Integer psize = Integer.valueOf(pageSize);
         Integer pnumber = Integer.valueOf(pageNumber)-1;
          
-        List<Contact> accList = [SELECT Id, Name, Email, Phone
+        List<Contact> accList = [SELECT Id, Name, Email, Contact_Level__c, AccountId, OwnerId, CreatedById, Birthdate
                                   FROM Contact LIMIT :Integer.valueOf(psize) OFFSET :(psize*pnumber)];
         //return list of accounts
         return accList;

@@ -100,6 +100,230 @@
               component.set("v.arrow", "utility:arrowup");
           }
           component.set("v.conList", listAccs);
+      },
+          
+          sortByEmail : function (component, event) {
+          var listAccs = component.get("v.conList");
+          var sortDirection = component.get("v.sortDirection");
+          if (sortDirection == true) {
+              listAccs.sort(function (a, b) {
+                  var nameA = a.Email;
+                  var nameB = b.Email;
+                  if (nameA < nameB) {
+                      return -1;
+                  }
+                  if (nameA > nameB) {
+                      return 1;
+                  }
+                  return 0;
+  
+              });
+              component.set("v.sortDirection", false);
+              component.set("v.arrow", "utility:arrowdown");
+          }else {
+              listAccs.sort(function (a, b) {
+                  var nameA = a.Email;
+                  var nameB = b.Email;
+                  if (nameB < nameA) {
+                      return -1;
+                  }
+                  if (nameB > nameA) {
+                      return 1;
+                  }
+                  return 0;
+  
+              });
+              component.set("v.sortDirection", true);
+              component.set("v.arrow", "utility:arrowup");
+          }
+          component.set("v.conList", listAccs);
+      },
+          
+           sortByCL : function (component, event) {
+          var listAccs = component.get("v.conList");
+          var sortDirection = component.get("v.sortDirection");
+          if (sortDirection == true) {
+              listAccs.sort(function (a, b) {
+                  var nameA = a.Contact_Level__c;
+                  var nameB = b.Contact_Level__c;
+                  if (nameA < nameB) {
+                      return -1;
+                  }
+                  if (nameA > nameB) {
+                      return 1;
+                  }
+                  return 0;
+  
+              });
+              component.set("v.sortDirection", false);
+              component.set("v.arrow", "utility:arrowdown");
+          }else {
+              listAccs.sort(function (a, b) {
+                  var nameA = a.Contact_Level__c;
+                  var nameB = b.Contact_Level__c;
+                  if (nameB < nameA) {
+                      return -1;
+                  }
+                  if (nameB > nameA) {
+                      return 1;
+                  }
+                  return 0;
+  
+              });
+              component.set("v.sortDirection", true);
+              component.set("v.arrow", "utility:arrowup");
+          }
+          component.set("v.conList", listAccs);
+      },
+          
+          sortByAccount : function (component, event) {
+          var listAccs = component.get("v.conList");
+          var sortDirection = component.get("v.sortDirection");
+          if (sortDirection == true) {
+              listAccs.sort(function (a, b) {
+                  var nameA = a.AccountId;
+                  var nameB = b.AccountId;
+                  if (nameA < nameB) {
+                      return -1;
+                  }
+                  if (nameA > nameB) {
+                      return 1;
+                  }
+                  return 0;
+  
+              });
+              component.set("v.sortDirection", false);
+              component.set("v.arrow", "utility:arrowdown");
+          }else {
+              listAccs.sort(function (a, b) {
+                  var nameA = a.AccountId;
+                  var nameB = b.AccountId;
+                  if (nameB < nameA) {
+                      return -1;
+                  }
+                  if (nameB > nameA) {
+                      return 1;
+                  }
+                  return 0;
+  
+              });
+              component.set("v.sortDirection", true);
+              component.set("v.arrow", "utility:arrowup");
+          }
+          component.set("v.conList", listAccs);
+      },
+          
+          sortByOwner : function (component, event) {
+          var listAccs = component.get("v.conList");
+          var sortDirection = component.get("v.sortDirection");
+          if (sortDirection == true) {
+              listAccs.sort(function (a, b) {
+                  var nameA = a.OwnerId;
+                  var nameB = b.OwnerId;
+                  if (nameA < nameB) {
+                      return -1;
+                  }
+                  if (nameA > nameB) {
+                      return 1;
+                  }
+                  return 0;
+  
+              });
+              component.set("v.sortDirection", false);
+              component.set("v.arrow", "utility:arrowdown");
+          }else {
+              listAccs.sort(function (a, b) {
+                  var nameA = a.OwnerId;
+                  var nameB = b.OwnerId;
+                  if (nameB < nameA) {
+                      return -1;
+                  }
+                  if (nameB > nameA) {
+                      return 1;
+                  }
+                  return 0;
+  
+              });
+              component.set("v.sortDirection", true);
+              component.set("v.arrow", "utility:arrowup");
+          }
+          component.set("v.conList", listAccs);
+      },
+          
+          
+          
+          sortByCB : function (component, event) {
+          var listAccs = component.get("v.conList");
+          var sortDirection = component.get("v.sortDirection");
+          if (sortDirection == true) {
+              listAccs.sort(function (a, b) {
+                  var nameA = a.CreatedById;
+                  var nameB = b.CreatedById;
+                  if (nameA < nameB) {
+                      return -1;
+                  }
+                  if (nameA > nameB) {
+                      return 1;
+                  }
+                  return 0;
+  
+              });
+              component.set("v.sortDirection", false);
+              component.set("v.arrow", "utility:arrowdown");
+          }else {
+              listAccs.sort(function (a, b) {
+                  var nameA = a.CreatedById;
+                  var nameB = b.CreatedById;
+                  if (nameB < nameA) {
+                      return -1;
+                  }
+                  if (nameB > nameA) {
+                      return 1;
+                  }
+                  return 0;
+  
+              });
+              component.set("v.sortDirection", true);
+              component.set("v.arrow", "utility:arrowup");
+          }
+          component.set("v.conList", listAccs);
+      },
+          
+          sortByCD : function (component, event) {
+          var listAccs = component.get("v.conList");
+          var sortDirection = component.get("v.sortDirection");
+          if (sortDirection == true) {
+              listAccs.sort(function (a, b) {
+                  var nameA = a.Birthdate;
+                  var nameB = b.Birthdate;
+                  if (nameA < nameB) {
+                      return -1;
+                  }
+                  if (nameA > nameB) {
+                      return 1;
+                  }
+                  return 0;
+  
+              });
+              component.set("v.sortDirection", false);
+              component.set("v.arrow", "utility:arrowdown");
+          }else {
+              listAccs.sort(function (a, b) {
+                  var nameA = a.Birthdate;
+                  var nameB = b.Birthdate;
+                  if (nameB < nameA) {
+                      return -1;
+                  }
+                  if (nameB > nameA) {
+                      return 1;
+                  }
+                  return 0;
+  
+              });
+              component.set("v.sortDirection", true);
+              component.set("v.arrow", "utility:arrowup");
+          }
+          component.set("v.conList", listAccs);
       }
           
    

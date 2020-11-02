@@ -4,6 +4,8 @@
   		<aura:handler name="init" value="{!this}" action="{!c.doinit}"/>
     
         <aura:attribute name="conList"  type="list"/>
+    	
+    
         <aura:attribute name="pageNumber" type="Integer" default="1"/>
         <aura:attribute name="pageSize" type="Integer" default="10"/>
         <aura:attribute name="isLastPage" type="Boolean" default="false"/>
@@ -12,6 +14,7 @@
 
     	<aura:attribute name="sortDirection" type="Boolean" default="true"/>
 	    <aura:attribute name="arrow" type="String" default="utility:arrowup"/>
+        
     
     	<div class="slds-clearfix">
             <div class="slds-page-header" role="banner">
@@ -34,11 +37,40 @@
               <thead>
                 <tr class="slds-line-height_reset">
                    <th class="slds-text-title_caps" scope="col">
-                      <div class="slds-truncate" title="conId">Contact Id</div>
+                      <div class="slds-truncate" title="conId">Name
+                      	<lightning:buttonIcon onclick="{!c.sortByName}" iconName="{!v.arrow}" size="x-small" alternativeText="Order"/>
+                      </div>
                     </th>
                <th class="slds-text-title_caps" scope="col">
-                   <div class="slds-truncate" title="conName">Contact Name 
-                   		<lightning:buttonIcon onclick="{!c.sortByName}" iconName="{!v.arrow}" size="x-small" alternativeText="Order"/>
+                   <div class="slds-truncate" title="conName">Email
+                   		<lightning:buttonIcon onclick="{!c.sortByEmail}" iconName="{!v.arrow}" size="x-small" alternativeText="Order"/>
+                   </div>
+                    </th>
+                <th class="slds-text-title_caps" scope="col">
+                   <div class="slds-truncate" title="conName">Contact Level
+                   		<lightning:buttonIcon onclick="{!c.sortByCL}" iconName="{!v.arrow}" size="x-small" alternativeText="Order"/>
+                   </div>
+                    </th>
+                  <th class="slds-text-title_caps" scope="col">
+                   <div class="slds-truncate" title="conName">Account
+                   		<lightning:buttonIcon onclick="{!c.sortByAccount}" iconName="{!v.arrow}" size="x-small" alternativeText="Order"/>
+                   </div>
+                    </th>
+                   <th class="slds-text-title_caps" scope="col">
+                   <div class="slds-truncate" title="conName">Owner
+                   		<lightning:buttonIcon onclick="{!c.sortByOwner}" iconName="{!v.arrow}" size="x-small" alternativeText="Order"/>
+                   </div>
+                    </th>
+                    
+                    <th class="slds-text-title_caps" scope="col">
+                   <div class="slds-truncate" title="conName">Created By
+                   		<lightning:buttonIcon onclick="{!c.sortByCB}" iconName="{!v.arrow}" size="x-small" alternativeText="Order"/>
+                   </div>
+                    </th>
+                    
+                    <th class="slds-text-title_caps" scope="col">
+                   <div class="slds-truncate" title="conName">Created Date
+                   		<lightning:buttonIcon onclick="{!c.sortByCD}" iconName="{!v.arrow}" size="x-small" alternativeText="Order"/>
                    </div>
                     </th>
            
@@ -50,11 +82,26 @@
          <tbody>
                <aura:iteration items="{!v.conList}" var="item" >
                  <tr class="slds-hint-parent">
-                     <th data-label="Opportunity Name" scope="row">
-                        <div class="slds-truncate" title="Id"><a href="javascript:void(0);" tabindex="-1">{!item.Id}</a></div>
-                    </th>
-           <td data-label="Contact Name">
+                     <td data-label="Name">
                        <div class="slds-truncate" title="{!item.Name}">{!item.Name}</div>
+                    </td>
+           			<td data-label="Email">
+                       <div class="slds-truncate" title="{!item.Email}">{!item.Email}</div>
+                    </td>
+                    <td data-label="Contact Level">
+                       <div class="slds-truncate" title="{!item.Contact_Level__c}">{!item.Contact_Level__c}</div>
+                    </td>
+                     <td data-label="Account">
+                       <div class="slds-truncate" title="{!item.AccountId}">{!item.AccountId}</div>
+                    </td>
+                      <td data-label="Owner">
+                       <div class="slds-truncate" title="{!item.OwnerId}">{!item.OwnerId}</div>
+                    </td>
+                     <td data-label="Created By">
+                       <div class="slds-truncate" title="{!item.CreatedById}">{!item.CreatedById}</div>
+                    </td>
+                     <td data-label="Created Date">
+                       <div class="slds-truncate" title="{!item.Birthdate}">{!item.Birthdate}</div>
                     </td>
              
           <td data-label="icon" class="slds-col slds-size_1-of-12" onclick="{!c.delete}" id="{!item.Id}">
