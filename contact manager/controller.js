@@ -324,7 +324,23 @@
               component.set("v.arrow", "utility:arrowup");
           }
           component.set("v.conList", listAccs);
-      }
+      },
+          
+      createRecord : function (component, event, helper) {
+        var createRecordEvent = $A.get("e.force:createRecord");
+        createRecordEvent.setParams({
+            "entityApiName": "Contact"
+        });
+        createRecordEvent.fire();
+    },
+        
+     handleCreateLoad: function (cmp, event, helper) {
+        var nameFieldValue = cmp.find("nameField").set("v.value");
+        var emailFieldValue = cmp.find("emailField").set("v.value");
+        var contactLevelFieldValue = cmp.find("contactLevelField").set("v.value");
+        var accountIdFieldValue = cmp.find("accountIdField").set("v.value");
+            
+    }
           
    
    })

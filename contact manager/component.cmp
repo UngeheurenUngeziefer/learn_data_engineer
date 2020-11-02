@@ -1,4 +1,4 @@
-<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes"
+<aura:component implements="force:lightningQuickAction,force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes"
                 access="global"
                 controller="AccountCtrl">
   		<aura:handler name="init" value="{!this}" action="{!c.doinit}"/>
@@ -14,7 +14,26 @@
 
     	<aura:attribute name="sortDirection" type="Boolean" default="true"/>
 	    <aura:attribute name="arrow" type="String" default="utility:arrowup"/>
+
         
+            <!-- Very simple addition -->
+
+
+            
+        
+    	<lightning:recordEditForm
+        	objectApiName="Contact"
+        	onload="{!c.handleCreateLoad}">
+    		<lightning:messages />
+            <lightning:inputField aura:id="nameField" fieldName="Name"/>
+            <lightning:inputField aura:id="emailField" fieldName="Email"/>
+            <lightning:inputField aura:id="contactLevelField" fieldName="Contact_Level__c"/>
+            <lightning:inputField aura:id="accountIdField" fieldName="AccountId"/>
+            
+            <lightning:button class="slds-m-top_small" type="submit" label="Create new" />
+		</lightning:recordEditForm>
+
+
     
     	<div class="slds-clearfix">
             <div class="slds-page-header" role="banner">
@@ -30,7 +49,7 @@
                        </lightning:layout> 
                 
             </div>
-    </div>
+    	</div>
     
           <div>
             <table class="slds-table slds-table_cell-buffer slds-table_bordered">
