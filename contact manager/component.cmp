@@ -1,148 +1,180 @@
+<!-- Аура компонент -->
 <aura:component implements="force:lightningQuickAction,force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes"
                 access="global"
                 controller="AccountCtrl">
-  		<aura:handler name="init" value="{!this}" action="{!c.doinit}"/>
-    
-        <aura:attribute name="conList"  type="list"/>
-    	
-    
-        <aura:attribute name="pageNumber" type="Integer" default="1"/>
-        <aura:attribute name="pageSize" type="Integer" default="10"/>
-        <aura:attribute name="isLastPage" type="Boolean" default="false"/>
-        <aura:attribute name="dataSize" type="Integer" default="10"/>
-    	<aura:attribute name="filteredData" type="Map"/>
-
-    	<aura:attribute name="sortDirection" type="Boolean" default="true"/>
-	    <aura:attribute name="arrow" type="String" default="utility:arrowup"/>
-
+  
+  <!-- Обработчик -->
+  <aura:handler name="init" value="{!this}" action="{!c.doinit}"/>
+  
+  <!-- Атрибуты -->
+  <aura:attribute name="conList"  type="list"/>   
+  <aura:attribute name="pageNumber" type="Integer" default="1"/>
+  <aura:attribute name="pageSize" type="Integer" default="10"/>
+  <aura:attribute name="isLastPage" type="Boolean" default="false"/>
+  <aura:attribute name="dataSize" type="Integer" default="10"/>
+  <aura:attribute name="filteredData" type="Map"/>
+ 	<aura:attribute name="sortDirection" type="Boolean" default="true"/>
+  <aura:attribute name="arrow" type="String" default="utility:arrowup"/>
+  <aura:attribute name="isModalOpen" type="boolean" default="false"/>
         
-            <!-- Very simple addition -->
+  <!-- Поиск, кнопка поиска, кнопка Новый контакт -->
+  <div class="slds-clearfix">
+    <div class="slds-page-header" role="banner">
+    <lightning:layout horizontalAlign="center">
+      
+      <!-- Поле для поиска -->
+      <lightning:layoutItem size="6">
+        <lightning:input oncommit="{!c.searchTable}" type="search" 
+                         label="Searh" variant="label-hidden" 
+                         placeholder="Enter search term" aura:id="SearchBox"/>
+      </lightning:layoutItem>
 
-
-            
-        
-    	<lightning:recordEditForm
-        	objectApiName="Contact"
-        	onload="{!c.handleCreateLoad}">
-    		<lightning:messages />
-            <lightning:inputField aura:id="nameField" fieldName="Name"/>
-            <lightning:inputField aura:id="emailField" fieldName="Email"/>
-            <lightning:inputField aura:id="contactLevelField" fieldName="Contact_Level__c"/>
-            <lightning:inputField aura:id="accountIdField" fieldName="AccountId"/>
-            
-            <lightning:button class="slds-m-top_small" type="submit" label="Create new" />
-		</lightning:recordEditForm>
-
-
-    
-    	<div class="slds-clearfix">
-            <div class="slds-page-header" role="banner">
-                <!-- p class="slds-page-header__title">Contacts</p -->
-                  <lightning:layout horizontalAlign="center">
-                    <lightning:layoutItem size="8">
-    					<lightning:input oncommit="{!c.searchTable}" type="search" label="Searh" variant="label-hidden" placeholder="Enter search term" aura:id="SearchBox"/>
-                    </lightning:layoutItem>
-                  
-                  <lightning:layoutItem size="2">
-                      <lightning:button label="Search" title="Search"/>
-                  </lightning:layoutItem>
-                       </lightning:layout> 
-                
-            </div>
-    	</div>
-    
-          <div>
-            <table class="slds-table slds-table_cell-buffer slds-table_bordered">
-              <thead>
-                <tr class="slds-line-height_reset">
-                   <th class="slds-text-title_caps" scope="col">
-                      <div class="slds-truncate" title="conId">Name
-                      	<lightning:buttonIcon onclick="{!c.sortByName}" iconName="{!v.arrow}" size="x-small" alternativeText="Order"/>
-                      </div>
-                    </th>
-               <th class="slds-text-title_caps" scope="col">
-                   <div class="slds-truncate" title="conName">Email
-                   		<lightning:buttonIcon onclick="{!c.sortByEmail}" iconName="{!v.arrow}" size="x-small" alternativeText="Order"/>
-                   </div>
-                    </th>
-                <th class="slds-text-title_caps" scope="col">
-                   <div class="slds-truncate" title="conName">Contact Level
-                   		<lightning:buttonIcon onclick="{!c.sortByCL}" iconName="{!v.arrow}" size="x-small" alternativeText="Order"/>
-                   </div>
-                    </th>
-                  <th class="slds-text-title_caps" scope="col">
-                   <div class="slds-truncate" title="conName">Account
-                   		<lightning:buttonIcon onclick="{!c.sortByAccount}" iconName="{!v.arrow}" size="x-small" alternativeText="Order"/>
-                   </div>
-                    </th>
-                   <th class="slds-text-title_caps" scope="col">
-                   <div class="slds-truncate" title="conName">Owner
-                   		<lightning:buttonIcon onclick="{!c.sortByOwner}" iconName="{!v.arrow}" size="x-small" alternativeText="Order"/>
-                   </div>
-                    </th>
-                    
-                    <th class="slds-text-title_caps" scope="col">
-                   <div class="slds-truncate" title="conName">Created By
-                   		<lightning:buttonIcon onclick="{!c.sortByCB}" iconName="{!v.arrow}" size="x-small" alternativeText="Order"/>
-                   </div>
-                    </th>
-                    
-                    <th class="slds-text-title_caps" scope="col">
-                   <div class="slds-truncate" title="conName">Created Date
-                   		<lightning:buttonIcon onclick="{!c.sortByCD}" iconName="{!v.arrow}" size="x-small" alternativeText="Order"/>
-                   </div>
-                    </th>
-           
-                  <th class="slds-text-title_caps" scope="col">
-                          <div class="slds-truncate" title="Edit">Delete</div>
-                       </th>
-            </tr>
-          </thead>
-         <tbody>
-               <aura:iteration items="{!v.conList}" var="item" >
-                 <tr class="slds-hint-parent">
-                     <td data-label="Name">
-                       <div class="slds-truncate" title="{!item.Name}">{!item.Name}</div>
-                    </td>
-           			<td data-label="Email">
-                       <div class="slds-truncate" title="{!item.Email}">{!item.Email}</div>
-                    </td>
-                    <td data-label="Contact Level">
-                       <div class="slds-truncate" title="{!item.Contact_Level__c}">{!item.Contact_Level__c}</div>
-                    </td>
-                     <td data-label="Account">
-                       <div class="slds-truncate" title="{!item.AccountId}">{!item.AccountId}</div>
-                    </td>
-                      <td data-label="Owner">
-                       <div class="slds-truncate" title="{!item.OwnerId}">{!item.OwnerId}</div>
-                    </td>
-                     <td data-label="Created By">
-                       <div class="slds-truncate" title="{!item.CreatedById}">{!item.CreatedById}</div>
-                    </td>
-                     <td data-label="Created Date">
-                       <div class="slds-truncate" title="{!item.Birthdate}">{!item.Birthdate}</div>
-                    </td>
-             
-          <td data-label="icon" class="slds-col slds-size_1-of-12" onclick="{!c.delete}" id="{!item.Id}">
-                        <lightning:icon iconName="utility:delete" size="small" />
-                    </td>
-         
-       
-                </tr>
-            </aura:iteration>
-        </tbody>
-        </table>
-    </div>
-    
-    <div class="slds-clearfix">
-            <div class="slds-page-header" role="banner">
-                <div class="slds-float_right">            
-                    <lightning:button label="Prev" iconName="utility:chevronleft" iconPosition="left"
-                                      onclick="{!c.handlePrev}" disabled="{! v.pageNumber == 1}"/>
-                    <lightning:button label="Next" iconName="utility:chevronright" iconPosition="right"
-                                      disabled="{! v.isLastPage}" onclick="{!c.handleNext}"/>
-                </div>
-                <p class="slds-page-header__title">Page {!v.pageNumber} | Showing records from {! ((v.pageNumber-1)*(v.pageSize)+1)+' to '+((v.pageNumber-1)*v.pageSize+v.dataSize)}</p>
-            </div>
+      <!-- Кнопка поиска -->
+      <lightning:layoutItem size="2">
+        <lightning:button label="Search" title="Search"/>
+      </lightning:layoutItem>
+      
+      <!-- Кнопка Новый контакт -->               
+      <lightning:layoutItem size="4">
+        <div class="slds-m-around_xx-large">
+        <lightning:button variant="brand" label="New Contact"
+                          title="New Contact" onclick="{! c.openModel }"/>
         </div>
+        
+      <!-- Открытие окна -->
+      <aura:if isTrue="{!v.isModalOpen}">
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" 
+                 aria-modal="true" aria-describedby="modal-content-id-1" 
+                 class="slds-modal slds-fade-in-open">
+          <div class="slds-modal__container">
+            
+            <!-- Заголовок окна -->
+            <header class="slds-modal__header">
+              <lightning:buttonIcon iconName="utility:close" onclick="{! c.closeModel }"
+                                    alternativeText="close" variant="bare-inverse"
+                                    class="slds-modal__close"/>
+              <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">New Contact</h2>
+            </header>
+            
+            <!-- Тело окна -->
+            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+              <lightning:recordEditForm objectApiName="Contact" aura:id="editForm" onsubmit="{!c.closeModel}">
+                <lightning:messages />
+                <lightning:inputField aura:id="nameField" fieldName="Name"/>
+                <lightning:inputField aura:id="emailField" fieldName="Email" required="true"/>
+                <lightning:inputField aura:id="contactLevelField" fieldName="Contact_Level__c"/>
+                <lightning:inputField aura:id="accountIdField" fieldName="AccountId"/>
+              
+                <!-- Футер окна -->
+                <footer class="slds-modal__footer">        
+                  <lightning:button class="slds-m-top_small" label="Save" type='submit'/>
+                  <lightning:button class="slds-m-top_small" label="Cancel" onclick="{! c.closeModel }"/>
+                </footer>
+              </lightning:recordEditForm>
+            </div>
+          </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+      </aura:if>
+      </lightning:layoutItem>
+	  </lightning:layout> 
+    </div>
+  </div>
+    
+  <!-- Таблица -->
+  <div>
+    <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+      
+      <!-- Шапка таблицы -->
+      <thead>
+        <tr class="slds-line-height_reset">
+            <th class="slds-text-title_caps" scope="col">
+              <div class="slds-truncate" title="conId">Name
+                <lightning:buttonIcon onclick="{!c.sortByName}" iconName="{!v.arrow}" size="x-small" alternativeText="Order"/>
+              </div>
+            </th>
+            <th class="slds-text-title_caps" scope="col">
+                <div class="slds-truncate" title="conName">Email
+                  <lightning:buttonIcon onclick="{!c.sortByEmail}" iconName="{!v.arrow}" size="x-small" alternativeText="Order"/>
+                </div>
+            </th>
+            <th class="slds-text-title_caps" scope="col">
+              <div class="slds-truncate" title="conName">Contact Level
+                <lightning:buttonIcon onclick="{!c.sortByCL}" iconName="{!v.arrow}" size="x-small" alternativeText="Order"/>
+              </div>
+            </th>
+            <th class="slds-text-title_caps" scope="col">
+              <div class="slds-truncate" title="conName">Account
+                <lightning:buttonIcon onclick="{!c.sortByAccount}" iconName="{!v.arrow}" size="x-small" alternativeText="Order"/>
+              </div>
+            </th>
+            <th class="slds-text-title_caps" scope="col">
+              <div class="slds-truncate" title="conName">Owner
+                <lightning:buttonIcon onclick="{!c.sortByOwner}" iconName="{!v.arrow}" size="x-small" alternativeText="Order"/>
+              </div>
+            </th>
+            <th class="slds-text-title_caps" scope="col">
+              <div class="slds-truncate" title="conName">Created By
+                <lightning:buttonIcon onclick="{!c.sortByCB}" iconName="{!v.arrow}" size="x-small" alternativeText="Order"/>
+              </div>
+            </th>
+            <th class="slds-text-title_caps" scope="col">
+              <div class="slds-truncate" title="conName">Created Date
+                <lightning:buttonIcon onclick="{!c.sortByCD}" iconName="{!v.arrow}" size="x-small" alternativeText="Order"/>
+              </div>
+            </th>
+            <th class="slds-text-title_caps" scope="col">
+              <div class="slds-truncate" title="Edit">Delete</div>
+            </th>
+        </tr>
+      </thead>
+      
+      <!-- Тело таблицы -->
+      <tbody>
+        <aura:iteration items="{!v.conList}" var="item" >
+          <tr class="slds-hint-parent">
+            <td data-label="Name">
+              <div class="slds-truncate" title="{!item.Name}">{!item.Name}</div>
+            </td>
+            <td data-label="Email">
+              <div class="slds-truncate" title="{!item.Email}">{!item.Email}</div>
+            </td>
+            <td data-label="Contact Level">
+              <div class="slds-truncate" title="{!item.Contact_Level__c}">{!item.Contact_Level__c}</div>
+            </td>
+            <td data-label="Account">
+              <div class="slds-truncate" title="{!item.AccountId}">{!item.AccountId}</div>
+            </td>
+            <td data-label="Owner">
+              <div class="slds-truncate" title="{!item.OwnerId}">{!item.OwnerId}</div>
+            </td>
+            <td data-label="Created By">
+              <div class="slds-truncate" title="{!item.CreatedById}">{!item.CreatedById}</div>
+            </td>
+            <td data-label="Created Date">
+              <div class="slds-truncate" title="{!item.Birthdate}">{!item.Birthdate}</div>
+            </td>
+            <td data-label="icon" class="slds-col slds-size_1-of-12" onclick="{!c.delete}" id="{!item.Id}">
+              <lightning:button label="Del"/>
+            </td>
+          </tr>
+        </aura:iteration>
+      </tbody>
+    </table>
+  </div>
+    
+  <!-- Пагинация -->
+  <div class="slds-clearfix">
+    <div class="slds-page-header" role="banner">
+      <div class="slds-float_right">            
+        <lightning:button label="Prev" iconName="utility:chevronleft" iconPosition="left"
+                          onclick="{!c.handlePrev}" disabled="{! v.pageNumber == 1}"/>
+        <lightning:button label="Next" iconName="utility:chevronright" iconPosition="right"
+                          disabled="{! v.isLastPage}" onclick="{!c.handleNext}"/>
+      </div>
+      <p class="slds-page-header__title">
+        Page {!v.pageNumber} | Showing records from {! ((v.pageNumber-1)*(v.pageSize)+1)+' to '+((v.pageNumber-1)*v.pageSize+v.dataSize)}
+      </p>
+    </div>
+  </div>
 </aura:component>

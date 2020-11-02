@@ -5,8 +5,9 @@
         action.setCallback(this, function(actionResult) {
         component.set('v.conList', actionResult.getReturnValue());
         helper.getAccountsPage(component, helper);
+        component.set("v.myRecordID",cmp.get("v.recordId"));
         });
-       
+               
       $A.enqueueAction(action);
     },
    
@@ -334,13 +335,24 @@
         createRecordEvent.fire();
     },
         
-     handleCreateLoad: function (cmp, event, helper) {
+     submitDetails: function (cmp, event, helper) {
         var nameFieldValue = cmp.find("nameField").set("v.value");
         var emailFieldValue = cmp.find("emailField").set("v.value");
         var contactLevelFieldValue = cmp.find("contactLevelField").set("v.value");
         var accountIdFieldValue = cmp.find("accountIdField").set("v.value");
-            
-    }
-          
+      	cmp.set("v.isModalOpen", false);	
+    },
+        
+        openModel: function(component, event, helper) {
+      // Set isModalOpen attribute to true
+      component.set("v.isModalOpen", true);
+   },
+  
+   closeModel: function(component, event, helper) {
+      // Set isModalOpen attribute to false  
+      component.set("v.isModalOpen", false);
+   },
+  
+     
    
    })
