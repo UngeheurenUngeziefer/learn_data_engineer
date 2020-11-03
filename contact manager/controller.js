@@ -183,8 +183,8 @@
     var sortDirection = component.get("v.sortDirection");
     if (sortDirection == true) {
         listAccs.sort(function (a, b) {
-            var nameA = a.AccountId;
-            var nameB = b.AccountId;
+            var nameA = a.Account__c;
+            var nameB = b.Account__c;
             if (nameA < nameB) {
                 return -1;
             }
@@ -197,8 +197,8 @@
         component.set("v.arrow", "utility:arrowdown");
     }else {
         listAccs.sort(function (a, b) {
-            var nameA = a.AccountId;
-            var nameB = b.AccountId;
+            var nameA = a.Account__c;
+            var nameB = b.Account__c;
             if (nameB < nameA) {
                 return -1;
             }
@@ -219,8 +219,8 @@
     var sortDirection = component.get("v.sortDirection");
     if (sortDirection == true) {
         listAccs.sort(function (a, b) {
-            var nameA = a.OwnerId;
-            var nameB = b.OwnerId;
+            var nameA = a.Owner__c;
+            var nameB = b.Owner__c;
             if (nameA < nameB) {
                 return -1;
             }
@@ -234,8 +234,8 @@
         component.set("v.arrow", "utility:arrowdown");
     }else {
         listAccs.sort(function (a, b) {
-            var nameA = a.OwnerId;
-            var nameB = b.OwnerId;
+            var nameA = a.Owner__c;
+            var nameB = b.Owner__c;
             if (nameB < nameA) {
                 return -1;
             }
@@ -258,8 +258,8 @@
     var sortDirection = component.get("v.sortDirection");
     if (sortDirection == true) {
         listAccs.sort(function (a, b) {
-            var nameA = a.CreatedById;
-            var nameB = b.CreatedById;
+            var nameA = a.Created_By__c;
+            var nameB = b.Created_By__c;
             if (nameA < nameB) {
                 return -1;
             }
@@ -273,8 +273,8 @@
         component.set("v.arrow", "utility:arrowdown");
     }else {
         listAccs.sort(function (a, b) {
-            var nameA = a.CreatedById;
-            var nameB = b.CreatedById;
+            var nameA = a.Created_By__c;
+            var nameB = b.Created_By__c;
             if (nameB < nameA) {
                 return -1;
             }
@@ -296,8 +296,8 @@
     var sortDirection = component.get("v.sortDirection");
     if (sortDirection == true) {
         listAccs.sort(function (a, b) {
-            var nameA = a.Birthdate;
-            var nameB = b.Birthdate;
+            var nameA = a.Created_Date__c;
+            var nameB = b.Created_Date__c;
             if (nameA < nameB) {
                 return -1;
             }
@@ -311,8 +311,8 @@
         component.set("v.arrow", "utility:arrowdown");
     }else {
         listAccs.sort(function (a, b) {
-            var nameA = a.Birthdate;
-            var nameB = b.Birthdate;
+            var nameA = a.Created_Date__c;
+            var nameB = b.Created_Date__c;
             if (nameB < nameA) {
                 return -1;
             }

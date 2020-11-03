@@ -13,7 +13,7 @@
   <aura:attribute name="isLastPage" type="Boolean" default="false"/>
   <aura:attribute name="dataSize" type="Integer" default="10"/>
   <aura:attribute name="filteredData" type="Map"/>
- 	<aura:attribute name="sortDirection" type="Boolean" default="true"/>
+  <aura:attribute name="sortDirection" type="Boolean" default="true"/>
   <aura:attribute name="arrow" type="String" default="utility:arrowup"/>
   <aura:attribute name="isModalOpen" type="boolean" default="false"/>
         
@@ -36,10 +36,14 @@
       
       <!-- Кнопка Новый контакт -->               
       <lightning:layoutItem size="4">
-        <div class="slds-m-around_xx-large">
-        <lightning:button variant="brand" label="New Contact"
-                          title="New Contact" onclick="{! c.openModel }"/>
-        </div>
+        
+            <lightning:button variant="brand" label="New Contact"
+                              title="New Contact" onclick="{! c.openModel }"/>
+        
+      </lightning:layoutItem>
+    </lightning:layout> 
+    </div>
+   </div>
         
       <!-- Открытие окна -->
       <aura:if isTrue="{!v.isModalOpen}">
@@ -76,11 +80,7 @@
         </section>
         <div class="slds-backdrop slds-backdrop_open"></div>
       </aura:if>
-      </lightning:layoutItem>
-	  </lightning:layout> 
-    </div>
-  </div>
-    
+
   <!-- Таблица -->
   <div>
     <table class="slds-table slds-table_cell-buffer slds-table_bordered">
@@ -143,16 +143,16 @@
               <div class="slds-truncate" title="{!item.Contact_Level__c}">{!item.Contact_Level__c}</div>
             </td>
             <td data-label="Account">
-              <div class="slds-truncate" title="{!item.AccountId}">{!item.AccountId}</div>
+              <div class="slds-truncate" title="{!item.Account__c}">{!item.Account__c}</div>
             </td>
             <td data-label="Owner">
-              <div class="slds-truncate" title="{!item.OwnerId}">{!item.OwnerId}</div>
+              <div class="slds-truncate" title="{!item.Owner__c}">{!item.Owner__c}</div>
             </td>
             <td data-label="Created By">
-              <div class="slds-truncate" title="{!item.CreatedById}">{!item.CreatedById}</div>
+              <div class="slds-truncate" title="{!item.Created_By__c}">{!item.Created_By__c}</div>
             </td>
             <td data-label="Created Date">
-              <div class="slds-truncate" title="{!item.Birthdate}">{!item.Birthdate}</div>
+              <div class="slds-truncate" title="{!item.Created_Date__c}">{!item.Created_Date__c}</div>
             </td>
             <td data-label="icon" class="slds-col slds-size_1-of-12" onclick="{!c.delete}" id="{!item.Id}">
               <lightning:button label="Del"/>
