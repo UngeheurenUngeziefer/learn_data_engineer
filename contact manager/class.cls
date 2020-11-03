@@ -1,17 +1,16 @@
 public with sharing class AccountCtrl { 
     
    @AuraEnabled
-    public static List<Contact> getContactData(){
-        return [select Id, Name, Email, Contact_Level__c, AccountId, OwnerId, CreatedById, Birthdate 
+    public static List<Contact> getContactData()
+    {
+        return [SELECT Id, Name, Email, Contact_Level__c, AccountId, OwnerId, CreatedById, Birthdate 
                 FROM Contact LIMIT 10];
-        
 	}
-    
     
     @AuraEnabled
     public static List<Contact> deleteContact(String ContactId)
     {
-        Contact delContact=[Select Id from Contact where id=:ContactId LIMIT 10];
+        Contact delContact=[SELECT Id FROM Contact WHERE id=:ContactId LIMIT 10];
         delete delContact;
         return getContactData();
     }
