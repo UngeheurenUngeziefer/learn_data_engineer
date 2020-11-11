@@ -20,5 +20,4 @@ data engineering job preparing
 - Informatica
 - CI/CD
 
-
-
+- 20% курсы
