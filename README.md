@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 data engineering job preparing
 Data Integration DB and ETL
 
