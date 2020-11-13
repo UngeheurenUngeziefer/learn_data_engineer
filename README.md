@@ -7,3 +7,8 @@ Data Integration DB and ETL
 	- Comparison Operators, WHERE, BETWEEN
 	- IN, SOME, ANY, ALL
 	- LIKE, NOT, AND, OR
+	- ALL, DISTINCT
+	- Collations
+	- ORDER BY
+	- Random row
+	- TOP, WHERE, WITH TIES
