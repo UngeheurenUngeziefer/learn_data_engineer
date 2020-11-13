@@ -1,7 +1,10 @@
-# Data_Engineer
+<<<<<<< HEAD
 data engineering job preparing
+Data Integration DB and ETL
+
 - 80% onb (2 waiting)
 - eng (waiting)
 - SQL Server Bible
-  - Start info, installation, history
-  - Comparison Operators, WHERE, BETWEEN
+	- Start info, installation, history
+	- Comparison Operators, WHERE, BETWEEN
+	- IN, SOME, ANY, ALL
