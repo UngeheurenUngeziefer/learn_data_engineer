@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-data engineering job preparing
 Data Integration DB and ETL
 
 - 80% onb (2 waiting)
@@ -8,3 +6,4 @@ Data Integration DB and ETL
 	- Start info, installation, history
 	- Comparison Operators, WHERE, BETWEEN
 	- IN, SOME, ANY, ALL
+	- LIKE, NOT, AND, OR
