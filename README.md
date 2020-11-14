@@ -12,3 +12,8 @@ Data Integration DB and ETL
 	- ORDER BY
 	- Random row
 	- TOP, WHERE, WITH TIES
+- module 1
+	- task 1
+	- task 2
+	- task 3
+	- task 4
