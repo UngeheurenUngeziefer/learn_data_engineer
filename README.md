@@ -15,3 +15,5 @@ Data Integration DB and ETL
 - module 1
 	- task 1
 	- task 2
+	- task 3
+	- task 4
