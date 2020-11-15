@@ -3,6 +3,7 @@ Data Integration DB and ETL
 - 80% onb (2 waiting)
 - eng (waiting)
 - SQL Server Bible
+	- chapter 6 ---------------------------
 	- Start info, installation, history
 	- Comparison Operators, WHERE, BETWEEN
 	- IN, SOME, ANY, ALL
@@ -12,7 +13,7 @@ Data Integration DB and ETL
 	- ORDER BY
 	- Random row
 	- TOP, WHERE, WITH TIES
-- module 1
+- module 1 (completed)
 	- task 1
 	- task 2
 	- task 3
@@ -20,3 +21,6 @@ Data Integration DB and ETL
 	- task 5
 	- task 6
 	- task 7
+	- task 8
+	- task 9
+- module 2
