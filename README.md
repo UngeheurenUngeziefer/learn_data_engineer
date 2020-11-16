@@ -4,15 +4,21 @@ Data Integration DB and ETL
 - eng (waiting)
 - SQL Server Bible
 	- chapter 6 ---------------------------
-	- Start info, installation, history
-	- Comparison Operators, WHERE, BETWEEN
-	- IN, SOME, ANY, ALL
-	- LIKE, NOT, AND, OR
-	- ALL, DISTINCT
-	- Collations
-	- ORDER BY
-	- Random row
-	- TOP, WHERE, WITH TIES
+		- Start info, installation, history
+		- Comparison Operators, WHERE, BETWEEN
+		- IN, SOME, ANY, ALL
+		- LIKE, NOT, AND, OR
+		- ALL, DISTINCT
+		- Collations
+		- ORDER BY
+		- Random row
+		- TOP, WHERE, WITH TIES
+	- chapter 7 ---------------------------
+		- db design phases
+		- normalization
+		- generalization
+		- rules of one
+		- PK and FK
 - module 1 (completed)
 	- task 1
 	- task 2
