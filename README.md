@@ -3,7 +3,7 @@ Data Integration DB and ETL
 - 80% onb (2 waiting)
 - eng (waiting)
 - SQL Server Bible
-	- chapter 6 ---------------------------
+	- chapter 6 ----------------------------------------------|
 		- Start info, installation, history
 		- Comparison Operators, WHERE, BETWEEN
 		- IN, SOME, ANY, ALL
@@ -13,12 +13,23 @@ Data Integration DB and ETL
 		- ORDER BY
 		- Random row
 		- TOP, WHERE, WITH TIES
-	- chapter 7 ---------------------------
+	- chapter 7 ----------------------------------------------|
 		- db design phases
 		- normalization
 		- generalization
 		- rules of one
 		- PK and FK
+		- design patterns
+			- one-to-one, one-to-many, many-to-many
+			- supertype/subtype
+			- domain integrity lookup
+			- recursive pattern (one-to-many, many-to-many)
+			- entity-value pairs pattern
+		- db design layers
+		- normal forms (1, 2, 3, 4, 5, BCNF)
+		- strategy considerations
+	- chapter 8 ----------------------------------------------|
+
 - module 1 (completed)
 	- task 1
 	- task 2
