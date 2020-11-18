@@ -29,7 +29,19 @@ Data Integration DB and ETL
 		- normal forms (1, 2, 3, 4, 5, BCNF)
 		- strategy considerations
 	- chapter 8 ----------------------------------------------|
-
+		- datatypes
+			- character
+			- numeric
+			- datetime
+			- other
+		- building expressions
+			- addition
+			- ceiling, modulo, floor, concat, dividing
+			- bitwise operators
+			- null, case, coalesce, iif, isnull
+		- scalar functions
+			- user info funcs
+			- datetime funcs
 - module 1 (completed)
 	- task 1
 	- task 2
