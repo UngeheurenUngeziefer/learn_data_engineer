@@ -53,3 +53,5 @@ Data Integration DB and ETL
 	- task 8
 	- task 9
 - module 2
+	- task 1
+	- task 2
