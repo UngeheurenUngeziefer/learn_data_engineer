@@ -1,7 +1,7 @@
 Data Integration DB and ETL
 
-- 80% onb (2 waiting)
-- eng (waiting)
+- onboarding 100%
+- eng (choose)
 - SQL Server Bible
 	- chapter 6 ----------------------------------------------|
 		- Start info, installation, history
@@ -55,3 +55,4 @@ Data Integration DB and ETL
 - module 2
 	- task 1
 	- task 2
+	- task 3
