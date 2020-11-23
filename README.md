@@ -1,7 +1,9 @@
 Data Integration DB and ETL
 
-- onboarding 100%
-- eng (choose)
+- onboarding (passed)
+- english
+	- writing (passed)
+	- speaking (waiting)
 - SQL Server Bible
 	- chapter 6 ----------------------------------------------|
 		- Start info, installation, history
