@@ -44,21 +44,9 @@ Data Integration DB and ETL
 		- scalar functions
 			- user info funcs
 			- datetime funcs
-- module 1 (completed)
-	- task 1
-	- task 2
-	- task 3
-	- task 4
-	- task 5
-	- task 6
-	- task 7
-	- task 8
-	- task 9
-- module 2
-	- task 1
-	- task 2
-	- task 3
-	- task 4 (+)
-	- task 5
-	- task 6 (+)
-	- task 7 (+)
+- module 1 (completed) (passed)
+	1, 2, 3, 4, 5, 6, 7, 8, 9
+- module 2 (completed)
+	1, 2, 3, 4, 5, 6, 7
+- module 3
+	1, 2, 3, 4, 5
