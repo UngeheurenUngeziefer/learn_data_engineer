@@ -46,7 +46,8 @@ Data Integration DB and ETL
 			- datetime funcs
 - module 1 (completed) (passed) <br />
 	1, 2, 3, 4, 5, 6, 7, 8, 9
-- module 2 (completed) <br />
+- module 2 (completed) (passed) <br />
 	1, 2, 3, 4, 5, 6, 7
 - module 3 (completed) <br />
 	1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+- module 4
