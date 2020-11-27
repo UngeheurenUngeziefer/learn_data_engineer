@@ -44,6 +44,10 @@ Data Integration DB and ETL
 		- scalar functions
 			- user info funcs
 			- datetime funcs
+	- chapter 9 ----------------------------------------------|
+		- JOIN's
+			- INNER JOIN
+		
 - module 1 (completed) (passed) <br />
 	1, 2, 3, 4, 5, 6, 7, 8, 9
 - module 2 (completed) (passed) <br />
