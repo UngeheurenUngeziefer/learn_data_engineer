@@ -46,7 +46,10 @@ Data Integration DB and ETL
 			- datetime funcs
 	- chapter 9 ----------------------------------------------|
 		- JOIN's
-			- INNER JOIN
+			- INNER JOIN's
+			- OUTER JOIN's
+			- SELF JOIN's
+			- CROSS JOIN's
 		
 - module 1 (completed) (passed) <br />
 	1, 2, 3, 4, 5, 6, 7, 8, 9
