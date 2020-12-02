@@ -50,6 +50,13 @@ Data Integration DB and ETL
 			- OUTER JOIN's
 			- SELF JOIN's
 			- CROSS JOIN's
+		- View's
+			- CREATE
+			- ALTER
+			- DROP
+		- Column Aliases
+		- ORDER BY
+		- Newsted Views, Synonyms, protecting, uchecked
 		
 - module 1 (completed) (passed) <br />
 	1, 2, 3, 4, 5, 6, 7, 8, 9
