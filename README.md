@@ -62,6 +62,6 @@ Data Integration DB and ETL
 	1, 2, 3, 4, 5, 6, 7, 8, 9
 - module 2 (completed) (passed) <br />
 	1, 2, 3, 4, 5, 6, 7
-- module 3 (completed) <br />
+- module 3 (completed) (passed) <br />
 	1, 2, 3, 4, 5, 6, 7, 8, 9, 10
 - module 4
