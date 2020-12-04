@@ -1,9 +1,17 @@
 Data Integration DB and ETL
 
+- module 1 (completed) (passed) <br />
+	1, 2, 3, 4, 5, 6, 7, 8, 9
+- module 2 (completed) (passed) <br />
+	1, 2, 3, 4, 5, 6, 7
+- module 3 (completed) (passed) <br />
+	1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+- module 4
+
 - onboarding (passed) (OK)
-- english (passed) (waiting)
-	- writing (passed) (waiting)
-	- speaking (passed) (waiting)
+- english (passed) (B1)
+	- writing (passed) (B1)
+	- speaking (passed) (B1)
 - SQL Server Bible
 	- chapter 6 ----------------------------------------------|
 		- Start info, installation, history
@@ -58,10 +66,3 @@ Data Integration DB and ETL
 		- ORDER BY
 		- Newsted Views, Synonyms, protecting, uchecked
 		
-- module 1 (completed) (passed) <br />
-	1, 2, 3, 4, 5, 6, 7, 8, 9
-- module 2 (completed) (passed) <br />
-	1, 2, 3, 4, 5, 6, 7
-- module 3 (completed) (passed) <br />
-	1, 2, 3, 4, 5, 6, 7, 8, 9, 10
-- module 4
