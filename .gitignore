@@ -1,8 +1,11 @@
+/draft
 /.vs
-/module 1
-/module 1/.vs
-/module 2
-/module 2/.vs
-/module 3
-/module 3/.vs
-constraints.sql
+task1.sql
+task2.sql
+task3.sql
+task4.sql
+task5.sql
+task6.sql
+task7.sql
+task8.sql
+task9.sql
