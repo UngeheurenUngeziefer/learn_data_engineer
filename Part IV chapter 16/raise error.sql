@@ -1,0 +1,1 @@
+RAISERROR ('Unable to update %s.', 14, 1, 'Customer');
