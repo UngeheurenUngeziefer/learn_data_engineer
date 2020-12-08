@@ -67,3 +67,12 @@ Data Integration DB and ETL
 		- ORDER BY
 		- Newsted Views, Synonyms, protecting, uchecked
 		- INSERT, ALTER, DROP, CREATE
+	- chapter 16 ---------------------------------------------|
+		- IF ELSE
+		- IF EXISTS
+		- Variables
+		- Batches
+		- Errors
+		- Fetch and Offset
+		- system funcs
+		- while loop
