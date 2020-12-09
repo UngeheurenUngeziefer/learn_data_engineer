@@ -1,0 +1,1 @@
+THROW 50001, 'Thrown Error Message', 1;
