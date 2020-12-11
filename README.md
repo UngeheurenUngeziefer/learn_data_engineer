@@ -9,7 +9,8 @@ Data Integration DB and ETL
 - module 4 (completed) (passed) <br />
 	1, 2, 3, 4, 5, 6, 7, 8
 - module 5 <br />
-
+	1, 2, 3, 4, 5
+	
 - onboarding (passed) (OK)
 - english (passed) (B1)
 	- writing (passed) (B1)
