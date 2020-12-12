@@ -15,6 +15,7 @@ Data Integration DB and ETL
 - english (passed) (B1)
 	- writing (passed) (B1)
 	- speaking (passed) (B1)
+- cloud preparing docs completed
 - SQL Server Bible
 	- chapter 6 ----------------------------------------------|
 		- Start info, installation, history
