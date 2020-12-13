@@ -1,23 +1,12 @@
 Data Integration DB and ETL
-
-- module 1 (completed) (passed) <br />
-	1, 2, 3, 4, 5, 6, 7, 8, 9
-- module 2 (completed) (passed) <br />
-	1, 2, 3, 4, 5, 6, 7
-- module 3 (completed) (passed) <br />
-	1, 2, 3, 4, 5, 6, 7, 8, 9, 10
-- module 4 (completed) (passed) <br />
-	1, 2, 3, 4, 5, 6, 7, 8
-- module 5 <br />
-	1, 2, 3, 4, 5
 	
-- onboarding (passed) (OK)
-- english (passed) (B1)
+!- onboarding (passed) (OK)
+!- english (passed) (B1)
 	- writing (passed) (B1)
 	- speaking (passed) (B1)
-- cloud preparing docs completed
+!- cloud preparing docs completed
 - SQL Server Bible
-	- chapter 6 ----------------------------------------------|
+	!- chapter 6 ----------------------------------------------|
 		- Start info, installation, history
 		- Comparison Operators, WHERE, BETWEEN
 		- IN, SOME, ANY, ALL
@@ -27,7 +16,7 @@ Data Integration DB and ETL
 		- ORDER BY
 		- Random row
 		- TOP, WHERE, WITH TIES
-	- chapter 7 ----------------------------------------------|
+	!- chapter 7 ----------------------------------------------|
 		- db design phases
 		- normalization
 		- generalization
@@ -42,7 +31,7 @@ Data Integration DB and ETL
 		- db design layers
 		- normal forms (1, 2, 3, 4, 5, BCNF)
 		- strategy considerations
-	- chapter 8 ----------------------------------------------|
+	!- chapter 8 ----------------------------------------------|
 		- datatypes
 			- character
 			- numeric
@@ -56,7 +45,7 @@ Data Integration DB and ETL
 		- scalar functions
 			- user info funcs
 			- datetime funcs
-	- chapter 9 ----------------------------------------------|
+	!- chapter 9 ----------------------------------------------|
 		- JOIN's
 			- INNER JOIN's
 			- OUTER JOIN's
@@ -79,3 +68,14 @@ Data Integration DB and ETL
 		- Fetch and Offset
 		- system funcs
 		- while loop
+
+!- module 1 (passed) <br />
+	1, 2, 3, 4, 5, 6, 7, 8, 9
+!- module 2 (passed) <br />
+	1, 2, 3, 4, 5, 6, 7
+!- module 3 (passed) <br />
+	1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+!- module 4 (passed) <br />
+	1, 2, 3, 4, 5, 6, 7, 8
+!- module 5 <br />
+	1, 2, 3, 4, 5, 6, 7, 8, 9
