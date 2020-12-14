@@ -76,5 +76,49 @@ Data Integration DB and ETL
 	1, 2, 3, 4, 5, 6, 7, 8, 9, 10
 !- module 4 (passed) <br />
 	1, 2, 3, 4, 5, 6, 7, 8
-!- module 5 <br />
+!- module 5 (sended) <br />
 	1, 2, 3, 4, 5, 6, 7, 8, 9
+
+
+
+Изначальный список требований:
+!- CROSS JOIN (декартово произведение)
+!- другие JOIN's (вспоминаем картинку) FULL LEFT RIGHT OUTERS and INNER
+!~ UNION EXCEPT, UNION ALL, INTERSECT (объединяет два запроса, редко юзается)
+!~ COUNT (*, 1, field) - there is no difference (1 не юзать)
+!- подзапросы (скалярные, коррелированные, CTE(common table expressions)) - difference
+!- window function (аналитические функции), (row number, rank, dense rank)
+!- GROUP BY 
+!- аггрегатные функции (average, sum, min, max) - когда мы можем их использовать
+!~ Primary Key, Foreign Key - хорошо знать разницу, и что это
+!~ функции (скалярные, inline, multiple statement)
+!- APPLY (CROSS, OUTER)
+
+V- необходимо прочитать главы II, IV, VIII книги Microsoft SQL Server 2012 Bible)
+	!- II
+	V- IV
+	- VIII
+- null and antinull standart
+~ DML (UPDATE, INSERT, DELETE, CREATE), DDL (data definition lang), DCL, TCL
+- теория множеств
+- set operators
+- стадии выполнения запроса (логические, физические)
+- ядро строит план выолнения запроса - 3 основных statement
+- PIVOT, UNPIVOT
+- MERGE в хранилищах OLAP - difference
+- trigger как в salesforce
+- нормализация, денормализация (3 первых формы), OLTP хранилище
+- OLAP, OLTP
+~ CONSTRAINT (PK, notnow)
+- индексы (B-tree структуры, кластерные/некластерные, конкретные колонки)
+- performance
+- селективность индексов (нужен ли индекс)
+~ view, параметры (with scima bunding, with encrypt)
+- materialized view
+- разница performance (заменить что лучше что нельзя использовать)
+- transaction (выполняются или полностью или не выполняются, разобраться глубоко, долбить)
+- property, ACID (read, commit, snapshot)
+- phantom (как нарушение транзакций влияет на результаты, когда считывать данные)
+- блокировака и deadlock
+- temporary table, table variable (10 и более отличий, performance statistics)
+- операторы, запросы, performance
