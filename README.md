@@ -68,6 +68,7 @@ Data Integration DB and ETL
 		- Fetch and Offset
 		- system funcs
 		- while loop
+	- chapter 17 ---------------------------------------------|
 
 !- module 1 (passed) <br />
 	1, 2, 3, 4, 5, 6, 7, 8, 9
@@ -82,8 +83,8 @@ Data Integration DB and ETL
 
 
 
-Изначальный список требований:
-!- CROSS JOIN (декартово произведение)
+Список:
+!- CROSS JOIN (декартово произведение или умножение одной таблицы на другую, каждая строка таблицы1 к каждой строке таблицы2) 
 !- другие JOIN's (вспоминаем картинку) FULL LEFT RIGHT OUTERS and INNER
 !~ UNION EXCEPT, UNION ALL, INTERSECT (объединяет два запроса, редко юзается)
 !~ COUNT (*, 1, field) - there is no difference (1 не юзать)
@@ -95,12 +96,17 @@ Data Integration DB and ETL
 !~ функции (скалярные, inline, multiple statement)
 !- APPLY (CROSS, OUTER)
 
+!!- DML (CREATE, UPDATE, INSERT, DELETE) (data manipulation lang)
+!!- DDL (CREATE, ALTER, DROP) (data definition lang), 
+!!- DCL (data control lang)
+!!- TCL (transaction control lang)
+
 V- необходимо прочитать главы II, IV, VIII книги Microsoft SQL Server 2012 Bible)
 	!- II
 	V- IV
 	- VIII
 - null and antinull standart
-~ DML (UPDATE, INSERT, DELETE, CREATE), DDL (data definition lang), DCL, TCL
+
 - теория множеств
 - set operators
 - стадии выполнения запроса (логические, физические)
