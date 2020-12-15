@@ -1,0 +1,3 @@
+USE AdventureWorks2019
+
+DROP PROCEDURE Sales.uspGetCurrencyInformation

@@ -5,4 +5,3 @@ CREATE PROCEDURE Sales.uspGetCurrencyInformation
 AS
 SELECT CurrencyCode, [Name]
 FROM Sales.Currency
-GO
