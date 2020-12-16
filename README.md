@@ -1,4 +1,4 @@
-Data Integration DB and ETL
+<h3>Data Integration DB and ETL</h3>
 	
 !- onboarding (passed) (OK)
 !- english (passed) (B1)
@@ -84,48 +84,57 @@ Data Integration DB and ETL
 
 
 Список:
-!- CROSS JOIN (декартово произведение или умножение одной таблицы на другую, каждая строка таблицы1 к каждой строке таблицы2) 
-!- другие JOIN's (вспоминаем картинку) FULL LEFT RIGHT OUTERS and INNER
-!~ UNION EXCEPT, UNION ALL, INTERSECT (объединяет два запроса, редко юзается)
-!~ COUNT (*, 1, field) - there is no difference (1 не юзать)
-!- подзапросы (скалярные, коррелированные, CTE(common table expressions)) - difference
-!- window function (аналитические функции), (row number, rank, dense rank)
-!- GROUP BY 
-!- аггрегатные функции (average, sum, min, max) - когда мы можем их использовать
-!~ Primary Key, Foreign Key - хорошо знать разницу, и что это
-!~ функции (скалярные, inline, multiple statement)
-!- APPLY (CROSS, OUTER)
+!!- GROUP BY (когда можно использовать)
+!!- CROSS JOIN (декартово произведение или умножение одной таблицы на другую, каждая строка таблицы1 к каждой строке таблицы2) <br />
+!!- другие JOIN's (вспоминаем картинку) FULL LEFT RIGHT OUTERS and INNER <br />
+!!- DML (CREATE, UPDATE, INSERT, DELETE) (data manipulation lang) <br />
+!!- DDL (CREATE, ALTER, DROP) (data definition lang) <br />
+!!- DCL (data control lang) <br />
+!!- TCL (transaction control lang) <br />
+!!- аггрегатные функции (average, sum, min, max) - когда мы можем их использовать <br />
+!!- UNION EXCEPT, UNION ALL, INTERSECT (объединяет два запроса, редко юзается) <br />
 
-!!- DML (CREATE, UPDATE, INSERT, DELETE) (data manipulation lang)
-!!- DDL (CREATE, ALTER, DROP) (data definition lang), 
-!!- DCL (data control lang)
-!!- TCL (transaction control lang)
+!- IV книга (дочитать) <br />
+!- JOIN's vs UNION's <br />
+!- APPLY (CROSS OUTER) <br />
+!- GROUP BY vs HAVING
 
-V- необходимо прочитать главы II, IV, VIII книги Microsoft SQL Server 2012 Bible)
-	!- II
-	V- IV
-	- VIII
-- null and antinull standart
+!- подзапросы (скалярные, коррелированные) vs CTE (common table expressions) - difference  <br />
+!- COUNT (*, 1, field) - there is no difference (1 не юзать) <br />
+!- window function (аналитические функции), (row number, rank, dense rank) <br />
+!- Primary Key, Foreign Key - хорошо знать разницу, и что это <br />
 
-- теория множеств
-- set operators
-- стадии выполнения запроса (логические, физические)
-- ядро строит план выолнения запроса - 3 основных statement
+!- функции (скалярные, inline, multiple statement) <br />
+!- II книга (быстро просмотреть, понять что закрепить) <br />
+
+
+- temporary table, table variable (10 и более отличий, performance statistics)
+~ CONSTRAINT (PK, not now)
+
 - PIVOT, UNPIVOT
-- MERGE в хранилищах OLAP - difference
-- trigger как в salesforce
-- нормализация, денормализация (3 первых формы), OLTP хранилище
-- OLAP, OLTP
-~ CONSTRAINT (PK, notnow)
-- индексы (B-tree структуры, кластерные/некластерные, конкретные колонки)
-- performance
-- селективность индексов (нужен ли индекс)
+- null and antinull standart
+- теория множеств
+
 ~ view, параметры (with scima bunding, with encrypt)
 - materialized view
-- разница performance (заменить что лучше что нельзя использовать)
-- transaction (выполняются или полностью или не выполняются, разобраться глубоко, долбить)
+- trigger как в salesforce
+
+- VIII книга
+- ядро строит план выолнения запроса - 3 основных statement
+- стадии выполнения запроса (логические, физические)
+- set operators
+- MERGE в хранилищах OLAP - difference
+
+- OLAP, OLTP
+- нормализация, денормализация (3 первых формы), OLTP хранилище
+- индексы (B-tree структуры, кластерные/некластерные, конкретные колонки)
+- селективность индексов (нужен ли индекс)
+
 - property, ACID (read, commit, snapshot)
+- transaction (выполняются или полностью или не выполняются, разобраться глубоко, долбить)
 - phantom (как нарушение транзакций влияет на результаты, когда считывать данные)
 - блокировака и deadlock
-- temporary table, table variable (10 и более отличий, performance statistics)
+
+- performance
 - операторы, запросы, performance
+- разница performance (заменить что лучше что нельзя использовать)
