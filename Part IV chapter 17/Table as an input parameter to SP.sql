@@ -1,3 +1,5 @@
+USE AdventureWorks2019
+GO
 CREATE PROCEDURE Sales.uspGetCurrencyRatesXML
     @XMLList varchar(1000), 
     @CurrencyRateDate datetime
@@ -9,6 +11,7 @@ DECLARE @CurrencyCodeTable table
     ToCurrencyCode char(3)
 )
 EXECUTE sp_xml_preparedocument @XMLDocHandle OUTPUT, @XMLlist
+
 INSERT INTO @CurrencyCodeTable(FromCurrencyCode, ToCurrencyCode)
 SELECT FromCurrencyCode, ToCurrencyCode
 FROM OPENXML (@XMLDocHandle, '/ROOT/CurrencyList',1)
@@ -28,13 +31,14 @@ EXECUTE sp_xml_removedocument @XMLDocHandle
 
 GO
 --Execute the stored procedure
-EXECUTE Sales.uspGetCurrencyRatesXML @XMLList ='
-<ROOT>
+EXECUTE Sales.uspGetCurrencyRatesXML @XMLList ='<ROOT>
 <CurrencyList FromCurrencyCode="USD" ToCurrencyCode="AUD"> </CurrencyList>
 <CurrencyList FromCurrencyCode="USD" ToCurrencyCode="EUR"> </CurrencyList>
 <CurrencyList FromCurrencyCode="USD" ToCurrencyCode="GBP"> </CurrencyList>
 <CurrencyList FromCurrencyCode="USD" ToCurrencyCode="MXN"> </CurrencyList>
-</ROOT>', @CurrencyRateDate = '2005-07-14'
+                                                </ROOT>',
+                                     @CurrencyRateDate = '2011-05-31'
+
 
 GO
 CREATE TYPE CurrencyCodeListType as TABLE
@@ -67,4 +71,4 @@ VALUES
 ('USD', 'MXN');
 EXECUTE Sales.uspGetCurrencyRatesUDT
 @CurrencyCodeTable = @CurrencyCodeTVP,
-@CurrencyRateDate = '2005-07-14'
+@CurrencyRateDate = '2011-05-31'
