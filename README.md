@@ -82,7 +82,6 @@
 	1, 2, 3, 4, 5, 6, 7, 8, 9
 
 
-
 Список:
 !!- GROUP BY (когда можно использовать)
 !!- CROSS JOIN (декартово произведение или умножение одной таблицы на другую, каждая строка таблицы1 к каждой строке таблицы2) <br />
@@ -93,23 +92,43 @@
 !!- TCL (transaction control lang) <br />
 !!- аггрегатные функции (average, sum, min, max) - когда мы можем их использовать <br />
 !!- UNION EXCEPT, UNION ALL, INTERSECT (объединяет два запроса, редко юзается) <br />
+!!- stored procedures
 
 !- IV книга (дочитать) <br />
+!- multistatement пройти
+!- функции (скалярные, table inline, inline, multiple statement) <br />
+
 !- JOIN's vs UNION's <br />
 !- APPLY (CROSS OUTER) <br />
 !- GROUP BY vs HAVING
+!- data types (money, datetime, datetime2, nvarchar UNICODE ASCII UTF-8
+	UDF types https://www.mssqltips.com/sqlservertip/4100/how-to-find-udfs-causing-sql-server-performance-issues/
+	SP,
+	принципы работы с типами данных:
+		- выбирать наименьший типа данных (если нужно только 9 цифр использовать 9 для оптимизации)
+		  например varcharmax займёт сразу 2ГБ вне зависимости от того, сколько символов ты введёшь
+		- varchar(50) если не уверен 
+		- сортировка только по int
+		- не использовать text умирает и не эффективно
+		- char только если все значения фиксированной длины
+		- использовать datetime2 а не datetime
+		- избегать экзотику money, geolocations (только если строго необходимо)
+		- не использовать UDF
+		- не использовать float, datetime, real как PK
+
 
 !- подзапросы (скалярные, коррелированные) vs CTE (common table expressions) - difference  <br />
 !- COUNT (*, 1, field) - there is no difference (1 не юзать) <br />
 !- window function (аналитические функции), (row number, rank, dense rank) <br />
 !- Primary Key, Foreign Key - хорошо знать разницу, и что это <br />
 
-!- функции (скалярные, inline, multiple statement) <br />
 !- II книга (быстро просмотреть, понять что закрепить) <br />
 
 
 - temporary table, table variable (10 и более отличий, performance statistics)
 ~ CONSTRAINT (PK, not now)
+- диалекты SQL https://en.wikipedia.org/wiki/SQL
+
 
 - PIVOT, UNPIVOT
 - null and antinull standart
