@@ -70,17 +70,20 @@
 		- while loop
 	- chapter 17 ---------------------------------------------|
 
-!- module 1 (passed) <br />
+!- task 1 (passed) <br />
 	1, 2, 3, 4, 5, 6, 7, 8, 9
-!- module 2 (passed) <br />
+!- task 2 (passed) <br />
 	1, 2, 3, 4, 5, 6, 7
-!- module 3 (passed) <br />
+!- task 3 (passed) <br />
 	1, 2, 3, 4, 5, 6, 7, 8, 9, 10
-!- module 4 (passed) <br />
+!- task 4 (passed) <br />
 	1, 2, 3, 4, 5, 6, 7, 8
-!- module 5 (sended) <br />
+!- task 5 (passed) <br />
 	1, 2, 3, 4, 5, 6, 7, 8, 9
+- task 6 <br />
+	1, 2, 3, 4, 5, 6, 7, 8
 
+!- course 1
 
 Список:
 !!- GROUP BY (когда можно использовать)
@@ -94,6 +97,8 @@
 !!- UNION EXCEPT, UNION ALL, INTERSECT (объединяет два запроса, редко юзается) <br />
 !!- stored procedures
 
+!- course 2
+
 !- IV книга (дочитать) <br />
 !- multistatement пройти
 !- функции (скалярные, table inline, inline, multiple statement) <br />
@@ -102,6 +107,7 @@
 !- APPLY (CROSS OUTER) <br />
 !- GROUP BY vs HAVING
 !- data types (money, datetime, datetime2, nvarchar UNICODE ASCII UTF-8
+	linkedin course
 	UDF types https://www.mssqltips.com/sqlservertip/4100/how-to-find-udfs-causing-sql-server-performance-issues/
 	SP,
 	принципы работы с типами данных:
