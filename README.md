@@ -1,5 +1,7 @@
 <h3>Data Integration DB and ETL</h3>
-	
+
+!!- sqlbolt
+!!- learndb
 !- onboarding (passed) (OK)
 !- english (passed) (B1)
 	- writing (passed) (B1)
@@ -83,7 +85,8 @@
 - task 6 <br />
 	1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16
 
-!- course 1
+- Developing Miscrofot SQL Server 2016 Databases
+	1, 2, 3, 4, 5, 6, 7, 8
 
 Список:
 !!- GROUP BY (когда можно использовать)
@@ -97,7 +100,7 @@
 !!- UNION EXCEPT, UNION ALL, INTERSECT (объединяет два запроса, редко юзается) <br />
 !!- stored procedures
 
-!- course 2
+
 
 !- IV книга (дочитать) <br />
 !- multistatement пройти
