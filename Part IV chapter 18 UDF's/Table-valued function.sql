@@ -1,6 +1,6 @@
 GO
 CREATE FUNCTION                                                     -- создаём таблично значимую функцию
-dbo.ufnGetOrderTotalByProductCategory(@ProductCategoryID int)
+    dbo.ufnGetOrderTotalByProductCategory(@ProductCategoryID int)
 RETURNS TABLE                                                       -- которая будет возвращать таблицу
 AS
 RETURN
@@ -17,7 +17,8 @@ RETURN
     GROUP BY p.ProductID, p.Name
 )
 
+USE AdventureWorks2019
 GO
-SELECT ProductID, Name, TotalOrders
-FROM dbo.ufnGetOrderTotalByProductCategory(1)       -- вызываем функцию с параметром id 1
+SELECT ProductID, [Name], TotalOrders
+FROM dbo.ufnGetOrderTotalByProductCategory(2)       -- вызываем функцию с параметром id категории
 ORDER BY TotalOrders DESC
