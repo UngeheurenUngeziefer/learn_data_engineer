@@ -2,27 +2,27 @@
 
 !!- sqlbolt
 !!- learndb
-!!- onboarding (passed) (100%)
-!!- english (passed) (writing B1, speaking B1)
+!!- onboarding (completed) (100%)
+!!- english (completed) (writing B1, speaking B1)
+!!- Developing Miscrofot SQL Server 2016 Databases (completed)
+	1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14
 
-!- task 1 (passed) <br />
+!- task 1 (completed) <br />
 	1, 2, 3, 4, 5, 6, 7, 8, 9
-!- task 2 (passed) <br />
+!- task 2 (completed) <br />
 	1, 2, 3, 4, 5, 6, 7
-!- task 3 (passed) <br />
+!- task 3 (completed) <br />
 	1, 2, 3, 4, 5, 6, 7, 8, 9, 10
-!- task 4 (passed) <br />
+!- task 4 (completed) <br />
 	1, 2, 3, 4, 5, 6, 7, 8
-!- task 5 (passed) <br />
+!- task 5 (completed) <br />
 	1, 2, 3, 4, 5, 6, 7, 8, 9
-!- task 6 (sended) <br />
+!- task 6 (completed) <br />
 	1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16
 
 - SQL Server Bible <br />
 	6, 7, 8, 9, 16, 17, 18
 
-- Developing Miscrofot SQL Server 2016 Databases
-	1, 2, 3, 4, 5, 6, 7, 8
 
 Список:
 !!- GROUP BY (когда можно использовать)
@@ -65,13 +65,9 @@
 !- window function (аналитические функции), (row number, rank, dense rank) <br />
 !- Primary Key, Foreign Key - хорошо знать разницу, и что это <br />
 
-!- II книга (быстро просмотреть, понять что закрепить) <br />
-
-
 - temporary table, table variable (10 и более отличий, performance statistics)
 ~ CONSTRAINT (PK, not now)
 - диалекты SQL https://en.wikipedia.org/wiki/SQL
-
 
 - PIVOT, UNPIVOT
 - null and antinull standart
@@ -81,7 +77,6 @@
 - materialized view
 - trigger как в salesforce
 
-- VIII книга
 - ядро строит план выолнения запроса - 3 основных statement
 - стадии выполнения запроса (логические, физические)
 - set operators
