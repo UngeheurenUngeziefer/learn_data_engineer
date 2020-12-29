@@ -20,11 +20,13 @@
 !- task 6 (completed) <br />
 	1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16
 - task 7 <br />
+	1, 2
 	
 
 - SQL Server Bible <br />
 	6, 7, 8, 9, 16, 17, 18
 
+- SQL Server 2016: Provision a Database
 
 Список:
 !!- GROUP BY (когда можно использовать)
