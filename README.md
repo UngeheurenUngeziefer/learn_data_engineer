@@ -5,7 +5,6 @@
 !!- onboarding (completed) (100%)
 !!- english (completed) (writing B1, speaking B1)
 !!- Developing Miscrofot SQL Server 2016 Databases (completed)
-	1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14
 
 !- task 1 (completed) <br />
 	1, 2, 3, 4, 5, 6, 7, 8, 9
@@ -19,9 +18,9 @@
 	1, 2, 3, 4, 5, 6, 7, 8, 9
 !- task 6 (completed) <br />
 	1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16
-- task 7 <br />
+!- task 7 (completed) <br />
 	1, 2, 3, 4
-	
+
 
 - SQL Server Bible <br />
 	6, 7, 8, 9, 16, 17, 18
@@ -48,7 +47,6 @@
 !- APPLY (CROSS OUTER) <br />
 !- GROUP BY vs HAVING
 !- data types (money, datetime, datetime2, nvarchar UNICODE ASCII UTF-8
-	linkedin course
 	UDF types https://www.mssqltips.com/sqlservertip/4100/how-to-find-udfs-causing-sql-server-performance-issues/
 	SP,
 	принципы работы с типами данных:
