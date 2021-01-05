@@ -5,6 +5,7 @@
 !!- onboarding (completed) (100%)
 !!- english (completed) (writing B1, speaking B1)
 !!- Developing Miscrofot SQL Server 2016 Databases (completed)
+!!- SQL Server 2016: Provision a Database (completed)
 
 !- task 1 (completed) <br />
 	1, 2, 3, 4, 5, 6, 7, 8, 9
@@ -21,11 +22,8 @@
 !- task 7 (completed) <br />
 	1, 2, 3, 4 
 
-
 - SQL Server Bible <br />
 	6, 7, 8, 9, 16, 17, 18
-
-- SQL Server 2016: Provision a Database
 
 Список:
 !!- GROUP BY (когда можно использовать)
