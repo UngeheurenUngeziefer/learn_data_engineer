@@ -2,10 +2,10 @@
 
 !!- sqlbolt
 !!- learndb
-!!- onboarding (completed) (100%)
-!!- english (completed) (writing B1, speaking B1)
-!!- Developing Miscrofot SQL Server 2016 Databases (completed)
-!!- SQL Server 2016: Provision a Database (completed)
+!!- onboarding (100%)
+!!- english (writing B1, speaking B1)
+!!- Developing Miscrofot SQL Server 2016 Databases
+!!- SQL Server 2016: Provision a Database
 
 !- task 1 (completed) <br />
 	1, 2, 3, 4, 5, 6, 7, 8, 9
@@ -21,11 +21,11 @@
 	1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16
 !- task 7 (completed) <br />
 	1, 2, 3, 4 
-!- task 8 (completed, add comments)<br />
+!- task 8 (completed)<br />
 	1, 2, 3, 4
 
 - SQL Server Bible <br />
-	6, 7, 8, 9, 16, 17, 18, 
+	6, 7, 8, 9, 16, 17, 18
 
 Список:
 !!- GROUP BY (когда можно использовать)
@@ -38,14 +38,20 @@
 !!- аггрегатные функции (average, sum, min, max) - когда мы можем их использовать <br />
 !!- UNION EXCEPT, UNION ALL, INTERSECT (объединяет два запроса, редко юзается) <br />
 !!- stored procedures
-
-
-!- multistatement пройти
-!- функции (скалярные, table inline, inline, multiple statement) <br />
-
 !- JOIN's vs UNION's <br />
+!- функции (скалярные, table inline, inline, multiple statement) <br />
+!- multistatement
 !- APPLY (CROSS OUTER) <br />
 !- GROUP BY vs HAVING
+!- подзапросы (скалярные, коррелированные) vs CTE (common table expressions) - difference  <br />
+!- COUNT (*, 1, field) - there is no difference (1 не юзать) <br />
+!- window function (аналитические функции), (row number, rank, dense rank) <br />
+!- Primary Key, Foreign Key - хорошо знать разницу, и что это <br />
+!- triggers (after, before = instead of)
+!- PIVOT, UNPIVOT
+!- CONSTRAINT (PK, not now)
+!- set operators
+
 !- data types (money, datetime, datetime2, nvarchar UNICODE ASCII UTF-8
 	UDF types https://www.mssqltips.com/sqlservertip/4100/how-to-find-udfs-causing-sql-server-performance-issues/
 	SP,
@@ -61,39 +67,23 @@
 		- не использовать UDF
 		- не использовать float, datetime, real как PK
 
-
-!- подзапросы (скалярные, коррелированные) vs CTE (common table expressions) - difference  <br />
-!- COUNT (*, 1, field) - there is no difference (1 не юзать) <br />
-!- window function (аналитические функции), (row number, rank, dense rank) <br />
-!- Primary Key, Foreign Key - хорошо знать разницу, и что это <br />
-
 - temporary table, table variable (10 и более отличий, performance statistics)
-~ CONSTRAINT (PK, not now)
 - диалекты SQL https://en.wikipedia.org/wiki/SQL
-
-- PIVOT, UNPIVOT
 - null and antinull standart
 - теория множеств
-
-~ view, параметры (with scima bunding, with encrypt)
+- view, параметры (with scima bunding, with encrypt)
 - materialized view
-- trigger как в salesforce
-
 - ядро строит план выолнения запроса - 3 основных statement
 - стадии выполнения запроса (логические, физические)
-- set operators
 - MERGE в хранилищах OLAP - difference
-
 - OLAP, OLTP
 - нормализация, денормализация (3 первых формы), OLTP хранилище
 - индексы (B-tree структуры, кластерные/некластерные, конкретные колонки)
 - селективность индексов (нужен ли индекс)
-
 - property, ACID (read, commit, snapshot)
 - transaction (выполняются или полностью или не выполняются, разобраться глубоко, долбить)
 - phantom (как нарушение транзакций влияет на результаты, когда считывать данные)
 - блокировака и deadlock
-
 - performance
 - операторы, запросы, performance
 - разница performance (заменить что лучше что нельзя использовать)
