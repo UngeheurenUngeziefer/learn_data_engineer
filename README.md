@@ -27,8 +27,9 @@
 - SQL Server Bible <br />
 	6, 7, 8, 9, 16, 17, 18
 
-<h3>Список:</h3>
-Пройдено | Тема | Короткий ответ
+<h3>Список</h3>
+
+| Пройдено | Тема | Короткий ответ
 --- | ---  | --- 
 !!  | GROUP BY  | группировка одинаковых значений, другие колонки аггрегируются SUM, MAX, AVG, MIN
 --- | ---  | --- 
@@ -75,7 +76,7 @@
 !!  | OLAP, OLTP | online analytical processing (денормализованная), transactional (нормализованная)
 --- | ---  | --- 
 !!  | ACID | Atomicity (транзакция проходит только полностью (до конца)), Consistency (согласует только допустимые результаты), Isolation (изолируется от других), Durability (транзакция долговечна, не должна быть отменена). Синтаксис TCL: COMMIT (сохраняем изменения), ROLLBACK (откатываем изменения), SAVEPOINT (точка сохранения), SET TRANSACTION (read only, read write)
---- | ---  | --- 
+
 
 
 !- data types (money, datetime, datetime2, nvarchar UNICODE ASCII UTF-8
