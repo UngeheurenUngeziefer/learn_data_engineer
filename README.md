@@ -27,34 +27,58 @@
 - SQL Server Bible <br />
 	6, 7, 8, 9, 16, 17, 18
 
-Список:
-!!- GROUP BY (когда можно использовать)
-!!- CROSS JOIN (декартово произведение или умножение одной таблицы на другую, каждая строка таблицы1 к каждой строке таблицы2) <br />
-!!- другие JOIN's (вспоминаем картинку) FULL LEFT RIGHT OUTERS and INNER <br />
-!!- DML (CREATE, UPDATE, INSERT, DELETE) (data manipulation lang) <br />
-!!- DDL (CREATE, ALTER, DROP) (data definition lang) <br />
-!!- DCL (data control lang) <br />
-!!- TCL (transaction control lang) <br />
-!!- аггрегатные функции (average, sum, min, max) - когда мы можем их использовать <br />
-!!- UNION EXCEPT, UNION ALL, INTERSECT (объединяет два запроса, редко юзается) <br />
-!!- stored procedures
-!- JOIN's vs UNION's <br />
-!- функции (скалярные, table inline, inline, multiple statement) <br />
-!- multistatement
-!- APPLY (CROSS OUTER) <br />
-!- GROUP BY vs HAVING
-!- подзапросы (скалярные, коррелированные) vs CTE (common table expressions) - difference  <br />
-!- COUNT (*, 1, field) - there is no difference (1 не юзать) <br />
-!- window function (аналитические функции), (row number, rank, dense rank) <br />
-!- Primary Key, Foreign Key - хорошо знать разницу, и что это <br />
-!- triggers (after, before = instead of)
-!- PIVOT, UNPIVOT
-!- CONSTRAINT (PK, not now)
-!- set operators
+<h3>Список:</h3>
+Пройдено | Тема | Короткий ответ
+--- | ---  | --- 
+!!  | GROUP BY  | группировка одинаковых значений, другие колонки аггрегируются SUM, MAX, AVG, MIN
+--- | ---  | --- 
+!!  | CROSS JOIN  | декартово произведение или умножение одной таблицы на другую, каждая строка таблицы1 к каждой строке таблицы2
+--- | ---  | --- 
+!!  | Основные JOIN's | FULL LEFT RIGHT OUTERS and INNER, картинка о пересечении кругов
+--- | ---  | --- 
+!!  | DML  | (data manipulation lang) SELECT, INSERT, UPDATE, DELETE, MERGE часть синтаксиса для запросов и манипуляции данными в БД
+--- | ---  | --- 
+!!  | DDL  | (data definition lang) CREATE, ALTER, DROP, TRUNCATE часть синтаксиса для управления структурой БД
+--- | ---  | --- 
+!!  | DCL  | (data control lang) GRANT, REVOKE выдача/отзыв разрешений 
+--- | ---  | --- 
+!!  | TCL  | (transaction control lang) COMMIT, SAVEPOINT, ROLLBACK, SET TRANSACTION, для управления транзакциями
+--- | ---  | --- 
+!!  | Аггрегатные функции | (avg, sum, min, max) можем использовать при GROUP BY и при (sum, avg) на numeric, (min, max) not for bit
+--- | ---  | --- 
+!!  | Set operators | (UNION EXCEPT, UNION ALL, INTERSECT) объединяет два запроса
+--- | ---  | --- 
+!!  | Stored procedures | хранимые процедуры, запросы сохранённые отдельно, одинаковая производительность с adhoc
+--- | ---  | --- 
+!!  | JOIN's vs UNION's | джоины добавляют столбцы по ключам (увеличивает горизонтально), юнионы объединяют запросы (увеличивает вертикльно)
+--- | ---  | --- 
+!!  | Функции | scalar (возвращают одно значение BEGIN END RETURN), table inline (таблицу), multiple statement (таблицу, BEGIN END RETURN, declaring table structure, many statements)
+--- | ---  | --- 
+!!  | APPLY | (CROSS APPLY, OUTER APPLY) декартово произведение, но на каждую строку можно применить функцию, cross возвращает значения, outer возвращает и NULL 
+--- | ---  | --- 
+!!  | Подзапросы | скалярные (содержат одно значение столбца), коррелированные (зависят от внешнего подзапроса, рекурсивные)
+--- | ---  | --- 
+!!  | CTE  | (common table expressions) иерархичные рекурсивные запросы
+--- | ---  | --- 
+!!  | COUNT (*, 1, field) | нет разницы, использование 1 может выдавать некорректный результат
+--- | ---  | --- 
+!!  | Windowed function | аналитические функции: row number (№ по порядку), rank (по порядку с 111446), dense rank (11222333), ntile(задаёшь количество мест)
+--- | ---  | --- 
+!!  | PK, FK | pk ключ уникальный идентификатор строк, fk столбец - pk в другой таблице
+--- | ---  | --- 
+!!  | Triggers | after (делаем что то после того как задет триггер), before = instead of (срабатывает триггер и делает что то, прежде чем выполнить операцию)
+--- | ---  | --- 
+!!  | PIVOT, UNPIVOT | пивот - переводит строки в столбцы (группирует и меняет ось X на Y), анпивот - переводит столбцы в строки множит каждое бывшее название столбца на оставшийся столбец (разгруппировывает и меняет ось Y на X). Противоположны
+--- | ---  | --- 
+!!  | CONSTRAINT | ограничения на столбец (NOT NULL, UNIQUE, PK, FK, CHECK specific condition, DEFAULT, INDEX)
+--- | ---  | --- 
+!!  | OLAP, OLTP | online analytical processing (денормализованная), transactional (нормализованная)
+--- | ---  | --- 
+!!  | ACID | Atomicity (транзакция проходит только полностью (до конца)), Consistency (согласует только допустимые результаты), Isolation (изолируется от других), Durability (транзакция долговечна, не должна быть отменена). Синтаксис TCL: COMMIT (сохраняем изменения), ROLLBACK (откатываем изменения), SAVEPOINT (точка сохранения), SET TRANSACTION (read only, read write)
+--- | ---  | --- 
+
 
 !- data types (money, datetime, datetime2, nvarchar UNICODE ASCII UTF-8
-	UDF types https://www.mssqltips.com/sqlservertip/4100/how-to-find-udfs-causing-sql-server-performance-issues/
-	SP,
 	принципы работы с типами данных:
 		- выбирать наименьший типа данных (если нужно только 9 цифр использовать 9 для оптимизации)
 		  например varcharmax займёт сразу 2ГБ вне зависимости от того, сколько символов ты введёшь
@@ -76,7 +100,6 @@
 - ядро строит план выолнения запроса - 3 основных statement
 - стадии выполнения запроса (логические, физические)
 - MERGE в хранилищах OLAP - difference
-- OLAP, OLTP
 - нормализация, денормализация (3 первых формы), OLTP хранилище
 - индексы (B-tree структуры, кластерные/некластерные, конкретные колонки)
 - селективность индексов (нужен ли индекс)
