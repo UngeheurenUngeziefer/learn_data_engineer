@@ -7,6 +7,8 @@
 !!- Developing Miscrofot SQL Server 2016 Databases
 !!- SQL Server 2016: Provision a Database
 
+!!- NEW STRING
+
 !- task 1 (completed) <br />
 	1, 2, 3, 4, 5, 6, 7, 8, 9
 !- task 2 (completed) <br />
