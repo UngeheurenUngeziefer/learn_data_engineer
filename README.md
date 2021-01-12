@@ -29,7 +29,7 @@
 
 <h3>Список</h3>
 
-| Пройдено | Тема | Короткий ответ
+| !! | Тема | Короткий ответ
 --- | ---  | --- 
 !!  | GROUP BY  | группировка одинаковых значений, другие колонки аггрегируются SUM, MAX, AVG, MIN
 !!  | CROSS JOIN  | декартово произведение или умножение одной таблицы на другую, каждая строка таблицы1 к каждой строке таблицы2
@@ -54,10 +54,7 @@
 !!  | CONSTRAINT | ограничения на столбец (NOT NULL, UNIQUE, PK, FK, CHECK specific condition, DEFAULT, INDEX)
 !!  | OLAP, OLTP | online analytical processing (денормализованная), transactional (нормализованная)
 !!  | ACID | Atomicity (транзакция проходит только полностью (до конца)), Consistency (согласует только допустимые результаты), Isolation (изолируется от других), Durability (транзакция долговечна, не должна быть отменена). Синтаксис TCL: COMMIT (сохраняем изменения), ROLLBACK (откатываем изменения), SAVEPOINT (точка сохранения), SET TRANSACTION (read only, read write)
-
-
-!- data types (money, datetime, datetime2, nvarchar UNICODE ASCII UTF-8
-	принципы работы с типами данных:
+!!  | data types | (money, datetime, datetime2, nvarchar UNICODE ASCII UTF-8
 		- выбирать наименьший типа данных (если нужно только 9 цифр использовать 9 для оптимизации)
 		  например varcharmax займёт сразу 2ГБ вне зависимости от того, сколько символов ты введёшь
 		- varchar(50) если не уверен 
@@ -69,6 +66,23 @@
 		- не использовать UDF
 		- не использовать float, datetime, real как PK
 
+
+- индексы (B-tree структуры, кластерные/некластерные, конкретные колонки)
+	balance tree
+	leaf level
+	doubled linked list
+	pointer
+	кучи
+	complexity time
+	fill factor
+	page split
+	index rebuild
+	index maintenance
+	репликации
+	special type index
+	covering indexes
+	statistics
+	
 - temporary table, table variable (10 и более отличий, performance statistics)
 - диалекты SQL https://en.wikipedia.org/wiki/SQL
 - null and antinull standart
@@ -79,7 +93,6 @@
 - стадии выполнения запроса (логические, физические)
 - MERGE в хранилищах OLAP - difference
 - нормализация, денормализация (3 первых формы), OLTP хранилище
-- индексы (B-tree структуры, кластерные/некластерные, конкретные колонки)
 - селективность индексов (нужен ли индекс)
 - property, ACID (read, commit, snapshot)
 - transaction (выполняются или полностью или не выполняются, разобраться глубоко, долбить)
