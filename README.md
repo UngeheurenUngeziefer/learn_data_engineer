@@ -6,6 +6,8 @@
 !!- english (writing B1, speaking B1)
 !!- Developing Miscrofot SQL Server 2016 Databases
 !!- SQL Server 2016: Provision a Database
+!!- Advanced SQL for Query Tuning and Performance Optimization
+!!- Optimize query performance in SQL Server
 
 !- task 1 (completed) <br />
 	1, 2, 3, 4, 5, 6, 7, 8, 9
@@ -27,7 +29,7 @@
 	1, 2,
 
 - SQL Server Bible <br />
-	6, 7, 8, 9, 16, 17, 18, 44
+	6, 7, 8, 9, 16, 17, 18, 44, 45
 
 <h3>Список</h3>
 
@@ -100,6 +102,7 @@
 - transaction (выполняются или полностью или не выполняются, разобраться глубоко, долбить)
 - phantom (как нарушение транзакций влияет на результаты, когда считывать данные)
 - блокировака и deadlock
+
 - performance
 - операторы, запросы, performance
 - разница performance (заменить что лучше что нельзя использовать)
