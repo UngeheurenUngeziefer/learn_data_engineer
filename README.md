@@ -26,7 +26,7 @@
 !- task 8 (completed)<br />
 	1, 2, 3, 4
 !- task 9 <br />
-	1, 2,
+	1, 2, 3
 
 - SQL Server Bible <br />
 	6, 7, 8, 9, 16, 17, 18, 44, 45
