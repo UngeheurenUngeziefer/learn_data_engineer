@@ -8,28 +8,30 @@
 !!- SQL Server 2016: Provision a Database
 !!- Advanced SQL for Query Tuning and Performance Optimization
 !!- Optimize query performance in SQL Server
+!- SQL Server Performance for Developers
+	1, 
 
-!- task 1 (completed) <br />
+!!- task 1 (completed) <br />
 	1, 2, 3, 4, 5, 6, 7, 8, 9
-!- task 2 (completed) <br />
+!!- task 2 (completed) <br />
 	1, 2, 3, 4, 5, 6, 7
-!- task 3 (completed) <br />
+!!- task 3 (completed) <br />
 	1, 2, 3, 4, 5, 6, 7, 8, 9, 10
-!- task 4 (completed) <br />
+!!- task 4 (completed) <br />
 	1, 2, 3, 4, 5, 6, 7, 8
-!- task 5 (completed) <br />
+!!- task 5 (completed) <br />
 	1, 2, 3, 4, 5, 6, 7, 8, 9
-!- task 6 (completed) <br />
+!!- task 6 (completed) <br />
 	1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16
-!- task 7 (completed) <br />
+!!- task 7 (completed) <br />
 	1, 2, 3, 4 
-!- task 8 (completed) <br />
+!!- task 8 (completed) <br />
 	1, 2, 3, 4
-!- task 9 (completed) <br />
+!!- task 9 (completed) <br />
 	1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14
 
 - SQL Server Bible <br />
-	6, 7, 8, 9, 16, 17, 18, 44, 45
+	6, 7, 8, 9, 16, 17, 18, 44, 45, 46
 
 <h3>Список</h3>
 
