@@ -9,7 +9,7 @@
 !!- Advanced SQL for Query Tuning and Performance Optimization
 !!- Optimize query performance in SQL Server
 !- SQL Server Performance for Developers
-	1, 
+	1, 2
 
 !!- task 1 (completed) <br />
 	1, 2, 3, 4, 5, 6, 7, 8, 9
@@ -31,7 +31,7 @@
 	1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14
 
 - SQL Server Bible <br />
-	6, 7, 8, 9, 16, 17, 18, 44, 45, 46
+	6, 7, 8, 9, 16, 17, 18, 44, 45, 46, 47, 48, 49, 50
 
 <h3>Список</h3>
 
