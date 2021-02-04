@@ -33,7 +33,10 @@
 	1, 2
 
 !- DB Knowledge Assesment
-	1
+	1, 2
+
+!- Articles
+	
 
 <h3>Список</h3>
 

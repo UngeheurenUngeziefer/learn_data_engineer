@@ -1,0 +1,17 @@
+CREATE PROC TopProc AS
+BEGIN TRY
+    EXEC CalledProc
+END TRY
+BEGIN CATCH
+    THROW 50001, 'TopProc Raiserror',1
+END CATCH
+GO
+CREATE PROC CalledProc, TopProc AS
+BEGIN TRY
+    EXEC CalledProc
+END TRY
+BEGIN CATCH
+    THROW 50001, 'TopProc Raiserror',1
+END CATCH
+GO
+CREATE PROC CalledProc

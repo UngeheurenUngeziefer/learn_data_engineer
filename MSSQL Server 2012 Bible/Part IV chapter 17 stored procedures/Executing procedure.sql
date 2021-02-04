@@ -1,0 +1,3 @@
+USE AdventureWorks2019
+
+EXECUTE Sales.uspGetCurrencyInformation
