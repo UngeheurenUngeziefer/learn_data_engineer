@@ -36,6 +36,10 @@
 	1, 2
 
 !- Articles
+	1, 2
+
+!- Kudvenkat
+	transactions: isolations lvls, concurrency
 	
 
 <h3>Список</h3>
