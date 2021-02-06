@@ -28,20 +28,19 @@
 	1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14
 !!- SQL Server Bible <br />
 	6, 7, 8, 9, 16, 17, 18, 44, 45, 46, 47, 48, 49, 50
-
-!- SQL Server Performance for Developers
+!!- Articles
 	1, 2
+!!- Kudvenkat
+	transactions: isolations lvls, concurrency
 
 !- DB Knowledge Assesment
 	1, 2
 
-!- Articles
+!- SQL Server Performance for Developers
 	1, 2
 
-!- Kudvenkat
-	transactions: isolations lvls, concurrency
-	
 
+	
 <h3>Список</h3>
 
 | !! | Тема | Короткий ответ
@@ -69,25 +68,12 @@
 !!  | CONSTRAINT | ограничения на столбец (NOT NULL, UNIQUE, PK, FK, CHECK specific condition, DEFAULT, INDEX)
 !!  | OLAP, OLTP | online analytical processing (денормализованная), transactional (нормализованная)
 !!  | ACID | Atomicity (транзакция проходит только полностью (до конца)), Consistency (согласует только допустимые результаты), Isolation (изолируется от других), Durability (транзакция долговечна, не должна быть отменена). Синтаксис TCL: COMMIT (сохраняем изменения), ROLLBACK (откатываем изменения), SAVEPOINT (точка сохранения), SET TRANSACTION (read only, read write)
-!!  | data types | (money, datetime, datetime2, nvarchar UNICODE ASCII UTF-8
-		- выбирать наименьший типа данных (если нужно только 9 цифр использовать 9 для оптимизации)
-		  например varcharmax займёт сразу 2ГБ вне зависимости от того, сколько символов ты введёшь
-		- varchar(50) если не уверен 
-		- сортировка только по int
-		- не использовать text умирает и не эффективно
-		- char только если все значения фиксированной длины
-		- использовать datetime2 а не datetime
-		- избегать экзотику money, geolocations (только если строго необходимо)
-		- не использовать UDF
-		- не использовать float, datetime, real как PK
+!!  | data types | выбирать наименьший типа данных, например varcharmax займёт сразу 2ГБ вне зависимости от того, сколько символов ты введёшь, сортировка только по int, не использовать text умирает и не эффективно, char только если все значения фиксированной длины, использовать datetime2 а не datetime, избегать экзотику money, geolocations (только если строго необходимо), не использовать UDF, не использовать float, datetime, real как PK
+!!  | индексы | B-tree структура, кластерные/некластерные, на конкретные колонки, нужно не много и не мало, влияют на performance, кластерные строки упорядочены по значению ключа индекса, если нет кластерного то это куча, некластерный индекс имеет поинтеры на записи. Кластерный один, некластерных много 
+!! | leaf level | самый низкий уровень индекса, содержит значение ключа для каждой строки в таблице
 
-
-- индексы (B-tree структуры, кластерные/некластерные, конкретные колонки)
-	balance tree
-	leaf level
 	doubled linked list
 	pointer
-	кучи
 	complexity time
 	fill factor
 	page split
