@@ -32,12 +32,14 @@
 	1, 2
 !!- Kudvenkat
 	transactions: isolations lvls, concurrency
+!!- SQL Server Performance for Developers
+!!- Interview 1 f
+
+!- Interview 2
 
 !- DB Knowledge Assesment
 	1, 2
 
-!- SQL Server Performance for Developers
-	1, 2
 
 
 	
@@ -71,19 +73,16 @@
 !!  | data types | выбирать наименьший типа данных, например varcharmax займёт сразу 2ГБ вне зависимости от того, сколько символов ты введёшь, сортировка только по int, не использовать text умирает и не эффективно, char только если все значения фиксированной длины, использовать datetime2 а не datetime, избегать экзотику money, geolocations (только если строго необходимо), не использовать UDF, не использовать float, datetime, real как PK
 !!  | индексы | B-tree структура, кластерные/некластерные, на конкретные колонки, нужно не много и не мало, влияют на performance, кластерные строки упорядочены по значению ключа индекса, если нет кластерного то это куча, некластерный индекс имеет поинтеры на записи. Кластерный один, некластерных много 
 !! | leaf level | самый низкий уровень индекса, содержит значение ключа для каждой строки в таблице
+!! | complexity time | complexity and time of algorithm n O
+!! | fill factor | proporion of space used in a db index, the rest being reserved
+!! | page split | the process of moving half the rows or entries in a full data or index page to a new page to make room for a new row or index entry
+!! | index rebuild | При перестроении индекса он удаляется и создается заново. Это устраняет фрагментацию, освобождает дисковое пространство путем сжатия страниц на основе указанного или существующего параметра fill factor и переупорядочивает строки индекса на смежных страницах
+!! | репликации | Репликация MS SQL позволяет создать точную копию бд в другом месте (на другом сервере). Для MS SQL репликация данных решает множество задач, от зеркалирования базы до создания тестовой версии набора данных.
+!! | special type index | unique (уникальность каждой строки), full-text (эффективный поиск слов в строковых данных), spatial (это облегчает возможность эффективного выполнения операций с пространственными объектами), filtered (некластеризованный индекс. Полностью оптимизирован для запроса данных из четко определенного набора данных. Фильтр используется для определения части строк в таблице, подлежащих индексации)
+!! | covering index | может удовлетворить все запрошенные столбцы в запросе без выполнения дальнейшего поиска в кластеризованном индексе
+!! | statistics | оптимизатор запросов использует статистику для создания планов запросов, которые повышают производительность запросов.	
 
-	doubled linked list
-	pointer
-	complexity time
-	fill factor
-	page split
-	index rebuild
-	index maintenance
-	репликации
-	special type index
-	covering indexes
-	statistics
-	
+
 - temporary table, table variable (10 и более отличий, performance statistics)
 - диалекты SQL https://en.wikipedia.org/wiki/SQL
 - null and antinull standart
@@ -103,3 +102,21 @@
 - performance
 - операторы, запросы, performance
 - разница performance (заменить что лучше что нельзя использовать)
+
+
+trace flag
+count stored indexes
+column stored indexes
+null antinull standart
+view, параметры (with scima bunding, with encrypt)
+materialized view
+ядро строит план выолнения запроса - 3 основных statement
+стадии выполнения запроса (логические, физические)
+MERGE в хранилищах OLAP - difference`
+нормализация, денормализация (3 первых формы), OLTP хранилище
+селективность индексов (нужен ли индекс)
+property, ACID (read, commit, snapshot)
+phantom (как нарушение транзакций влияет на результаты, когда считывать данные)
+блокировака и deadlock
+
+
