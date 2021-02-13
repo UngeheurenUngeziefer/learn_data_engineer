@@ -35,10 +35,16 @@
 !!- SQL Server Performance for Developers
 !!- Interview 1 f
 
-!- Interview 2
-
 !- DB Knowledge Assesment
 	1, 2
+
+!- Interview 2
+	speech, research
+
+!- Azure Data Factory
+	1, 2, 3, 4, 5
+
+!- TPCH
 
 
 
