@@ -3,22 +3,48 @@ from sqlalchemy import create_engine
 import pyodbc
 
 # original csv to pandas dataframe
-region = pd.read_csv('tpch_data/h_region.csv', delimiter=',')	
+region = pd.read_csv('tpch_data/h_region.csv', delimiter=',')
 
-# pandas dataframe to sql database
-engine = create_engine('mssql://sewer:@localhost/h_region', echo=False)
+# to list
+region_list = region.values.tolist()
 
-region.to_sql(name='h_region', con=engine, if_exists='replace')
-
-
-
+# without headers
+region_list = region_list[0::]
 
 
+# list of drivers, we need - ODBC Driver 17 for SQL Server
+# for driver in pyodbc.drivers():
+# 	print(driver)
 
-# server = 'DESKTOP-SAACP1U/MSSQLSERVER01' 
-# database = 'TestSQL' 
-# username = 'DESKTOP-SAACP1U/sewer' 
-# password = '' 
-# PORT='1433'
-# con = pyodbc.connect(r'DRIVER={SQL Server};SERVER='+server+'\\;DATABASE='+database+';UID='+username+';PWD='+ password+';PORT='+PORT)
-# engine.execute("SELECT * FROM h_region").fetchall()
+
+# define server name and db name
+server = 'DESKTOP-SAACP1U\MSSQLSERVER01'
+database = 'TestSQL'
+
+# define our connection
+conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server}; \
+					   SERVER=' + server + '; \
+					   DATABASE=' + database + '; \
+					   Trusted_Connection=yes;')
+
+# create connetion cursor
+cursor = conn.cursor()
+
+# INSERT query
+insert_query = '''INSERT INTO h_region (region_key, region_name, region_comment)
+				  VALUES(?,?,?)'''
+
+# loop through each row in df
+
+for row in region_list:
+	# values to insert
+	
+ 	values = (tuple(row))
+ 	
+ 	# insert the data into db
+ 	cursor.execute(insert_query, values)
+
+# commit the insertions
+conn.commit()
+
+
