@@ -190,14 +190,14 @@ input_file = \
 # tpch_data/
 # File Name 		 | Size	   | Rows	| Execution Time	|
 #############################################################
-# h_region.csv 		 | 1 KB	   | 		| fast				|
-# h_nation.dsv 		 | 3 KB    |		| fast				|
+# h_region.csv 		 | 1 KB	   | 		| 					|
+# h_nation.dsv 		 | 3 KB    |		| 					|
 # h_supplier.dsv  	 | 3 MB    | 20k 	| 10 sec 			|
 # h_customer.dsv 	 | 43 MB   | 300k	| 1 min 16 sec 		|
 # h_part.dsv 		 | 57 MB   | 400k	| 1 min 17 sec 		|
 # h_partsupp.dsv 	 | 114 MB  | 1.6M	| 9 min 50 sec 		|
 # h_order.dsv 		 | 360 MB  | 3.0M 	| 11 min 			|
-# h_lineitem.dsv 	 | 1.7 GB  |
+# h_lineitem.dsv 	 | 1.7 GB  | 12M	| >					|
 
 # /
 # Splitted 			 | Size	   | Rows	| Execution Time	|
