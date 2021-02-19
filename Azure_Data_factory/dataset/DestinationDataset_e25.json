@@ -1,0 +1,23 @@
+{
+	"name": "DestinationDataset_e25",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ADLS_yauheniadls",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "h_region.csv",
+				"fileSystem": "tpch"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
