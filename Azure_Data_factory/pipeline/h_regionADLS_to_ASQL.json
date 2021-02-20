@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Data flow1",
+				"name": "Load h_region from ADLS to ASQL",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [],
 				"policy": {
