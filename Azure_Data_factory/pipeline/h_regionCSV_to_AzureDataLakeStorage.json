@@ -4,7 +4,7 @@
 		"description": "Copying local \"h_region.csv\" from PC to Azure Data Lake Storage Gen V2",
 		"activities": [
 			{
-				"name": "CopyCSVtoLake",
+				"name": "Copy h_region from CSV to Lake",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -64,6 +64,41 @@
 							},
 							"path": "tpch/errors/h_region"
 						}
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "R_REGIONKEY",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "Region_Key",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "R_NAME",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Region_Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "R_COMMENT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Region_Comment",
+									"type": "String"
+								}
+							}
+						]
 					}
 				},
 				"inputs": [
