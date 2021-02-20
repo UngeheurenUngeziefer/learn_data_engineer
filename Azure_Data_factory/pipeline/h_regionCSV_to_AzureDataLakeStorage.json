@@ -71,7 +71,7 @@
 							{
 								"source": {
 									"name": "R_REGIONKEY",
-									"type": "Int64"
+									"type": "String"
 								},
 								"sink": {
 									"name": "Region_Key",
