@@ -103,13 +103,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "SourceDataset_e25",
+						"referenceName": "CSV_h_region",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "DestinationDataset_e25",
+						"referenceName": "ADLS_h_region",
 						"type": "DatasetReference"
 					}
 				]
