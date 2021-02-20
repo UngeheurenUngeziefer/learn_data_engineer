@@ -18,7 +18,7 @@
 						"referenceName": "ADLS_h_region",
 						"type": "DatasetReference"
 					},
-					"name": "sink1"
+					"name": "ASQLhregion"
 				}
 			],
 			"transformations": [
@@ -26,7 +26,7 @@
 					"name": "AddLoadDate"
 				}
 			],
-			"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'delimited',\n\tcolumnDelimiter: ',',\n\tescapeChar: '\\\\',\n\tqutoChar: '\\\"',\n\tcolumnNamesAsHeader: false) ~> ADLShregionCSV\nADLShregionCSV derive(load_data = currentDate()) ~> AddLoadDate\nAddLoadDate sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
+			"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'delimited',\n\tcolumnDelimiter: ',',\n\tescapeChar: '\\\\',\n\tqutoChar: '\\\"',\n\tcolumnNamesAsHeader: false) ~> ADLShregionCSV\nADLShregionCSV derive(load_data = currentDate()) ~> AddLoadDate\nAddLoadDate sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> ASQLhregion"
 		}
 	}
 }
