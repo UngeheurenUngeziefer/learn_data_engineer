@@ -1,0 +1,27 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "yauheni-ADF"
+		},
+		"ABLB_yauheni_connectionString": {
+			"value": ""
+		},
+		"ADLS_yauheniadls_accountKey": {
+			"value": ""
+		},
+		"LinkedServiceForLocalDCSVs_connectionString": {
+			"value": ""
+		},
+		"ADLS_yauheniadls_properties_typeProperties_url": {
+			"value": "https://yauheniadls.dfs.core.windows.net"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
