@@ -4,7 +4,7 @@
 		"description": "Copying local \"h_region.csv\" from PC to Azure Data Lake Storage Gen V2",
 		"activities": [
 			{
-				"name": "Copy_e25",
+				"name": "CopyCSVtoLake",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
