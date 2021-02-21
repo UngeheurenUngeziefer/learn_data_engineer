@@ -1,0 +1,17 @@
+{
+	"name": "Orchestrating_Pipeline",
+	"properties": {
+		"activities": [
+			{
+				"name": "CSV to ADLS",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"annotations": []
+	}
+}

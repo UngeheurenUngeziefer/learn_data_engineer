@@ -1,5 +1,5 @@
 {
-	"name": "h_regionCSV_to_AzureDataLakeStorage",
+	"name": "h_regionCSV_to_ADLS",
 	"properties": {
 		"description": "Copying local \"h_region.csv\" from PC to Azure Data Lake Storage Gen V2",
 		"activities": [
