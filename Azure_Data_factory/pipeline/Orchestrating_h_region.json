@@ -1,13 +1,38 @@
 {
-	"name": "Orchestrating_Pipeline",
+	"name": "Orchestrating_h_region",
 	"properties": {
+		"description": "Orchestration pipeline that executes the individual pipelines that copy and transform data",
 		"activities": [
 			{
-				"name": "CSV to ADLS",
+				"name": "Execute CSV to ADLS",
 				"type": "ExecutePipeline",
 				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
+					"pipeline": {
+						"referenceName": "h_regionCSV_to_ADLS",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Execute ADLS to SQL",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Execute CSV to ADLS",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "h_regionADLS_to_ASQL",
+						"type": "PipelineReference"
+					},
 					"waitOnCompletion": true
 				}
 			}
