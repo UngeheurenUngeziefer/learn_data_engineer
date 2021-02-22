@@ -5,8 +5,12 @@
 		"annotations": [],
 		"type": "SqlServer",
 		"typeProperties": {
-			"connectionString": "integrated security=False;data source=DESKTOP-SAACP1U;initial catalog=TestSQL;user id=sewer",
-			"encryptedCredential": ""
+			"connectionString": "integrated security=False;data source=DESKTOP-SAACP1U\\\\MSSQLSERVER01;initial catalog=TestSQL;user id=sa",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIzYmY5MWQyNi1lMmMyLTRhNjktYjU0NC1lNjc0MTE4ZDk1NTkiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "IntegrationRuntime1",
+			"type": "IntegrationRuntimeReference"
 		}
 	}
 }
