@@ -8,6 +8,9 @@
 				"pipelineReference": {
 					"referenceName": "CSV Input to Output folder",
 					"type": "PipelineReference"
+				},
+				"parameters": {
+					"fileName": "h_region.csv"
 				}
 			}
 		],
