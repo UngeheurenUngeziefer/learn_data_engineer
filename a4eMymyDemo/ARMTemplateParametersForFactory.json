@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "a4eMymyDemo"
+		},
+		"ABLB_yauheni_connectionString": {
+			"value": ""
+		},
+		"ADLS_yauheniadls_accountKey": {
+			"value": ""
+		},
+		"InputBLOB_connectionString": {
+			"value": ""
+		},
+		"OutputAzureSQL_connectionString": {
+			"value": ""
+		},
+		"ADLS_yauheniadls_properties_typeProperties_url": {
+			"value": "https://yauheniadls.dfs.core.windows.net"
+		}
+	}
+}

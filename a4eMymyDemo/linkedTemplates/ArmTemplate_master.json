@@ -1,0 +1,77 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "a4eMymyDemo"
+		},
+		"ABLB_yauheni_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ABLB_yauheni'"
+		},
+		"ADLS_yauheniadls_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ADLS_yauheniadls'"
+		},
+		"InputBLOB_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'InputBLOB'"
+		},
+		"OutputAzureSQL_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'OutputAzureSQL'"
+		},
+		"ADLS_yauheniadls_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://yauheniadls.dfs.core.windows.net"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "a4eMymyDemo_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"ABLB_yauheni_connectionString": {
+						"value": "[parameters('ABLB_yauheni_connectionString')]"
+					},
+					"ADLS_yauheniadls_accountKey": {
+						"value": "[parameters('ADLS_yauheniadls_accountKey')]"
+					},
+					"InputBLOB_connectionString": {
+						"value": "[parameters('InputBLOB_connectionString')]"
+					},
+					"OutputAzureSQL_connectionString": {
+						"value": "[parameters('OutputAzureSQL_connectionString')]"
+					},
+					"ADLS_yauheniadls_properties_typeProperties_url": {
+						"value": "[parameters('ADLS_yauheniadls_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
