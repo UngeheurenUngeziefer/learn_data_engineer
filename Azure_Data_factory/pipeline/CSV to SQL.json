@@ -1,9 +1,9 @@
 {
-	"name": "Blob to SQL",
+	"name": "CSV to SQL",
 	"properties": {
 		"activities": [
 			{
-				"name": "Region CSV to SQL",
+				"name": "CSV to SQL",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -81,18 +81,32 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "regionCSV",
-						"type": "DatasetReference"
+						"referenceName": "inputCSV",
+						"type": "DatasetReference",
+						"parameters": {
+							"fileName": "h_region.csv"
+						}
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "RegionTable",
-						"type": "DatasetReference"
+						"referenceName": "AzureSqlOutputTable",
+						"type": "DatasetReference",
+						"parameters": {
+							"tableName": "regions"
+						}
 					}
 				]
 			}
 		],
+		"parameters": {
+			"fileName": {
+				"type": "string"
+			},
+			"tableName": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"lastPublishTime": "2021-02-23T08:20:51Z"
 	},

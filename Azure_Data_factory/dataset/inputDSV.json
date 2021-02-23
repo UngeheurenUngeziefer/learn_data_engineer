@@ -1,5 +1,5 @@
 {
-	"name": "inputCSV",
+	"name": "inputDSV",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "InputBLOB",
@@ -21,25 +21,16 @@
 				},
 				"container": "dcsv-container"
 			},
-			"columnDelimiter": ",",
+			"columnDelimiter": "|",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
 		"schema": [
 			{
-				"name": "R_REGIONKEY",
-				"type": "String"
-			},
-			{
-				"name": "R_NAME",
-				"type": "String"
-			},
-			{
-				"name": "R_COMMENT",
+				"name": "\"N_NATIONKEY\"|\"N_NAME\"|\"N_REGIONKEY\"|\"N_COMMENT\"",
 				"type": "String"
 			}
 		]
-	},
-	"type": "Microsoft.DataFactory/factories/datasets"
+	}
 }
