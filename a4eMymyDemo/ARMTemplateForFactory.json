@@ -26,6 +26,14 @@
 		"ADLS_yauheniadls_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://yauheniadls.dfs.core.windows.net"
+		},
+		"Event_properties_CSV Input to Output folder_parameters_fileName": {
+			"type": "string",
+			"defaultValue": "h_region.csv"
+		},
+		"Event_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/4e3a7fca-0bcc-4b60-a69c-125ab4757119/resourceGroups/TestEnvironment/providers/Microsoft.Storage/storageAccounts/yauheniblob"
 		}
 	},
 	"variables": {
@@ -539,6 +547,38 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/InputBLOB')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Event')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Stopped",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "CSV Input to Output folder",
+							"type": "PipelineReference"
+						},
+						"parameters": {
+							"fileName": "[parameters('Event_properties_CSV Input to Output folder_parameters_fileName')]"
+						}
+					}
+				],
+				"type": "BlobEventsTrigger",
+				"typeProperties": {
+					"blobPathBeginsWith": "/dcsv-container/blobs/",
+					"ignoreEmptyBlobs": true,
+					"scope": "[parameters('Event_properties_typeProperties_scope')]",
+					"events": [
+						"Microsoft.Storage.BlobCreated"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/CSV Input to Output folder')]"
 			]
 		}
 	]

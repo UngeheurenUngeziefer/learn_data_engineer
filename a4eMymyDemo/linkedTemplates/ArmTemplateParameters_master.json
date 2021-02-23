@@ -20,6 +20,12 @@
 		"ADLS_yauheniadls_properties_typeProperties_url": {
 			"value": "https://yauheniadls.dfs.core.windows.net"
 		},
+		"Event_properties_CSV Input to Output folder_parameters_fileName": {
+			"value": "h_region.csv"
+		},
+		"Event_properties_typeProperties_scope": {
+			"value": "/subscriptions/4e3a7fca-0bcc-4b60-a69c-125ab4757119/resourceGroups/TestEnvironment/providers/Microsoft.Storage/storageAccounts/yauheniblob"
+		},
 		"containerUri": {
 			"value": ""
 		},

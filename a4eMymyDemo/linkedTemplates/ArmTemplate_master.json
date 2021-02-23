@@ -27,6 +27,14 @@
 			"type": "string",
 			"defaultValue": "https://yauheniadls.dfs.core.windows.net"
 		},
+		"Event_properties_CSV Input to Output folder_parameters_fileName": {
+			"type": "string",
+			"defaultValue": "h_region.csv"
+		},
+		"Event_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/4e3a7fca-0bcc-4b60-a69c-125ab4757119/resourceGroups/TestEnvironment/providers/Microsoft.Storage/storageAccounts/yauheniblob"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -68,6 +76,12 @@
 					},
 					"ADLS_yauheniadls_properties_typeProperties_url": {
 						"value": "[parameters('ADLS_yauheniadls_properties_typeProperties_url')]"
+					},
+					"Event_properties_CSV Input to Output folder_parameters_fileName": {
+						"value": "[parameters('Event_properties_CSV Input to Output folder_parameters_fileName')]"
+					},
+					"Event_properties_typeProperties_scope": {
+						"value": "[parameters('Event_properties_typeProperties_scope')]"
 					}
 				}
 			},
