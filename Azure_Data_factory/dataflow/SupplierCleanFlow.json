@@ -1,13 +1,13 @@
 {
 	"name": "SupplierCleanFlow",
 	"properties": {
-		"description": "Import data from supplier.csv and transform data",
+		"description": "Import data from supplier.csv and transform data. Adding new column with dot without comma, to prepare for export as DECIMAL(10,2)",
 		"type": "MappingDataFlow",
 		"typeProperties": {
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "supplierDSV",
+						"referenceName": "supplierRawDSV",
 						"type": "DatasetReference"
 					},
 					"name": "Supplier"
@@ -27,7 +27,7 @@
 					"name": "CommaToDotColumn"
 				}
 			],
-			"script": "parameters{\n\toutputFileName as string\n}\nsource(output(\n\t\tS_SUPPKEY as short,\n\t\tS_NAME as string,\n\t\tS_ADDRESS as string,\n\t\tS_NATIONKEY as short,\n\t\tS_PHONE as string,\n\t\tS_ACCTBAL as string,\n\t\tS_COMMENT as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> Supplier\nSupplier derive(acctbal = replace(S_ACCTBAL, ',', '.')) ~> CommaToDotColumn\nCommaToDotColumn sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:['supplier_cleaned.dsv'],\n\tpartitionBy('hash', 1),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SupplierWIthDecimal"
+			"script": "source(output(\n\t\tS_SUPPKEY as short,\n\t\tS_NAME as string,\n\t\tS_ADDRESS as string,\n\t\tS_NATIONKEY as short,\n\t\tS_PHONE as string,\n\t\tS_ACCTBAL as string,\n\t\tS_COMMENT as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> Supplier\nSupplier derive(acctbal = replace(S_ACCTBAL, ',', '.')) ~> CommaToDotColumn\nCommaToDotColumn sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:['supplier_cleaned.dsv'],\n\tpartitionBy('hash', 1),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SupplierWIthDecimal"
 		}
 	}
 }

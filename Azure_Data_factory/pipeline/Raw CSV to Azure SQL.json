@@ -1,9 +1,9 @@
 {
-	"name": "CSV to SQL",
+	"name": "Raw CSV to Azure SQL",
 	"properties": {
 		"activities": [
 			{
-				"name": "CSV to SQL",
+				"name": "CSV to Azure SQL",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -81,7 +81,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "inputCSV",
+						"referenceName": "rawInputCSV",
 						"type": "DatasetReference",
 						"parameters": {
 							"fileName": "h_region.csv"

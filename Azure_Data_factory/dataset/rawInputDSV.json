@@ -1,6 +1,7 @@
 {
-	"name": "inputDSV",
+	"name": "rawInputDSV",
 	"properties": {
+		"description": "if all columns in good state",
 		"linkedServiceName": {
 			"referenceName": "InputBLOB",
 			"type": "LinkedServiceReference"

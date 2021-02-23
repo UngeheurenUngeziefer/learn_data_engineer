@@ -1,5 +1,5 @@
 {
-	"name": "CSV Input to Output folder",
+	"name": "Copy CSV to Output folder",
 	"properties": {
 		"activities": [
 			{
@@ -49,7 +49,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "inputCSV",
+						"referenceName": "rawInputCSV",
 						"type": "DatasetReference",
 						"parameters": {
 							"fileName": "h_region.csv"
@@ -58,7 +58,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "outputCSV",
+						"referenceName": "rawOutputCSV",
 						"type": "DatasetReference",
 						"parameters": {
 							"fileName": "h_region_output.csv"

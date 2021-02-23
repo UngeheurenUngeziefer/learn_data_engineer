@@ -1,6 +1,7 @@
 {
-	"name": "supplierDSV",
+	"name": "supplierRawDSV",
 	"properties": {
+		"description": "Raw DSV with bad columns",
 		"linkedServiceName": {
 			"referenceName": "InputBLOB",
 			"type": "LinkedServiceReference"

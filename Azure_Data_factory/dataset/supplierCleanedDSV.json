@@ -1,6 +1,7 @@
 {
 	"name": "supplierCleanedDSV",
 	"properties": {
+		"description": "Columns to normal datatypes",
 		"linkedServiceName": {
 			"referenceName": "InputBLOB",
 			"type": "LinkedServiceReference"

@@ -1,28 +1,20 @@
 {
-	"name": "rawOutputCSV",
+	"name": "supplierFinalDSV",
 	"properties": {
-		"description": "Output CSV when all columns in good state",
+		"description": "Final good DSV to export",
 		"linkedServiceName": {
 			"referenceName": "InputBLOB",
 			"type": "LinkedServiceReference"
-		},
-		"parameters": {
-			"fileName": {
-				"type": "string"
-			}
 		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": {
-					"value": "@dataset().fileName",
-					"type": "Expression"
-				},
+				"fileName": "supplier_cleaned.dsv",
 				"container": "output"
 			},
-			"columnDelimiter": ",",
+			"columnDelimiter": "|",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""

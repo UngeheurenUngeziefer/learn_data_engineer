@@ -1,9 +1,9 @@
 {
-	"name": "DSV to SQL",
+	"name": "Raw DSV to Azure SQL",
 	"properties": {
 		"activities": [
 			{
-				"name": "DSV to SQL",
+				"name": "DSV to Azure SQL",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -129,7 +129,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "inputDSV",
+						"referenceName": "rawInputDSV",
 						"type": "DatasetReference",
 						"parameters": {
 							"fileName": "h_supplier.dsv"
