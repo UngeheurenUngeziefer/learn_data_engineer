@@ -1,0 +1,31 @@
+{
+	"name": "RegionTable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "OutputAzureSQL",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "region",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "name",
+				"type": "varchar"
+			},
+			{
+				"name": "comment",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "regions"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
