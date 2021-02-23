@@ -1,0 +1,27 @@
+{
+	"name": "Event",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "CSV Input to Output folder",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"fileName": "h_region.csv"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/dcsv-container/blobs/",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/4e3a7fca-0bcc-4b60-a69c-125ab4757119/resourceGroups/TestEnvironment/providers/Microsoft.Storage/storageAccounts/yauheniblob",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}
