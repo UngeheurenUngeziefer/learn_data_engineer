@@ -42,13 +42,19 @@
 				"inputs": [
 					{
 						"referenceName": "inputDSV",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"fileName": "h_supplier.dsv"
+						}
 					}
 				],
 				"outputs": [
 					{
 						"referenceName": "AzureSqlOutputTable",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"tableName": "supplier"
+						}
 					}
 				]
 			}
