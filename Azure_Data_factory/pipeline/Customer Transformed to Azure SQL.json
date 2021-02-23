@@ -1,0 +1,7 @@
+{
+	"name": "Customer Transformed to Azure SQL",
+	"properties": {
+		"description": "Transforming Acctbal column with comma to column with dot than export to Azure DB",
+		"annotations": []
+	}
+}
