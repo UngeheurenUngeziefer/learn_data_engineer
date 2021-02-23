@@ -6,6 +6,9 @@
 			"referenceName": "InputBLOB",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "Supplier"
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {

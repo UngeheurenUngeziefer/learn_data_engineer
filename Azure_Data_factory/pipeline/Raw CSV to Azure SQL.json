@@ -107,6 +107,9 @@
 				"type": "string"
 			}
 		},
+		"folder": {
+			"name": "Raw Files Pipelines"
+		},
 		"annotations": [],
 		"lastPublishTime": "2021-02-23T08:20:51Z"
 	},

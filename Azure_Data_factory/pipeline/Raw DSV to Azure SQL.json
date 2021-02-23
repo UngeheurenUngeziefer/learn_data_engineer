@@ -147,6 +147,9 @@
 				]
 			}
 		],
+		"folder": {
+			"name": "Raw Files Pipelines"
+		},
 		"annotations": []
 	}
 }

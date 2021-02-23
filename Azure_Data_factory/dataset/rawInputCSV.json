@@ -11,6 +11,9 @@
 				"type": "string"
 			}
 		},
+		"folder": {
+			"name": "Raw Datasets (Good Columns)"
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {

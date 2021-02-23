@@ -72,6 +72,9 @@
 				"type": "string"
 			}
 		},
+		"folder": {
+			"name": "Raw Files Pipelines"
+		},
 		"annotations": []
 	}
 }
