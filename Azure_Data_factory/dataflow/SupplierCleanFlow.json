@@ -7,15 +7,27 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "inputDSV",
+						"referenceName": "supplierDSV",
 						"type": "DatasetReference"
 					},
 					"name": "Supplier"
 				}
 			],
-			"sinks": [],
-			"transformations": [],
-			"script": "source(output(\n\t\t{\"N_NATIONKEY\"|\"N_NAME\"|\"N_REGIONKEY\"|\"N_COMMENT\"} as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> Supplier"
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "supplierCleanedDSV",
+						"type": "DatasetReference"
+					},
+					"name": "SupplierWIthDecimal"
+				}
+			],
+			"transformations": [
+				{
+					"name": "CommaToDotColumn"
+				}
+			],
+			"script": "parameters{\n\toutputFileName as string\n}\nsource(output(\n\t\tS_SUPPKEY as short,\n\t\tS_NAME as string,\n\t\tS_ADDRESS as string,\n\t\tS_NATIONKEY as short,\n\t\tS_PHONE as string,\n\t\tS_ACCTBAL as string,\n\t\tS_COMMENT as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> Supplier\nSupplier derive(acctbal = replace(S_ACCTBAL, ',', '.')) ~> CommaToDotColumn\nCommaToDotColumn sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:['supplier_cleaned.dsv'],\n\tpartitionBy('hash', 1),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SupplierWIthDecimal"
 		}
 	}
 }
