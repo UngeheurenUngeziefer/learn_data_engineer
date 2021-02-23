@@ -1,0 +1,23 @@
+{
+	"name": "supplierDSV",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "InputBLOB",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "h_supplier.dsv",
+				"container": "dcsv-container"
+			},
+			"columnDelimiter": "|",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
