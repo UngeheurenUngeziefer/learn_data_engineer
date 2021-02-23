@@ -1,0 +1,21 @@
+{
+	"name": "SupplierCleanFlow",
+	"properties": {
+		"description": "Import data from supplier.csv and transform data",
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "inputDSV",
+						"type": "DatasetReference"
+					},
+					"name": "Supplier"
+				}
+			],
+			"sinks": [],
+			"transformations": [],
+			"script": "source(output(\n\t\t{\"N_NATIONKEY\"|\"N_NAME\"|\"N_REGIONKEY\"|\"N_COMMENT\"} as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> Supplier"
+		}
+	}
+}
