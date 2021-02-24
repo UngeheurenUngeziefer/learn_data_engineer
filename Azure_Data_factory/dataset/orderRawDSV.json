@@ -1,0 +1,39 @@
+{
+	"name": "orderRawDSV",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "InputBLOB",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Order"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "h_order.dsv",
+				"container": "dcsv-container"
+			},
+			"columnDelimiter": "|",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "R_REGIONKEY",
+				"type": "String"
+			},
+			{
+				"name": "R_NAME",
+				"type": "String"
+			},
+			{
+				"name": "R_COMMENT",
+				"type": "String"
+			}
+		]
+	}
+}

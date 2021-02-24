@@ -1,0 +1,26 @@
+{
+	"name": "orderFinalDSV",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "InputBLOB",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Order"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "order_cleaned.dsv",
+				"container": "output"
+			},
+			"columnDelimiter": "|",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
