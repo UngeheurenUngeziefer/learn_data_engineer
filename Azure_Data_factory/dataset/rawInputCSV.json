@@ -32,15 +32,7 @@
 		},
 		"schema": [
 			{
-				"name": "R_REGIONKEY",
-				"type": "String"
-			},
-			{
-				"name": "R_NAME",
-				"type": "String"
-			},
-			{
-				"name": "R_COMMENT",
+				"name": "18.01.92",
 				"type": "String"
 			}
 		]
