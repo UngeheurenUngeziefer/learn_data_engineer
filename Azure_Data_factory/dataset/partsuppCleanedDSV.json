@@ -1,31 +1,22 @@
 {
-	"name": "rawOutputCSV",
+	"name": "partsuppCleanedDSV",
 	"properties": {
-		"description": "Output CSV when all columns in good state",
+		"description": "cleaned DSV with good columns",
 		"linkedServiceName": {
 			"referenceName": "InputBLOB",
 			"type": "LinkedServiceReference"
 		},
-		"parameters": {
-			"fileName": {
-				"type": "string"
-			}
-		},
 		"folder": {
-			"name": "0 Raw Datasets (Good Columns)"
+			"name": "Partsupp"
 		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": {
-					"value": "@dataset().fileName",
-					"type": "Expression"
-				},
 				"container": "output"
 			},
-			"columnDelimiter": ",",
+			"columnDelimiter": "|",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
