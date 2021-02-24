@@ -35,19 +35,19 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "S_SUPPKEY",
+									"name": "P_PARTKEY",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "suppkey",
+									"name": "partkey",
 									"type": "Int32",
 									"physicalType": "int"
 								}
 							},
 							{
 								"source": {
-									"name": "S_NAME",
+									"name": "P_NAME",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -59,57 +59,79 @@
 							},
 							{
 								"source": {
-									"name": "S_ADDRESS",
+									"name": "P_MFGR",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "address",
+									"name": "mfgr",
 									"type": "String",
 									"physicalType": "varchar"
 								}
 							},
 							{
 								"source": {
-									"name": "S_NATIONKEY",
+									"name": "P_BRAND",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "nationkey",
+									"name": "brand",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "P_TYPE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "type",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "P_SIZE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "size",
 									"type": "Int32",
 									"physicalType": "int"
 								}
 							},
 							{
 								"source": {
-									"name": "S_PHONE",
+									"name": "P_CONTAINER",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "phone",
+									"name": "container",
 									"type": "String",
 									"physicalType": "varchar"
 								}
 							},
 							{
 								"source": {
-									"name": "S_ACCTBAL",
+									"name": "P_RETAILPRICE",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "acctbal",
-									"type": "Decimal",
-									"physicalType": "decimal",
-									"scale": 2,
-									"precision": 10
+									"name": "retailprice",
+									"type": "Int32",
+									"physicalType": "int"
 								}
 							},
 							{
 								"source": {
-									"name": "S_COMMENT",
+									"name": "P_COMMENT",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -132,7 +154,7 @@
 						"referenceName": "rawInputDSV",
 						"type": "DatasetReference",
 						"parameters": {
-							"fileName": "h_supplier.dsv"
+							"fileName": "h_part.dsv"
 						}
 					}
 				],
@@ -141,7 +163,7 @@
 						"referenceName": "AzureSqlOutputTable",
 						"type": "DatasetReference",
 						"parameters": {
-							"tableName": "supplier"
+							"tableName": "part"
 						}
 					}
 				]
