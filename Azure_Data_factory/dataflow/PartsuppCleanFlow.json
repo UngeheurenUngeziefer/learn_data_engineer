@@ -1,0 +1,32 @@
+{
+	"name": "PartsuppCleanFlow",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "partsuppRawDSV",
+						"type": "DatasetReference"
+					},
+					"name": "PartsuppDSV"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "partsuppCleanedDSV",
+						"type": "DatasetReference"
+					},
+					"name": "PartsuppToFinal"
+				}
+			],
+			"transformations": [
+				{
+					"name": "CommaToDot"
+				}
+			],
+			"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> PartsuppDSV\nPartsuppDSV derive(supplycost = replace(PS_SUPPLYCOST, ',', '.')) ~> CommaToDot\nCommaToDot sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:['partsupp_cleaned.dsv'],\n\tpartitionBy('hash', 1),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> PartsuppToFinal"
+		}
+	}
+}
