@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Data flow1",
+				"name": "Transform Data",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [],
 				"policy": {
@@ -27,11 +27,11 @@
 				}
 			},
 			{
-				"name": "Copy data1",
+				"name": "Copy Data to Azure SQL",
 				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "Data flow1",
+						"activity": "Transform Data",
 						"dependencyConditions": [
 							"Succeeded"
 						]
