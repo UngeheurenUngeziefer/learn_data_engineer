@@ -3,7 +3,39 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy Partsupp to Azure SQL",
+				"name": "Clean Partsupp",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "PartsuppCleanFlow",
+						"type": "DataFlowReference",
+						"datasetParameters": {
+							"PartsuppDSV": {
+								"fileName": "h_partsupp_part1.dsv"
+							},
+							"PartsuppDSV2": {
+								"fileName": "h_partsupp_part2.dsv"
+							}
+						}
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
+			},
+			{
+				"name": "Copy Partsupp to Azure SQL 1",
 				"type": "Copy",
 				"dependsOn": [
 					{
@@ -27,6 +59,8 @@
 						"storeSettings": {
 							"type": "AzureBlobStorageReadSettings",
 							"recursive": true,
+							"wildcardFolderPath": "partsupp_parts",
+							"wildcardFileName": "partsupp_cleaned_1.dsv",
 							"enablePartitionDiscovery": false
 						},
 						"formatSettings": {
@@ -106,9 +140,16 @@
 				]
 			},
 			{
-				"name": "Clean Partsupp",
-				"type": "ExecuteDataFlow",
-				"dependsOn": [],
+				"name": "Copy Partsupp to Azure SQL 2",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Copy Partsupp to Azure SQL 1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -118,16 +159,90 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"dataflow": {
-						"referenceName": "PartsuppCleanFlow",
-						"type": "DataFlowReference"
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"wildcardFolderPath": "partsupp_parts",
+							"wildcardFileName": "partsupp_cleaned_2.dsv",
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
 					},
-					"compute": {
-						"coreCount": 8,
-						"computeType": "General"
+					"sink": {
+						"type": "AzureSqlSink"
 					},
-					"traceLevel": "Fine"
-				}
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "PS_PARTKEY"
+								},
+								"sink": {
+									"name": "partkey"
+								}
+							},
+							{
+								"source": {
+									"name": "PS_SUPPKEY"
+								},
+								"sink": {
+									"name": "suppkey"
+								}
+							},
+							{
+								"source": {
+									"name": "PS_AVAILQTY"
+								},
+								"sink": {
+									"name": "availqty"
+								}
+							},
+							{
+								"source": {
+									"name": "supplycost"
+								},
+								"sink": {
+									"name": "supplycost"
+								}
+							},
+							{
+								"source": {
+									"name": "PS_COMMENT"
+								},
+								"sink": {
+									"name": "comment",
+									"physicalType": "varchar"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "partsuppFinalDSV",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "AzureSqlOutputTable",
+						"type": "DatasetReference",
+						"parameters": {
+							"tableName": "partsupp"
+						}
+					}
+				]
 			}
 		],
 		"annotations": []

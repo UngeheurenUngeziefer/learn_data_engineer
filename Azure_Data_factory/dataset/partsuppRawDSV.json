@@ -6,6 +6,11 @@
 			"referenceName": "InputBLOB",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"fileName": {
+				"type": "string"
+			}
+		},
 		"folder": {
 			"name": "Partsupp"
 		},
@@ -14,7 +19,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "h_partsupp.dsv",
+				"fileName": {
+					"value": "@dataset().fileName",
+					"type": "Expression"
+				},
 				"container": "dcsv-container"
 			},
 			"columnDelimiter": "|",

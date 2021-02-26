@@ -14,8 +14,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "partsupp_cleaned.dsv",
-				"container": "output"
+				"container": "partsupp"
 			},
 			"columnDelimiter": "|",
 			"escapeChar": "\\",
