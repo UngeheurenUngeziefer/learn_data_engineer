@@ -13,7 +13,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "order_cleaned.dsv",
 				"container": "order"
 			},
 			"columnDelimiter": "|",
