@@ -72,7 +72,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "lineitemFinalDSV",
+						"referenceName": "lineitemFinalCSV",
 						"type": "DatasetReference"
 					}
 				],

@@ -1,5 +1,5 @@
 {
-	"name": "lineitemFinalDSV",
+	"name": "lineitemFinalCSV",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "InputBLOB",
@@ -13,7 +13,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"container": "output"
+				"container": "lineitem"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",

@@ -1,5 +1,5 @@
 {
-	"name": "lineitemCleanedDSV",
+	"name": "lineitemCleanedCSV",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "InputBLOB",
@@ -13,10 +13,9 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "lineitem_cleaned.dsv",
-				"container": "output"
+				"container": "lineitem"
 			},
-			"columnDelimiter": "|",
+			"columnDelimiter": ",",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""

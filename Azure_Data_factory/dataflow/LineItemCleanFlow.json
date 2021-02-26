@@ -6,7 +6,7 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "lineitemRawDSV",
+						"referenceName": "lineitemRawCSV",
 						"type": "DatasetReference"
 					},
 					"name": "source1"
