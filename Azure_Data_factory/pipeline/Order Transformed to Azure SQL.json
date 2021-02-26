@@ -50,162 +50,6 @@
 				}
 			},
 			{
-				"name": "Copy data1",
-				"type": "Copy",
-				"dependsOn": [
-					{
-						"activity": "Clean Order Tables",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"source": {
-						"type": "DelimitedTextSource",
-						"storeSettings": {
-							"type": "AzureBlobStorageReadSettings",
-							"recursive": true,
-							"wildcardFolderPath": "order",
-							"wildcardFileName": "order_cleaned_1.dsv",
-							"enablePartitionDiscovery": false
-						},
-						"formatSettings": {
-							"type": "DelimitedTextReadSettings"
-						}
-					},
-					"sink": {
-						"type": "AzureSqlSink"
-					},
-					"enableStaging": false,
-					"translator": {
-						"type": "TabularTranslator",
-						"mappings": [
-							{
-								"source": {
-									"name": "O_ORDERKEY"
-								},
-								"sink": {
-									"name": "orderkey",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "O_CUSTKEY"
-								},
-								"sink": {
-									"name": "custkey",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "O_ORDERSTATUS"
-								},
-								"sink": {
-									"name": "orderstatus",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "totalprice"
-								},
-								"sink": {
-									"name": "totalprice",
-									"type": "Decimal",
-									"physicalType": "decimal",
-									"scale": 4,
-									"precision": 10
-								}
-							},
-							{
-								"source": {
-									"name": "orderdate"
-								},
-								"sink": {
-									"name": "orderdate",
-									"type": "DateTime",
-									"physicalType": "datetime2"
-								}
-							},
-							{
-								"source": {
-									"name": "O_ORDERPRIORITY"
-								},
-								"sink": {
-									"name": "orderpriority",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "O_CLERK"
-								},
-								"sink": {
-									"name": "clerk",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "O_SHIPPRIORITY"
-								},
-								"sink": {
-									"name": "shippriority",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "O_COMMENT"
-								},
-								"sink": {
-									"name": "comment",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							}
-						],
-						"typeConversion": true,
-						"typeConversionSettings": {
-							"allowDataTruncation": true,
-							"treatBooleanAsNumber": false
-						}
-					}
-				},
-				"inputs": [
-					{
-						"referenceName": "orderFinalDSV",
-						"type": "DatasetReference"
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "AzureSqlOutputTable",
-						"type": "DatasetReference",
-						"parameters": {
-							"tableName": "order"
-						}
-					}
-				]
-			},
-			{
 				"name": "Copy Data5",
 				"type": "Copy",
 				"dependsOn": [
@@ -366,7 +210,7 @@
 				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "Copy data1",
+						"activity": "Copy Data1",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -856,6 +700,317 @@
 							"recursive": true,
 							"wildcardFolderPath": "order",
 							"wildcardFileName": "order_cleaned_6.dsv",
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "O_ORDERKEY"
+								},
+								"sink": {
+									"name": "orderkey",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "O_CUSTKEY"
+								},
+								"sink": {
+									"name": "custkey",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "O_ORDERSTATUS"
+								},
+								"sink": {
+									"name": "orderstatus",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "totalprice"
+								},
+								"sink": {
+									"name": "totalprice",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 4,
+									"precision": 10
+								}
+							},
+							{
+								"source": {
+									"name": "orderdate"
+								},
+								"sink": {
+									"name": "orderdate",
+									"type": "DateTime",
+									"physicalType": "datetime2"
+								}
+							},
+							{
+								"source": {
+									"name": "O_ORDERPRIORITY"
+								},
+								"sink": {
+									"name": "orderpriority",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "O_CLERK"
+								},
+								"sink": {
+									"name": "clerk",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "O_SHIPPRIORITY"
+								},
+								"sink": {
+									"name": "shippriority",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "O_COMMENT"
+								},
+								"sink": {
+									"name": "comment",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "orderFinalDSV",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "AzureSqlOutputTable",
+						"type": "DatasetReference",
+						"parameters": {
+							"tableName": "order"
+						}
+					}
+				]
+			},
+			{
+				"name": "Copy Data1",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Clean Order Tables",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"wildcardFolderPath": "order",
+							"wildcardFileName": "order_cleaned_1.dsv",
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "O_ORDERKEY"
+								},
+								"sink": {
+									"name": "orderkey",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "O_CUSTKEY"
+								},
+								"sink": {
+									"name": "custkey",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "totalprice"
+								},
+								"sink": {
+									"name": "totalprice",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 4,
+									"precision": 10
+								}
+							},
+							{
+								"source": {
+									"name": "orderdate"
+								},
+								"sink": {
+									"name": "orderdate",
+									"type": "DateTime",
+									"physicalType": "datetime2"
+								}
+							},
+							{
+								"source": {
+									"name": "O_ORDERPRIORITY"
+								},
+								"sink": {
+									"name": "orderpriority",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "O_CLERK"
+								},
+								"sink": {
+									"name": "clerk",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "O_SHIPPRIORITY"
+								},
+								"sink": {
+									"name": "shippriority",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "O_COMMENT"
+								},
+								"sink": {
+									"name": "comment",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "O_ORDERSTATUS"
+								},
+								"sink": {
+									"name": "orderstatus",
+									"physicalType": "varchar"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "orderFinalDSV",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "AzureSqlOutputTable",
+						"type": "DatasetReference",
+						"parameters": {
+							"tableName": "order"
+						}
+					}
+				]
+			},
+			{
+				"name": "Copy Data7",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Copy Data6",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"wildcardFolderPath": "order",
+							"wildcardFileName": "order_cleaned_7.dsv",
 							"enablePartitionDiscovery": false
 						},
 						"formatSettings": {
