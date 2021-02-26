@@ -18,7 +18,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "@items()",
+				"fileName": "output_file_cleared.csv",
 				"container": "lineitem"
 			},
 			"columnDelimiter": ",",
