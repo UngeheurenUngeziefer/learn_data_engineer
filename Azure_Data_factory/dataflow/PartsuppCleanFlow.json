@@ -10,6 +10,13 @@
 						"type": "DatasetReference"
 					},
 					"name": "PartsuppDSV"
+				},
+				{
+					"dataset": {
+						"referenceName": "partsuppRawDSV",
+						"type": "DatasetReference"
+					},
+					"name": "PartsuppDSV2"
 				}
 			],
 			"sinks": [
@@ -18,15 +25,25 @@
 						"referenceName": "partsuppCleanedDSV",
 						"type": "DatasetReference"
 					},
-					"name": "PartsuppToFinal"
+					"name": "PartsuppCleaned1"
+				},
+				{
+					"dataset": {
+						"referenceName": "partsuppCleanedDSV",
+						"type": "DatasetReference"
+					},
+					"name": "PartsuppCleaned2"
 				}
 			],
 			"transformations": [
 				{
 					"name": "CommaToDot"
+				},
+				{
+					"name": "CommaToDot2"
 				}
 			],
-			"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> PartsuppDSV\nPartsuppDSV derive(supplycost = replace(PS_SUPPLYCOST, ',', '.')) ~> CommaToDot\nCommaToDot sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:['partsupp_cleaned.dsv'],\n\tpartitionBy('hash', 1),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> PartsuppToFinal"
+			"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> PartsuppDSV\nsource(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> PartsuppDSV2\nPartsuppDSV derive(supplycost = replace(PS_SUPPLYCOST, ',', '.')) ~> CommaToDot\nPartsuppDSV2 derive(supplycost = replace(PS_SUPPLYCOST, ',', '.')) ~> CommaToDot2\nCommaToDot sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:['partsupp_cleaned_1.dsv'],\n\tpartitionBy('hash', 1),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> PartsuppCleaned1\nCommaToDot2 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> PartsuppCleaned2"
 		}
 	}
 }
