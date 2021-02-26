@@ -9,12 +9,89 @@
 						"referenceName": "orderRawDSV",
 						"type": "DatasetReference"
 					},
-					"name": "source1"
+					"name": "OrderPart1"
+				},
+				{
+					"dataset": {
+						"referenceName": "orderRawDSV",
+						"type": "DatasetReference"
+					},
+					"name": "OrderPart2"
+				},
+				{
+					"dataset": {
+						"referenceName": "orderRawDSV",
+						"type": "DatasetReference"
+					},
+					"name": "OrderPart3"
+				},
+				{
+					"dataset": {
+						"referenceName": "orderRawDSV",
+						"type": "DatasetReference"
+					},
+					"name": "OrderPart4"
+				},
+				{
+					"dataset": {
+						"referenceName": "orderRawDSV",
+						"type": "DatasetReference"
+					},
+					"name": "OrderPart5"
+				},
+				{
+					"dataset": {
+						"referenceName": "orderRawDSV",
+						"type": "DatasetReference"
+					},
+					"name": "OrderPart6"
+				},
+				{
+					"dataset": {
+						"referenceName": "orderRawDSV",
+						"type": "DatasetReference"
+					},
+					"name": "OrderPart7"
 				}
 			],
-			"sinks": [],
-			"transformations": [],
-			"script": "source(output(\n\t\tR_REGIONKEY as string,\n\t\tR_NAME as string,\n\t\tR_COMMENT as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> source1"
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "orderCleanedDSV",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				},
+				{
+					"dataset": {
+						"referenceName": "orderCleanedDSV",
+						"type": "DatasetReference"
+					},
+					"name": "sink2"
+				},
+				{
+					"dataset": {
+						"referenceName": "orderCleanedDSV",
+						"type": "DatasetReference"
+					},
+					"name": "sink3"
+				}
+			],
+			"transformations": [
+				{
+					"name": "DerivedColumn1"
+				},
+				{
+					"name": "DerivedColumn2"
+				},
+				{
+					"name": "DerivedColumn3"
+				},
+				{
+					"name": "DerivedColumn4"
+				}
+			],
+			"script": "source(output(\n\t\tO_ORDERKEY as integer,\n\t\tO_CUSTKEY as integer,\n\t\tO_ORDERSTATUS as boolean,\n\t\tO_TOTALPRICE as string,\n\t\tO_ORDERDATE as string,\n\t\tO_ORDERPRIORITY as string,\n\t\tO_CLERK as string,\n\t\tO_SHIPPRIORITY as boolean,\n\t\tO_COMMENT as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> OrderPart1\nsource(output(\n\t\tR_REGIONKEY as string,\n\t\tR_NAME as string,\n\t\tR_COMMENT as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> OrderPart2\nsource(output(\n\t\tR_REGIONKEY as string,\n\t\tR_NAME as string,\n\t\tR_COMMENT as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> OrderPart3\nsource(output(\n\t\tR_REGIONKEY as string,\n\t\tR_NAME as string,\n\t\tR_COMMENT as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> OrderPart4\nsource(output(\n\t\tR_REGIONKEY as string,\n\t\tR_NAME as string,\n\t\tR_COMMENT as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> OrderPart5\nsource(output(\n\t\tR_REGIONKEY as string,\n\t\tR_NAME as string,\n\t\tR_COMMENT as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> OrderPart6\nsource(output(\n\t\tR_REGIONKEY as string,\n\t\tR_NAME as string,\n\t\tR_COMMENT as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> OrderPart7\nOrderPart1 derive(totalprice = replace(O_TOTALPRICE, ',', '.'),\n\t\torderdate = toDate(O_ORDERDATE, 'dd.MM.yy')) ~> DerivedColumn1\nOrderPart2 derive(totalprice = replace(O_TOTALPRICE, ',', '.'),\n\t\torderdate = toDate(O_ORDERDATE, 'dd.MM.yy')) ~> DerivedColumn2\nOrderPart3 derive(totalprice = replace(O_TOTALPRICE, ',', '.'),\n\t\torderdate = toDate(O_ORDERDATE, 'dd.MM.yy')) ~> DerivedColumn3\nOrderPart4 derive(totalprice = replace(O_TOTALPRICE, ',', '.'),\n\t\torderdate = toDate(O_ORDERDATE, 'dd.MM.yy')) ~> DerivedColumn4\nDerivedColumn1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1\nDerivedColumn2 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink2\nDerivedColumn3 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink3"
 		}
 	}
 }
