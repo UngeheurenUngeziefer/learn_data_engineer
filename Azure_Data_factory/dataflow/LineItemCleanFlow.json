@@ -12,13 +12,21 @@
 					"name": "source1"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "lineitemCleanedCSV",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
 			"transformations": [
 				{
 					"name": "DerivedColumns"
 				}
 			],
-			"script": "source(output(\n\t\t{2828519} as integer,\n\t\t{24450} as integer,\n\t\t{4451} as short,\n\t\t{33} as short,\n\t\t{34} as short,\n\t\t{4123,35} as string,\n\t\t{06} as string,\n\t\t{07} as string,\n\t\tR as string,\n\t\tF as boolean,\n\t\t{28.01.92} as string,\n\t\t{22.02.92} as string,\n\t\t{31.01.92} as string,\n\t\t{DELIVER IN PERSON        } as string,\n\t\t{REG AIR   } as string,\n\t\t{pending, unusual deposits s} as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> source1\nsource1 derive() ~> DerivedColumns"
+			"script": "source(output(\n\t\t{_col0_} as integer,\n\t\t{_col1_} as integer,\n\t\t{_col2_} as short,\n\t\t{_col3_} as short,\n\t\t{_col4_} as short,\n\t\t{_col5_} as string,\n\t\t{_col6_} as string,\n\t\t{_col7_} as string,\n\t\t{_col8_} as string,\n\t\t{_col9_} as boolean,\n\t\t{_col10_} as string,\n\t\t{_col11_} as string,\n\t\t{_col12_} as string,\n\t\t{_col13_} as string,\n\t\t{_col14_} as string,\n\t\t{_col15_} as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> source1\nsource1 derive(extendedprice = replace({_col5_}, ',', '.'),\n\t\tdiscount = replace({_col6_}, ',', '.'),\n\t\ttax = replace({_col7_}, ',', '.'),\n\t\treturnflag = toString({_col8_}),\n\t\tshipdate = toDate({_col10_}, 'dd.MM.yy'),\n\t\tcommitdate = toDate({_col11_}, 'dd.MM.yy'),\n\t\treceiptdate = toDate({_col12_}, 'dd.MM.yy'),\n\t\tshipinstruct = toString({_col13_}),\n\t\tshipmode = toString({_col14_})) ~> DerivedColumns\nDerivedColumns sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
 		}
 	}
 }
