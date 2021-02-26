@@ -138,9 +138,6 @@
 								"dataflow": {
 									"referenceName": "LineItemCleanFlow",
 									"type": "DataFlowReference",
-									"parameters": {
-										"fileName": "h_lineitem_part"
-									},
 									"datasetParameters": {
 										"source1": {
 											"fileName": {
@@ -337,10 +334,7 @@
 									"referenceName": "lineitemFinalCSV",
 									"type": "DatasetReference",
 									"parameters": {
-										"fileName": {
-											"value": "@item()",
-											"type": "Expression"
-										}
+										"fileName": "output_file_cleared.csv"
 									}
 								}
 							],

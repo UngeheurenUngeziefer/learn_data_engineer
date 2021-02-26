@@ -18,6 +18,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": "@items()",
 				"container": "lineitem"
 			},
 			"columnDelimiter": ",",
