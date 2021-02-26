@@ -13,6 +13,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": "h_lineitem_part2_cleaned.csv",
+				"folderPath": "lineitem",
 				"container": "lineitem"
 			},
 			"columnDelimiter": ",",
