@@ -85,19 +85,287 @@
 						"h_lineitem_part67.csv"
 					]
 				}
+			},
+			{
+				"name": "For Each File",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Set Lineitems Files",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@variables('Files')",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "Set variable",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "Name",
+								"value": "@item()"
+							}
+						},
+						{
+							"name": "Transform Data",
+							"type": "ExecuteDataFlow",
+							"dependsOn": [
+								{
+									"activity": "Set variable",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"dataflow": {
+									"referenceName": "LineItemCleanFlow",
+									"type": "DataFlowReference",
+									"parameters": {
+										"fileName": "h_lineitem_part"
+									},
+									"datasetParameters": {
+										"source1": {
+											"fileName": {
+												"value": "@item()",
+												"type": "Expression"
+											}
+										}
+									}
+								},
+								"compute": {
+									"coreCount": 8,
+									"computeType": "General"
+								},
+								"traceLevel": "Fine"
+							}
+						},
+						{
+							"name": "Copy Data to Azure SQL",
+							"type": "Copy",
+							"dependsOn": [
+								{
+									"activity": "Transform Data",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "DelimitedTextSource",
+									"storeSettings": {
+										"type": "AzureBlobStorageReadSettings",
+										"recursive": true,
+										"enablePartitionDiscovery": false
+									},
+									"formatSettings": {
+										"type": "DelimitedTextReadSettings"
+									}
+								},
+								"sink": {
+									"type": "AzureSqlSink"
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"mappings": [
+										{
+											"source": {
+												"ordinal": 1
+											},
+											"sink": {
+												"name": "orderkey"
+											}
+										},
+										{
+											"source": {
+												"ordinal": 2
+											},
+											"sink": {
+												"name": "partkey"
+											}
+										},
+										{
+											"source": {
+												"ordinal": 3
+											},
+											"sink": {
+												"name": "suppkey"
+											}
+										},
+										{
+											"source": {
+												"ordinal": 4
+											},
+											"sink": {
+												"name": "linenumber"
+											}
+										},
+										{
+											"source": {
+												"ordinal": 5
+											},
+											"sink": {
+												"name": "quantity"
+											}
+										},
+										{
+											"source": {
+												"ordinal": 17
+											},
+											"sink": {
+												"name": "extendedprice"
+											}
+										},
+										{
+											"source": {
+												"ordinal": 18
+											},
+											"sink": {
+												"name": "discount"
+											}
+										},
+										{
+											"source": {
+												"ordinal": 19
+											},
+											"sink": {
+												"name": "tax"
+											}
+										},
+										{
+											"source": {
+												"ordinal": 20
+											},
+											"sink": {
+												"name": "returnflag"
+											}
+										},
+										{
+											"source": {
+												"ordinal": 10
+											},
+											"sink": {
+												"name": "linestatus"
+											}
+										},
+										{
+											"source": {
+												"ordinal": 21
+											},
+											"sink": {
+												"name": "shipdate"
+											}
+										},
+										{
+											"source": {
+												"ordinal": 22
+											},
+											"sink": {
+												"name": "commitdate"
+											}
+										},
+										{
+											"source": {
+												"ordinal": 23
+											},
+											"sink": {
+												"name": "receiptdate"
+											}
+										},
+										{
+											"source": {
+												"ordinal": 24
+											},
+											"sink": {
+												"name": "shipinstruct"
+											}
+										},
+										{
+											"source": {
+												"ordinal": 25
+											},
+											"sink": {
+												"name": "shipmode"
+											}
+										},
+										{
+											"source": {
+												"ordinal": 16
+											},
+											"sink": {
+												"name": "comment",
+												"physicalType": "varchar"
+											}
+										}
+									],
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "lineitemFinalCSV",
+									"type": "DatasetReference",
+									"parameters": {
+										"fileName": {
+											"value": "@item()",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "AzureSqlOutputTable",
+									"type": "DatasetReference",
+									"parameters": {
+										"tableName": "lineitem"
+									}
+								}
+							]
+						}
+					]
+				}
 			}
 		],
-		"parameters": {
-			"LoadAllFiles": {
-				"type": "bool",
-				"defaultValue": false
-			}
-		},
 		"variables": {
 			"Files": {
 				"type": "Array"
 			},
 			"ListOfFiles": {
+				"type": "String"
+			},
+			"Name": {
 				"type": "String"
 			}
 		},
