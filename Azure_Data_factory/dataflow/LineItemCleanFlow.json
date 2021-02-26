@@ -13,8 +13,12 @@
 				}
 			],
 			"sinks": [],
-			"transformations": [],
-			"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> source1"
+			"transformations": [
+				{
+					"name": "DerivedColumns"
+				}
+			],
+			"script": "source(output(\n\t\t{2828519} as integer,\n\t\t{24450} as integer,\n\t\t{4451} as short,\n\t\t{33} as short,\n\t\t{34} as short,\n\t\t{4123,35} as string,\n\t\t{06} as string,\n\t\t{07} as string,\n\t\tR as string,\n\t\tF as boolean,\n\t\t{28.01.92} as string,\n\t\t{22.02.92} as string,\n\t\t{31.01.92} as string,\n\t\t{DELIVER IN PERSON        } as string,\n\t\t{REG AIR   } as string,\n\t\t{pending, unusual deposits s} as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> source1\nsource1 derive() ~> DerivedColumns"
 		}
 	}
 }
