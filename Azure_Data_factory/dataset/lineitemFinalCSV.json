@@ -5,6 +5,11 @@
 			"referenceName": "InputBLOB",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"fileName": {
+				"type": "string"
+			}
+		},
 		"folder": {
 			"name": "Lineitem"
 		},
@@ -13,8 +18,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "h_lineitem_part2_cleaned.csv",
-				"folderPath": "lineitem",
+				"fileName": {
+					"value": "@dataset().fileName",
+					"type": "Expression"
+				},
 				"container": "lineitem"
 			},
 			"columnDelimiter": ",",
