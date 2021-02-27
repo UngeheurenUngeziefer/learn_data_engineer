@@ -14,26 +14,19 @@
 						"h_lineitem_part2.csv",
 						"h_lineitem_part3.csv",
 						"h_lineitem_part4.csv",
-						" h_lineitem_part5.csv",
-						" h_lineitem_part6.csv",
+						"h_lineitem_part5.csv",
+						"h_lineitem_part6.csv",
 						"h_lineitem_part7.csv",
 						"h_lineitem_part8.csv",
 						"h_lineitem_part9.csv",
 						"h_lineitem_part10.csv",
-						"",
 						"h_lineitem_part11.csv",
 						"h_lineitem_part12.csv",
-						"",
 						"h_lineitem_part13.csv",
-						"",
 						"h_lineitem_part14.csv",
-						"",
 						"h_lineitem_part15.csv",
-						"",
 						"h_lineitem_part16.csv",
-						"",
 						"h_lineitem_part17.csv",
-						"",
 						"h_lineitem_part18.csv",
 						"h_lineitem_part19.csv",
 						"h_lineitem_part20.csv",
@@ -42,7 +35,8 @@
 						"h_lineitem_part23.csv",
 						"h_lineitem_part24.csv",
 						"h_lineitem_part25.csv",
-						"h_lineitem_part26.csvh_lineitem_part27.csv",
+						"h_lineitem_part26.csv",
+						"h_lineitem_part27.csv",
 						"h_lineitem_part28.csv",
 						"h_lineitem_part29.csv",
 						"h_lineitem_part30.csv",
@@ -112,7 +106,10 @@
 							"userProperties": [],
 							"typeProperties": {
 								"variableName": "Name",
-								"value": "@item()"
+								"value": {
+									"value": "@item()",
+									"type": "Expression"
+								}
 							}
 						},
 						{
