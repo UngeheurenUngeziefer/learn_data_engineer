@@ -20,7 +20,7 @@
 						"type": "DataFlowReference",
 						"datasetParameters": {
 							"source1": {
-								"fileName": "h_lineitem_part65.csv"
+								"fileName": "h_lineitem_part53.csv"
 							}
 						}
 					},
@@ -248,7 +248,7 @@
 						"referenceName": "lineitemFinalCSV",
 						"type": "DatasetReference",
 						"parameters": {
-							"fileName": "h_lineitem_part65.csv"
+							"fileName": "h_lineitem_part53.csv"
 						}
 					}
 				],
