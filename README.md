@@ -1,55 +1,18 @@
 <h3>Data Integration DB and ETL</h3>
 
-!!- sqlbolt
-!!- learndb
-!!- onboarding (100%)
-!!- english (writing B1, speaking B1)
-!!- Developing Miscrofot SQL Server 2016 Databases
-!!- SQL Server 2016: Provision a Database
-!!- Advanced SQL for Query Tuning and Performance Optimization
-!!- Optimize query performance in SQL Server
-!!- Ubuntu
-!!- task 1 (completed) <br />
-	1, 2, 3, 4, 5, 6, 7, 8, 9
-!!- task 2 (completed) <br />
-	1, 2, 3, 4, 5, 6, 7
-!!- task 3 (completed) <br />
-	1, 2, 3, 4, 5, 6, 7, 8, 9, 10
-!!- task 4 (completed) <br />
-	1, 2, 3, 4, 5, 6, 7, 8
-!!- task 5 (completed) <br />
-	1, 2, 3, 4, 5, 6, 7, 8, 9
-!!- task 6 (completed) <br />
-	1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16
-!!- task 7 (completed) <br />
-	1, 2, 3, 4 
-!!- task 8 (completed) <br />
-	1, 2, 3, 4
-!!- task 9 (completed) <br />
-	1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14
-!!- SQL Server Bible <br />
-	6, 7, 8, 9, 16, 17, 18, 44, 45, 46, 47, 48, 49, 50
-!!- Articles
-	1, 2
-!!- Kudvenkat
-	transactions: isolations lvls, concurrency
-!!- SQL Server Performance for Developers
-!!- Interview 1 f
-
-!- DB Knowledge Assesment
-	1, 2
-
-!- Interview 2
-	speech, research
-
-!- Azure Data Factory
-	1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
-
-!- TPCH
-	1, 
-
-
-
+!!- sqlbolt <br />
+!!- learndb <br />
+!!- Onboarding <br />
+!!- English (writing B1, speaking B1) <br />
+!!- Developing Miscrofot SQL Server 2016 Databases <br />
+!!- SQL Training (9 tasks) <br />
+!!- SQL Server 2016: Provision a Database (LinkedIn course) <br />
+!!- Advanced SQL for Query Tuning and Performance Optimization (LinkedIn course) <br />
+!!- Optimize query performance in SQL Server (LinkedIn course) <br />
+!!- Ubuntu (Install -> Setup) <br />
+!!- SQL Server Bible (3 topics) <br />
+!!- SQL Server Performance for Developers (LinkedIn course) <br />
+!!- Azure Data Factory <br />
 	
 <h3>Список</h3>
 
@@ -106,7 +69,6 @@
 - transaction (выполняются или полностью или не выполняются, разобраться глубоко, долбить)
 - phantom (как нарушение транзакций влияет на результаты, когда считывать данные)
 - блокировака и deadlock
-
 - performance
 - операторы, запросы, performance
 - разница performance (заменить что лучше что нельзя использовать)
@@ -126,5 +88,4 @@ MERGE в хранилищах OLAP - difference`
 property, ACID (read, commit, snapshot)
 phantom (как нарушение транзакций влияет на результаты, когда считывать данные)
 блокировака и deadlock
-
 
