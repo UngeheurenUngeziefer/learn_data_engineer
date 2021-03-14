@@ -12,7 +12,9 @@
 !!- Ubuntu (Install -> Setup) <br />
 !!- SQL Server Bible (3 topics) <br />
 !!- SQL Server Performance for Developers (LinkedIn course) <br />
-!!- Azure Data Factory <br />
+!!- Azure Data Factory TPCH_project (+ presentation) <br />
+!!- YM Favorite Songs project (+ presentation) <br />
+
 	
 <h3>Список</h3>
 
