@@ -14,7 +14,7 @@
 !!- SQL Server Performance for Developers (LinkedIn course) <br />
 !!- Azure Data Factory TPCH_project (+ presentation) <br />
 !!- YM Favorite Songs project (+ presentation) <br />
-
+!!- Yahoo finance API streaming pyspark
 	
 <h3>Список</h3>
 
