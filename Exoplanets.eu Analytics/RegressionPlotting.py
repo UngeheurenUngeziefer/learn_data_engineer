@@ -25,6 +25,7 @@ class LinearRegression:
 
 		# numpy array to pandas dataframe
 		self.df = pd.DataFrame.from_records(numpy_array)
+		self.linear_regression()
 
 
 	def linear_regression(self):
@@ -101,22 +102,33 @@ class LinearRegression:
 		plt.legend()
 
 		# text position is not scalable! you need to change it for each plot!
-		plt.text(10, 2.5, coefficients_info, style='italic',
+		plt.text(75, 500000, coefficients_info, style='italic',
 	        bbox={'facecolor': self.color, 'alpha': 0.5, 'pad': 10})
 		plt.show()
 
 
-
 class LogisticalRegression:
-	'''returns logistical regression, coefficients, 
-	   plot, and confusion matrix'''
+	'''returns number of 1 and 0 values by divider of column with values
+	   		   percentage distribution on 1 and 0
+	   		   model intercept and coefficient value
+	   		   regression line values (x and y)
+	   		   predicted Y list (0 and 1 sorted) - logistical regression
+	   		   x values of predictor sorted
+	   		   y values list 0 and 1
+	   		   plot with Logistical Regression and labels
+	   		   plot Confusion Matrix'''
 
-	def __init__(self, field, divider, title):
+	def __init__(self, field, divider, predictor, zeros, ones):
 		'''initializing function'''
 
 		self.field = field
 		self.divider = divider
-		self.title = title
+		self.predictor = predictor
+		self.zeros = zeros
+		self.ones = ones
+		self.color = '#6495ED'
+		self.title = f'Dependence of {self.ones}/{self.zeros} exoplanets ' + \
+					 f'on the {self.predictor.capitalize()}'
 
 		# load numpy exoplanets data
 		numpy_array = np.load('exoplanets_data.npy', allow_pickle=True)
@@ -127,9 +139,21 @@ class LogisticalRegression:
 		# create new column populated with 0s and 1s
 		self.to_one_zero_column()
 
+		# save to df only needed columns
+		self.df = self.df[['zero_one_field', self.predictor]]
+
+		# drop all NULL's
+		self.df = self.df.dropna()
+
+		# sort values
+		self.df = self.df.sort_values(by=self.predictor)
+
+		# apply x and y values, reshape x, plot regression
+		self.y = np.array(self.df['zero_one_field'])
+		self.x = np.array(self.df[self.predictor])
+		self.x = self.x.reshape(-1, 1)
+		
 		# evaluating model, plotting regression, plotting confusion matrix
-		self.x = np.arange(len(self.df['zero_one_field'])).reshape(-1, 1)
-		self.y = np.array(self.df['zero_one_field'].sort_values())
 		self.logistical_regression(self.x, self.y, self.title)
 
 
@@ -174,21 +198,17 @@ class LogisticalRegression:
 
 	def logistical_regression(self, x, y, title):
 		'''function returns logistical regression coefficients 
-		   returns plot with logistical regression
-		   returns confusion matrix'''
+		   					plot with logistical regression
+		   					confusion matrix'''
 
 		model = LogisticRegression(solver='liblinear', random_state=0)\
 									.fit(self.x, self.y)
-
-		print(f'Model intercept: {model.intercept_}')
-		print(f'Model coef: {model.coef_}')
 
 		regression_line = model.predict_proba(x)
 		predicted_y = model.predict(x)
 		print(f'\nRegression line values = {regression_line}')
 		print(f'\nPredicted Y = {predicted_y}')
-		print(f'\nx = {self.x}')
-		print(f'\ny = {self.y}')
+
 
 		reg_line_y = []
 		for i in regression_line:
@@ -205,18 +225,30 @@ class LogisticalRegression:
 		plt.scatter(self.x, reg_line_y, color='grey',\
 								   label='Predicted probability', marker='s')
 
+		labels = [f'0 ({self.zeros})', '0.5 (middle line)', f'1 ({self.ones})', '']
 		plt.xticks(np.arange(min(self.x), max(self.x)+1, 1.0), rotation=45)
-		plt.yticks(np.arange(min(self.y), max(self.y)+1, 0.5))
+		plt.yticks(np.arange(min(self.y), max(self.y)+1, 0.5), labels)
+
 		plt.grid(color = '.9', linestyle = '-.', linewidth = 0.5)
 		plt.axhline(.5, color='.5')
-		plt.xlabel('x')
-		plt.ylabel('y, p(x)')
+		# limit of y axis
+		plt.ylim([-0.1,1.1])
+		
+		plt.xlabel(f'x\n {self.predictor}')
+		plt.ylabel(f'y, p(x)\n {self.field}')
 		plt.locator_params(axis='x', nbins=50)
 		plt.legend()
-		plt.title(self.title)
+
+		plt.title(f'Logistical Regression: \n {self.title}')
+
+		coefficients_info = f'Model intercept: {model.intercept_}' + \
+							f'\nModel coef: {model.coef_}' + \
+							f'\nModel accuracy: {model.score(x, y)}'
+
+		plt.text(3, 0.75, coefficients_info, style='italic',
+	        bbox={'facecolor': self.color, 'alpha': 0.5, 'pad': 10})
 		plt.show()
 
-		print(model.score(x, y))
 		cm = confusion_matrix(y, model.predict(x))
 
 		fig, ax = plt.subplots(figsize=(8, 8))
@@ -225,7 +257,7 @@ class LogisticalRegression:
 		ax.xaxis.set(ticks=(0, 1), ticklabels=('Predicted 0s', 'Predicted 1s'))
 		ax.yaxis.set(ticks=(0, 1), ticklabels=('Actual 0s', 'Actual 1s'))
 		ax.set_ylim(1.5, -0.5)
-		plt.title('Test Confusion Matrix')
+		plt.title('Confusion Matrix')
 		for i in range(2):
 		    for j in range(2):
 		        ax.text(j, i, cm[i, j], ha='center', va='center', 
@@ -237,18 +269,19 @@ class LogisticalRegression:
 
 # Plot 1
 # LinearRegression('radius', 'mass', 
-# 					'Planet Radius', 'Planet Mass',
-# 					'#6676bc').linear_regression()
+# 				   'Planet Radius', 'Planet Mass',
+# 				   '#6676bc')
 
 # Plot 2
 # LinearRegression('star_age', 'star_mass', 
-# 					'Star Age', 'Star Mass',
-# 					'#bca766').linear_regression()
+# 				   'Star Age', 'Star Mass',
+# 				   '#bca766')
 
 # Plot 3
-# LinearRegression('period', 'semi_major_axis', 
-# 					'Orbital Period', 'Semi Major Axis',
-# 					'#9f66bc').linear_regression()
+# LinearRegression('semi_major_axis', 'period', 
+# 				   'Semi Major Axis', 'Orbital Period',
+# 				   '#9f66bc')
 
-# Plot 4 and Plot 5
-# LogisticalRegression('mass', 0.0315, 'Gigantic (1) vs Earth-like (0) exoplanets')
+# Plot 1
+# LogisticalRegression('mass', 0.0315, 'radius',
+# 					'Earth-like', 'Gigantic')
