@@ -16,7 +16,7 @@
 !!- YM Favorite Songs project (+ presentation) <br />
 !!- Django Load Testing (DRF+Locust+Django) <br />
 !!- NLP with Python for Machine Learning Essential Training (4/5)
-
+!!- EngX
 	
 <h3>Основные понятия SQL</h3>
 
