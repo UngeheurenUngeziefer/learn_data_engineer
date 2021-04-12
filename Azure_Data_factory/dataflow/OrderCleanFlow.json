@@ -1,0 +1,134 @@
+{
+	"name": "OrderCleanFlow",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "orderRawDSV",
+						"type": "DatasetReference"
+					},
+					"name": "OrderPart1"
+				},
+				{
+					"dataset": {
+						"referenceName": "orderRawDSV",
+						"type": "DatasetReference"
+					},
+					"name": "OrderPart2"
+				},
+				{
+					"dataset": {
+						"referenceName": "orderRawDSV",
+						"type": "DatasetReference"
+					},
+					"name": "OrderPart3"
+				},
+				{
+					"dataset": {
+						"referenceName": "orderRawDSV",
+						"type": "DatasetReference"
+					},
+					"name": "OrderPart4"
+				},
+				{
+					"dataset": {
+						"referenceName": "orderRawDSV",
+						"type": "DatasetReference"
+					},
+					"name": "OrderPart5"
+				},
+				{
+					"dataset": {
+						"referenceName": "orderRawDSV",
+						"type": "DatasetReference"
+					},
+					"name": "OrderPart6"
+				},
+				{
+					"dataset": {
+						"referenceName": "orderRawDSV",
+						"type": "DatasetReference"
+					},
+					"name": "OrderPart7"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "orderCleanedDSV",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				},
+				{
+					"dataset": {
+						"referenceName": "orderCleanedDSV",
+						"type": "DatasetReference"
+					},
+					"name": "sink2"
+				},
+				{
+					"dataset": {
+						"referenceName": "orderCleanedDSV",
+						"type": "DatasetReference"
+					},
+					"name": "sink3"
+				},
+				{
+					"dataset": {
+						"referenceName": "orderCleanedDSV",
+						"type": "DatasetReference"
+					},
+					"name": "sink4"
+				},
+				{
+					"dataset": {
+						"referenceName": "orderCleanedDSV",
+						"type": "DatasetReference"
+					},
+					"name": "sink5"
+				},
+				{
+					"dataset": {
+						"referenceName": "orderCleanedDSV",
+						"type": "DatasetReference"
+					},
+					"name": "sink6"
+				},
+				{
+					"dataset": {
+						"referenceName": "orderCleanedDSV",
+						"type": "DatasetReference"
+					},
+					"name": "sink7"
+				}
+			],
+			"transformations": [
+				{
+					"name": "DerivedColumn1"
+				},
+				{
+					"name": "DerivedColumn2"
+				},
+				{
+					"name": "DerivedColumn3"
+				},
+				{
+					"name": "DerivedColumn4"
+				},
+				{
+					"name": "DerivedColumn5"
+				},
+				{
+					"name": "DerivedColumn6"
+				},
+				{
+					"name": "DerivedColumn7"
+				}
+			],
+			"script": "source(output(\n\t\tO_ORDERKEY as integer,\n\t\tO_CUSTKEY as integer,\n\t\tO_ORDERSTATUS as boolean,\n\t\tO_TOTALPRICE as string,\n\t\tO_ORDERDATE as string,\n\t\tO_ORDERPRIORITY as string,\n\t\tO_CLERK as string,\n\t\tO_SHIPPRIORITY as boolean,\n\t\tO_COMMENT as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> OrderPart1\nsource(output(\n\t\tO_ORDERKEY as integer,\n\t\tO_CUSTKEY as integer,\n\t\tO_ORDERSTATUS as boolean,\n\t\tO_TOTALPRICE as string,\n\t\tO_ORDERDATE as string,\n\t\tO_ORDERPRIORITY as string,\n\t\tO_CLERK as string,\n\t\tO_SHIPPRIORITY as boolean,\n\t\tO_COMMENT as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> OrderPart2\nsource(output(\n\t\tO_ORDERKEY as integer,\n\t\tO_CUSTKEY as integer,\n\t\tO_ORDERSTATUS as boolean,\n\t\tO_TOTALPRICE as string,\n\t\tO_ORDERDATE as string,\n\t\tO_ORDERPRIORITY as string,\n\t\tO_CLERK as string,\n\t\tO_SHIPPRIORITY as boolean,\n\t\tO_COMMENT as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> OrderPart3\nsource(output(\n\t\tO_ORDERKEY as integer,\n\t\tO_CUSTKEY as integer,\n\t\tO_ORDERSTATUS as boolean,\n\t\tO_TOTALPRICE as string,\n\t\tO_ORDERDATE as string,\n\t\tO_ORDERPRIORITY as string,\n\t\tO_CLERK as string,\n\t\tO_SHIPPRIORITY as boolean,\n\t\tO_COMMENT as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> OrderPart4\nsource(output(\n\t\tO_ORDERKEY as integer,\n\t\tO_CUSTKEY as integer,\n\t\tO_ORDERSTATUS as boolean,\n\t\tO_TOTALPRICE as string,\n\t\tO_ORDERDATE as string,\n\t\tO_ORDERPRIORITY as string,\n\t\tO_CLERK as string,\n\t\tO_SHIPPRIORITY as boolean,\n\t\tO_COMMENT as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> OrderPart5\nsource(output(\n\t\tO_ORDERKEY as integer,\n\t\tO_CUSTKEY as integer,\n\t\tO_ORDERSTATUS as boolean,\n\t\tO_TOTALPRICE as string,\n\t\tO_ORDERDATE as string,\n\t\tO_ORDERPRIORITY as string,\n\t\tO_CLERK as string,\n\t\tO_SHIPPRIORITY as boolean,\n\t\tO_COMMENT as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> OrderPart6\nsource(output(\n\t\tO_ORDERKEY as integer,\n\t\tO_CUSTKEY as integer,\n\t\tO_ORDERSTATUS as boolean,\n\t\tO_TOTALPRICE as string,\n\t\tO_ORDERDATE as string,\n\t\tO_ORDERPRIORITY as string,\n\t\tO_CLERK as string,\n\t\tO_SHIPPRIORITY as boolean,\n\t\tO_COMMENT as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> OrderPart7\nOrderPart1 derive(totalprice = replace(O_TOTALPRICE, ',', '.'),\n\t\torderdate = toDate(O_ORDERDATE, 'dd.MM.yy')) ~> DerivedColumn1\nOrderPart2 derive(totalprice = replace(O_TOTALPRICE, ',', '.'),\n\t\torderdate = toDate(O_ORDERDATE, 'dd.MM.yy')) ~> DerivedColumn2\nOrderPart3 derive(totalprice = replace(O_TOTALPRICE, ',', '.'),\n\t\torderdate = toDate(O_ORDERDATE, 'dd.MM.yy')) ~> DerivedColumn3\nOrderPart4 derive(totalprice = replace(O_TOTALPRICE, ',', '.'),\n\t\torderdate = toDate(O_ORDERDATE, 'dd.MM.yy')) ~> DerivedColumn4\nOrderPart5 derive(totalprice = replace(O_TOTALPRICE, ',', '.'),\n\t\torderdate = toDate(O_ORDERDATE, 'dd.MM.yy')) ~> DerivedColumn5\nOrderPart6 derive(totalprice = replace(O_TOTALPRICE, ',', '.'),\n\t\torderdate = toDate(O_ORDERDATE, 'dd.MM.yy')) ~> DerivedColumn6\nOrderPart7 derive(totalprice = replace(O_TOTALPRICE, ',', '.'),\n\t\torderdate = toDate(O_ORDERDATE, 'dd.MM.yy')) ~> DerivedColumn7\nDerivedColumn1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:['order/order_cleaned_1.dsv'],\n\tmapColumn(\n\t\tO_ORDERKEY,\n\t\tO_CUSTKEY,\n\t\tO_ORDERSTATUS,\n\t\tO_TOTALPRICE,\n\t\tO_ORDERDATE,\n\t\tO_ORDERPRIORITY,\n\t\tO_CLERK,\n\t\tO_SHIPPRIORITY,\n\t\tO_COMMENT,\n\t\ttotalprice,\n\t\torderdate\n\t),\n\tpartitionBy('hash', 1),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1\nDerivedColumn2 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:['order/order_cleaned_2.dsv'],\n\tpartitionBy('hash', 1),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink2\nDerivedColumn3 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:['order/order_cleaned_3.dsv'],\n\tpartitionBy('hash', 1),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink3\nDerivedColumn4 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:['order/order_cleaned_4.dsv'],\n\tpartitionBy('hash', 1),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink4\nDerivedColumn5 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:['order/order_cleaned_5.dsv'],\n\tpartitionBy('hash', 1),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink5\nDerivedColumn6 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:['order/order_cleaned_6.dsv'],\n\tpartitionBy('hash', 1),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink6\nDerivedColumn7 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:['order/order_cleaned_7.dsv'],\n\tpartitionBy('hash', 1),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink7"
+		}
+	}
+}

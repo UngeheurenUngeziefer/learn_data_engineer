@@ -1,0 +1,49 @@
+{
+	"name": "PartsuppCleanFlow",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "partsuppRawDSV",
+						"type": "DatasetReference"
+					},
+					"name": "PartsuppDSV"
+				},
+				{
+					"dataset": {
+						"referenceName": "partsuppRawDSV",
+						"type": "DatasetReference"
+					},
+					"name": "PartsuppDSV2"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "partsuppCleanedDSV",
+						"type": "DatasetReference"
+					},
+					"name": "PartsuppCleaned1"
+				},
+				{
+					"dataset": {
+						"referenceName": "partsuppCleanedDSV",
+						"type": "DatasetReference"
+					},
+					"name": "PartsuppCleaned2"
+				}
+			],
+			"transformations": [
+				{
+					"name": "CommaToDot"
+				},
+				{
+					"name": "CommaToDot2"
+				}
+			],
+			"script": "source(output(\n\t\tPS_PARTKEY as short,\n\t\tPS_SUPPKEY as short,\n\t\tPS_AVAILQTY as short,\n\t\tPS_SUPPLYCOST as string,\n\t\tPS_COMMENT as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> PartsuppDSV\nsource(output(\n\t\tPS_PARTKEY as short,\n\t\tPS_SUPPKEY as short,\n\t\tPS_AVAILQTY as short,\n\t\tPS_SUPPLYCOST as string,\n\t\tPS_COMMENT as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> PartsuppDSV2\nPartsuppDSV derive(supplycost = replace(PS_SUPPLYCOST, ',', '.')) ~> CommaToDot\nPartsuppDSV2 derive(supplycost = replace(PS_SUPPLYCOST, ',', '.')) ~> CommaToDot2\nCommaToDot sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:['partsupp_parts/partsupp_cleaned_1.dsv'],\n\tpartitionBy('hash', 1),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> PartsuppCleaned1\nCommaToDot2 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:['partsupp_parts/partsupp_cleaned_2.dsv'],\n\tpartitionBy('hash', 1),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> PartsuppCleaned2"
+		}
+	}
+}

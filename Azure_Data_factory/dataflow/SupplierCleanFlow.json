@@ -1,0 +1,33 @@
+{
+	"name": "SupplierCleanFlow",
+	"properties": {
+		"description": "Import data from supplier.csv and transform data. Adding new column with dot without comma, to prepare for export as DECIMAL(10,2)",
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "supplierRawDSV",
+						"type": "DatasetReference"
+					},
+					"name": "SupplierDSV"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "supplierCleanedDSV",
+						"type": "DatasetReference"
+					},
+					"name": "SupplierFinal"
+				}
+			],
+			"transformations": [
+				{
+					"name": "CommaToDotColumn"
+				}
+			],
+			"script": "source(output(\n\t\tS_SUPPKEY as short,\n\t\tS_NAME as string,\n\t\tS_ADDRESS as string,\n\t\tS_NATIONKEY as short,\n\t\tS_PHONE as string,\n\t\tS_ACCTBAL as string,\n\t\tS_COMMENT as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> SupplierDSV\nSupplierDSV derive(acctbal = replace(S_ACCTBAL, ',', '.')) ~> CommaToDotColumn\nCommaToDotColumn sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:['supplier_cleaned.dsv'],\n\tpartitionBy('hash', 1),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SupplierFinal"
+		}
+	}
+}
