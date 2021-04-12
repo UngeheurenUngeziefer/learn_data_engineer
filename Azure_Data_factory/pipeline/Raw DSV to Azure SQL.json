@@ -1,0 +1,177 @@
+{
+	"name": "Raw DSV to Azure SQL",
+	"properties": {
+		"activities": [
+			{
+				"name": "DSV to Azure SQL",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "P_PARTKEY",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "partkey",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "P_NAME",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "name",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "P_MFGR",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "mfgr",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "P_BRAND",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "brand",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "P_TYPE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "type",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "P_SIZE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "size",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "P_CONTAINER",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "container",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "P_RETAILPRICE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "retailprice",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "P_COMMENT",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "comment",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "rawInputDSV",
+						"type": "DatasetReference",
+						"parameters": {
+							"fileName": "h_part.dsv"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "AzureSqlOutputTable",
+						"type": "DatasetReference",
+						"parameters": {
+							"tableName": "part"
+						}
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Raw Files Pipelines"
+		},
+		"annotations": []
+	}
+}

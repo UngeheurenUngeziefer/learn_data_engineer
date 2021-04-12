@@ -1,0 +1,163 @@
+{
+	"name": "Customer Transformed to Azure SQL",
+	"properties": {
+		"description": "Transforming Acctbal column with comma to column with dot than export to Azure DB",
+		"activities": [
+			{
+				"name": "Clean Customer",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "CustomerCleanFlow",
+						"type": "DataFlowReference"
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
+			},
+			{
+				"name": "Copy to Azure SQL",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Clean Customer",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "C_CUSTKEY"
+								},
+								"sink": {
+									"name": "custkey"
+								}
+							},
+							{
+								"source": {
+									"name": "C_NAME"
+								},
+								"sink": {
+									"name": "name",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "C_ADDRESS"
+								},
+								"sink": {
+									"name": "address"
+								}
+							},
+							{
+								"source": {
+									"name": "C_NATIONKEY"
+								},
+								"sink": {
+									"name": "nationkey"
+								}
+							},
+							{
+								"source": {
+									"name": "C_PHONE"
+								},
+								"sink": {
+									"name": "phone"
+								}
+							},
+							{
+								"source": {
+									"name": "acctbal"
+								},
+								"sink": {
+									"name": "acctbal"
+								}
+							},
+							{
+								"source": {
+									"name": "C_MKTSEGMENT"
+								},
+								"sink": {
+									"name": "mktsegment"
+								}
+							},
+							{
+								"source": {
+									"name": "C_COMMENT"
+								},
+								"sink": {
+									"name": "comment",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "customerFinalDSV",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "AzureSqlOutputTable",
+						"type": "DatasetReference",
+						"parameters": {
+							"tableName": "customer"
+						}
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}

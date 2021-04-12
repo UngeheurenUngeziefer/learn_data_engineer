@@ -1,0 +1,470 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name"
+		},
+		"InputBLOB": {
+			"type": "string"
+		},
+		"OutputAzureSQL": {
+			"type": "string"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/Partsupp Transformed to Azure SQL')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Clean Partsupp",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "PartsuppCleanFlow",
+								"type": "DataFlowReference",
+								"datasetParameters": {
+									"PartsuppDSV": {
+										"fileName": "h_partsupp_part1.dsv"
+									},
+									"PartsuppDSV2": {
+										"fileName": "h_partsupp_part2.dsv"
+									}
+								}
+							},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							},
+							"traceLevel": "Fine"
+						}
+					},
+					{
+						"name": "Copy Partsupp to Azure SQL 1",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "Clean Partsupp",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"wildcardFolderPath": "partsupp_parts",
+									"wildcardFileName": "partsupp_cleaned_1.dsv",
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							},
+							"sink": {
+								"type": "AzureSqlSink"
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"name": "PS_PARTKEY"
+										},
+										"sink": {
+											"name": "partkey"
+										}
+									},
+									{
+										"source": {
+											"name": "PS_SUPPKEY"
+										},
+										"sink": {
+											"name": "suppkey"
+										}
+									},
+									{
+										"source": {
+											"name": "PS_AVAILQTY"
+										},
+										"sink": {
+											"name": "availqty"
+										}
+									},
+									{
+										"source": {
+											"name": "supplycost"
+										},
+										"sink": {
+											"name": "supplycost"
+										}
+									},
+									{
+										"source": {
+											"name": "PS_COMMENT"
+										},
+										"sink": {
+											"name": "comment",
+											"physicalType": "varchar"
+										}
+									}
+								],
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "partsuppFinalDSV",
+								"type": "DatasetReference"
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "AzureSqlOutputTable",
+								"type": "DatasetReference",
+								"parameters": {
+									"tableName": "partsupp"
+								}
+							}
+						]
+					},
+					{
+						"name": "Copy Partsupp to Azure SQL 2",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "Copy Partsupp to Azure SQL 1",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"wildcardFolderPath": "partsupp_parts",
+									"wildcardFileName": "partsupp_cleaned_2.dsv",
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							},
+							"sink": {
+								"type": "AzureSqlSink"
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"name": "PS_PARTKEY"
+										},
+										"sink": {
+											"name": "partkey"
+										}
+									},
+									{
+										"source": {
+											"name": "PS_SUPPKEY"
+										},
+										"sink": {
+											"name": "suppkey"
+										}
+									},
+									{
+										"source": {
+											"name": "PS_AVAILQTY"
+										},
+										"sink": {
+											"name": "availqty"
+										}
+									},
+									{
+										"source": {
+											"name": "supplycost"
+										},
+										"sink": {
+											"name": "supplycost"
+										}
+									},
+									{
+										"source": {
+											"name": "PS_COMMENT"
+										},
+										"sink": {
+											"name": "comment",
+											"physicalType": "varchar"
+										}
+									}
+								],
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "partsuppFinalDSV",
+								"type": "DatasetReference"
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "AzureSqlOutputTable",
+								"type": "DatasetReference",
+								"parameters": {
+									"tableName": "partsupp"
+								}
+							}
+						]
+					}
+				],
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/dataflows/PartsuppCleanFlow')]",
+				"[concat(variables('factoryId'), '/datasets/partsuppFinalDSV')]",
+				"[concat(variables('factoryId'), '/datasets/AzureSqlOutputTable')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/PartsuppCleanFlow')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "partsuppRawDSV",
+								"type": "DatasetReference"
+							},
+							"name": "PartsuppDSV"
+						},
+						{
+							"dataset": {
+								"referenceName": "partsuppRawDSV",
+								"type": "DatasetReference"
+							},
+							"name": "PartsuppDSV2"
+						}
+					],
+					"sinks": [
+						{
+							"dataset": {
+								"referenceName": "partsuppCleanedDSV",
+								"type": "DatasetReference"
+							},
+							"name": "PartsuppCleaned1"
+						},
+						{
+							"dataset": {
+								"referenceName": "partsuppCleanedDSV",
+								"type": "DatasetReference"
+							},
+							"name": "PartsuppCleaned2"
+						}
+					],
+					"transformations": [
+						{
+							"name": "CommaToDot"
+						},
+						{
+							"name": "CommaToDot2"
+						}
+					],
+					"script": "source(output(\n\t\tPS_PARTKEY as short,\n\t\tPS_SUPPKEY as short,\n\t\tPS_AVAILQTY as short,\n\t\tPS_SUPPLYCOST as string,\n\t\tPS_COMMENT as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> PartsuppDSV\nsource(output(\n\t\tPS_PARTKEY as short,\n\t\tPS_SUPPKEY as short,\n\t\tPS_AVAILQTY as short,\n\t\tPS_SUPPLYCOST as string,\n\t\tPS_COMMENT as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> PartsuppDSV2\nPartsuppDSV derive(supplycost = replace(PS_SUPPLYCOST, ',', '.')) ~> CommaToDot\nPartsuppDSV2 derive(supplycost = replace(PS_SUPPLYCOST, ',', '.')) ~> CommaToDot2\nCommaToDot sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:['partsupp_parts/partsupp_cleaned_1.dsv'],\n\tpartitionBy('hash', 1),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> PartsuppCleaned1\nCommaToDot2 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:['partsupp_parts/partsupp_cleaned_2.dsv'],\n\tpartitionBy('hash', 1),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> PartsuppCleaned2"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/partsuppRawDSV')]",
+				"[concat(variables('factoryId'), '/datasets/partsuppCleanedDSV')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/partsuppFinalDSV')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "cleaned DSV for export to Azure SQL",
+				"linkedServiceName": {
+					"referenceName": "[parameters('InputBLOB')]",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Partsupp"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "partsupp"
+					},
+					"columnDelimiter": "|",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureSqlOutputTable')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "[parameters('OutputAzureSQL')]",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"tableName": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "region",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "name",
+						"type": "varchar"
+					},
+					{
+						"name": "comment",
+						"type": "varchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": {
+						"value": "@dataset().tableName",
+						"type": "Expression"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/partsuppRawDSV')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "raw uploaded DSV",
+				"linkedServiceName": {
+					"referenceName": "[parameters('InputBLOB')]",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"fileName": {
+						"type": "string"
+					}
+				},
+				"folder": {
+					"name": "Partsupp"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": {
+							"value": "@dataset().fileName",
+							"type": "Expression"
+						},
+						"container": "dcsv-container"
+					},
+					"columnDelimiter": "|",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/partsuppCleanedDSV')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "cleaned DSV with good columns",
+				"linkedServiceName": {
+					"referenceName": "[parameters('InputBLOB')]",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Partsupp"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "partsupp"
+					},
+					"columnDelimiter": "|",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		}
+	]
+}
