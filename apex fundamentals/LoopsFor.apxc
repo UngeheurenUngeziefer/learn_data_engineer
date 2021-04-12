@@ -1,0 +1,11 @@
+// traditional loop
+for (Integer i = 1; i <= 10; i++){
+    System.debug(i);
+}
+
+// loop iterating a set or a list
+Integer[] myInts = new Integer[]{10,20,30,40,50,60,70,80,90,100};
+    for (Integer i: myInts) {
+        System.debug(i);
+}
+

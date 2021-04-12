@@ -1,0 +1,4 @@
+Date myDate = Date.today();
+String myString = String.valueOf(myDate);
+System.debug(myString);
+System.debug( 'I am a string' + ' cheese');
