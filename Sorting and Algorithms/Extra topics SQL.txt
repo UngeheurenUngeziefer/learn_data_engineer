@@ -1,0 +1,34 @@
+- temporary table, table variable (10 и более отличий, performance statistics)
+- диалекты SQL https://en.wikipedia.org/wiki/SQL
+- null and antinull standart
+- теория множеств
+- view, параметры (with scima bunding, with encrypt)
+- materialized view
+- ядро строит план выолнения запроса - 3 основных statement
+- стадии выполнения запроса (логические, физические)
+- MERGE в хранилищах OLAP - difference
+- нормализация, денормализация (3 первых формы), OLTP хранилище
+- селективность индексов (нужен ли индекс)
+- property, ACID (read, commit, snapshot)
+- transaction (выполняются или полностью или не выполняются, разобраться глубоко, долбить)
+- phantom (как нарушение транзакций влияет на результаты, когда считывать данные)
+- блокировака и deadlock
+- performance
+- операторы, запросы, performance
+- разница performance (заменить что лучше что нельзя использовать)
+
+
+trace flag
+count stored indexes
+column stored indexes
+null antinull standart
+view, параметры (with scima bunding, with encrypt)
+materialized view
+ядро строит план выолнения запроса - 3 основных statement
+стадии выполнения запроса (логические, физические)
+MERGE в хранилищах OLAP - difference`
+нормализация, денормализация (3 первых формы), OLTP хранилище
+селективность индексов (нужен ли индекс)
+property, ACID (read, commit, snapshot)
+phantom (как нарушение транзакций влияет на результаты, когда считывать данные)
+блокировака и deadlock

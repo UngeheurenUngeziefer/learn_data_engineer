@@ -1,0 +1,33 @@
+{
+	"name": "CustomerCleanFlow",
+	"properties": {
+		"description": "Adding good column with dot not comma",
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "customerRawDSV",
+						"type": "DatasetReference"
+					},
+					"name": "CustomerDSV"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "customerCleanedDSV",
+						"type": "DatasetReference"
+					},
+					"name": "CustomerFinalTable"
+				}
+			],
+			"transformations": [
+				{
+					"name": "CommaToDotColumn"
+				}
+			],
+			"script": "source(output(\n\t\tC_CUSTKEY as short,\n\t\tC_NAME as string,\n\t\tC_ADDRESS as string,\n\t\tC_NATIONKEY as short,\n\t\tC_PHONE as string,\n\t\tC_ACCTBAL as string,\n\t\tC_MKTSEGMENT as string,\n\t\tC_COMMENT as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> CustomerDSV\nCustomerDSV derive(acctbal = replace(C_ACCTBAL, ',', '.')) ~> CommaToDotColumn\nCommaToDotColumn sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:['customer_cleaned.dsv'],\n\tpartitionBy('hash', 1),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> CustomerFinalTable"
+		}
+	}
+}
