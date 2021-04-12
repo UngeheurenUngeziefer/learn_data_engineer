@@ -1,2 +1,0 @@
-CREATE SYNONYM EmpHist
-FOR HumanResources.vEmployeeDepartmentHistory
