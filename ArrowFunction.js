@@ -1,1 +1,0 @@
-const magic = () => new Date();
