@@ -1,0 +1,26 @@
+{
+	"name": "partsuppCleanedDSV",
+	"properties": {
+		"description": "cleaned DSV with good columns",
+		"linkedServiceName": {
+			"referenceName": "InputBLOB",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Partsupp"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "partsupp"
+			},
+			"columnDelimiter": "|",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}

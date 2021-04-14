@@ -1,0 +1,40 @@
+{
+	"name": "rawInputDSV",
+	"properties": {
+		"description": "if all columns in good state",
+		"linkedServiceName": {
+			"referenceName": "InputBLOB",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"fileName": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "0 Raw Datasets (Good Columns)"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().fileName",
+					"type": "Expression"
+				},
+				"container": "dcsv-container"
+			},
+			"columnDelimiter": "|",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "\"N_NATIONKEY\"|\"N_NAME\"|\"N_REGIONKEY\"|\"N_COMMENT\"",
+				"type": "String"
+			}
+		]
+	}
+}

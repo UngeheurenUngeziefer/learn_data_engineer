@@ -1,0 +1,27 @@
+{
+	"name": "customerFinalDSV",
+	"properties": {
+		"description": "Cleaned dataset for exporting to Azure SQL",
+		"linkedServiceName": {
+			"referenceName": "InputBLOB",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Customer"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "customer_cleaned.dsv",
+				"container": "output"
+			},
+			"columnDelimiter": "|",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}

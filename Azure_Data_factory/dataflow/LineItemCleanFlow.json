@@ -1,0 +1,32 @@
+{
+	"name": "LineItemCleanFlow",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "lineitemRawCSV",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "lineitemCleanedCSV",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "DerivedColumns"
+				}
+			],
+			"script": "source(output(\n\t\t{_col0_} as integer,\n\t\t{_col1_} as integer,\n\t\t{_col2_} as short,\n\t\t{_col3_} as short,\n\t\t{_col4_} as short,\n\t\t{_col5_} as string,\n\t\t{_col6_} as string,\n\t\t{_col7_} as string,\n\t\t{_col8_} as string,\n\t\t{_col9_} as boolean,\n\t\t{_col10_} as string,\n\t\t{_col11_} as string,\n\t\t{_col12_} as string,\n\t\t{_col13_} as string,\n\t\t{_col14_} as string,\n\t\t{_col15_} as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> source1\nsource1 derive(extendedprice = replace({_col5_}, ',', '.'),\n\t\tdiscount = replace({_col6_}, ',', '.'),\n\t\ttax = replace({_col7_}, ',', '.'),\n\t\treturnflag = toString({_col8_}),\n\t\tshipdate = toDate({_col10_}, 'dd.MM.yy'),\n\t\tcommitdate = toDate({_col11_}, 'dd.MM.yy'),\n\t\treceiptdate = toDate({_col12_}, 'dd.MM.yy'),\n\t\tshipinstruct = toString({_col13_}),\n\t\tshipmode = toString({_col14_})) ~> DerivedColumns\nDerivedColumns sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:['output_file_cleared.csv'],\n\tpartitionBy('hash', 1),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
+		}
+	}
+}
