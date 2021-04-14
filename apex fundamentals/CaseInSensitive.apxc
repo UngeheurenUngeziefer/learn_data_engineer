@@ -1,7 +1,0 @@
-// Apex is case insensitive
-System.debug ( System.today() );
-System.debug ( System.Today() );
-System.debug ( SySteM.Today() ); //marked different in vscode but worked ;)
-
-// classes names start with uppercase (CamelCase?) -> ClassName
-// func names start with lowercase -> funcName

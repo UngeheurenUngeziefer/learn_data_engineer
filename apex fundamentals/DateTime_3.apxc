@@ -1,4 +1,0 @@
-Date myToday = Date.today();
-Date myNext30 = myToday.addDays(30);
-System.debug('myToday = ' + myToday);
-System.debug('myNext30= ' + myNext30);

@@ -1,3 +1,0 @@
-Boolean x = null;
-Decimal d;
-d.addDays(2);

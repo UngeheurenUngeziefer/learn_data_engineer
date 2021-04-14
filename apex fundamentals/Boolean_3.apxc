@@ -1,9 +1,0 @@
-// 2 statements
-
-if ('Hello'.endsWith('o')) {
-    System.debug('me');
-    System.debug('me too!');
-    }
-
-// 1 statement
-if (4 > 2) System.debug('Yep, 4 is greater than 2');

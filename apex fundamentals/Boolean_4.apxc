@@ -1,7 +1,0 @@
-// ternary
-// if x (Boolean) == true, then the result is y; else it is z
-x ? y : z
-
-Boolean isIt = true;
-String x = 'You are ' + (isIt ? 'great' : 'small');
-System.debug(x);

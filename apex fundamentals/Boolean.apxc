@@ -1,8 +1,0 @@
-Boolean isLeapYear = true;
-
-// != true
-Boolean iAmFalse = !true;
-// false and true == false
-Boolean iAmFalse2 = iAmFalse && true;
-// false || false == false
-Boolean iAmFalse3 = iAmFalse || false;

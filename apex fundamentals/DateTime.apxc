@@ -1,4 +1,0 @@
-Date myDate = Date.newinstance(1960, 2, 17);
-Time myTime = Time.newInstance(18, 30, 2, 20);
-System.debug(myDate);
-System.debug(myTime);

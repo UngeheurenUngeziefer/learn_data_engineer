@@ -1,3 +1,0 @@
-Datetime myDateTime = Datetime.now();
-Date today = Date.today();
-Time time = DateTime.now().time();
