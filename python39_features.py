@@ -1,7 +1,6 @@
 from collections import ChainMap
 from datetime import datetime, timezone
 
-
 # merging two dict's
 d1 = {'one': 1}
 d2 = {'two': 2}
