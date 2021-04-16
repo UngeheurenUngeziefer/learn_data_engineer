@@ -15,8 +15,9 @@
 !!- Azure Data Factory TPCH_project (+ presentation) <br />
 !!- YM Favorite Songs project (+ presentation) <br />
 !!- Django Load Testing (DRF+Locust+Django) <br />
-!!- NLP with Python for Machine Learning Essential Training (4/5)
-!!- EngX
+!!- NLP with Python for Machine Learning Essential Training (4/5) <br />
+!!- EngX <br />
+!!- Machine Learning with Scikit-Learn <br />
 	
 <h3>Основные понятия SQL</h3>
 
