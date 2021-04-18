@@ -7,7 +7,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report, confusion_matrix
 
 
-numpy_array = np.load('exoplanets_data.npy', allow_pickle=True)
+numpy_array = np.load('\Data_Engineer\Exoplanets.eu Analytics' + \
+                                    '\exoplanets_data.npy', allow_pickle=True)
 df = pd.DataFrame.from_records(numpy_array)
 
 # mass greater than Mercury (tiniest) and greater than 10 Earthes
@@ -21,7 +22,8 @@ conditions = [
 # create a list of the values we want to assign for each condition
 values = [0, 1, 2]
 
-# create a new column and use np.select to assign values to it using our lists as arguments
+# create a new column and use np.select to assign values to it using our
+# lists as arguments
 df['planet_type'] = np.select(conditions, values)
 
 # where mass exist
@@ -53,7 +55,8 @@ print("percentage of Earth-like is", percentage_of_erl)
 pd.options.display.max_columns = None
 # print(df.groupby('planet_type').mean())
 
-# The average semi major axis of Gigantic planets is higher than that of the Earth like planets
+# The average semi major axis of Gigantic planets is higher than that of the
+# Earth like planets
 # Earth like planets have greater albedo than Giant planets
 # Distance to stars with Giant planets greater than with Earth planets
 # Star age greater for Earth like planets and less for Giant planets

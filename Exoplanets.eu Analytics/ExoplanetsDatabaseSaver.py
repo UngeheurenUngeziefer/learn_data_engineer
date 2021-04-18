@@ -53,13 +53,13 @@ class ExoplanetsDatabaseSaver:
         print(results)
 
 
-
-# query directly to class (schema query)
 # ExoplanetsDatabaseSaver("SELECT column_name \
 #                          FROM TAP_SCHEMA.columns \
 #                          WHERE table_name = 'exoplanet.epn_core'")
 
-ExoplanetsDatabaseSaver("SELECT TOP 100 albedo \
-                         FROM exoplanet.epn_core \
-                         WHERE albedo IS NOT NULL \
-                         ORDER BY albedo DESC")
+# ExoplanetsDatabaseSaver("SELECT TOP 100 albedo \
+#                          FROM exoplanet.epn_core \
+#                          WHERE albedo IS NOT NULL \
+#                          ORDER BY albedo DESC")
+
+ExoplanetsDatabaseSaver('SELECT * FROM exoplanet.epn_core').save_to_numpy('exoplanets_data')
